@@ -20,15 +20,26 @@ TODO / KNOWN LIMITATIONS:
 ///////////////////////////////////////////////////////////
 // CLASSES AND HELPER FUNCTIONS
 
+type SlowFetchQueue = {
+  url: string; 
+  options: RequestInit;
+  resolve: unknown;  // should be a function? TBD
+  reject: unknown;   // should be a function? TBD
+}
+
 // There are more robust methods of throttling, but this does the trick for now
 class SlowFetcher {
-  constructor(milliseconds) {
+  queue: Array<SlowFetchQueue>;
+  milliseconds: number;
+  timer: number | null;
+
+  constructor(milliseconds: number) {
     this.queue = [];
     this.milliseconds = milliseconds;  // Minimum interval between requests.  unit = milliseconds
     this.timer = null;
   }
 
-  async fetch(url, options) {
+  async fetch(url: string, options: RequestInit) {
     let resolve;
     let reject;
 
@@ -59,7 +70,7 @@ class SlowFetcher {
           }
         } else {
           console.log("SlowFetcher: Destroying timer")
-          clearInterval(this.timer);
+          if (typeof this.timer === "number") clearInterval(this.timer);
           this.timer = null;
         }
       }, this.milliseconds); 
@@ -76,7 +87,7 @@ class Util {
   Misc utilities 
   */
 
-  static saveJSON(data, filename) {
+  static saveJSON(data: object, filename: string) {
     // Convert data to JSON string
     const jsonString = JSON.stringify(data, null, 2);
     
@@ -94,14 +105,14 @@ class Util {
     document.body.removeChild(link);
   }
 
-  static round(num, places) {
+  static round(num: number, places: number) {
     /*
     Returns number
     */
     return Number(num.toFixed(places));
   }
 
-  static toBbox([latitude, longitude], zoom) {
+  static toBbox([latitude, longitude]: number[], zoom: number) {
     /*
     Credit: LLM
     Zoom levels: https://wiki.openstreetmap.org/wiki/Zoom_levels
@@ -133,12 +144,12 @@ class Util {
     return [minLat, minLon, maxLat, maxLon];
   }
 
-  static isLatLon(string) {
-    return /(-?\d+\.\d+),\s*(-?\d+\.\d+)/.test(string.trim());
+  static isLatLon(str: string) {
+    return /(-?\d+\.\d+),\s*(-?\d+\.\d+)/.test(str.trim());
   }
 
-  static parseLatLon(string) {
-    const [lat, lon] = string.split(",")
+  static parseLatLon(str: string) {
+    const [lat, lon] = str.split(",")
       .map(str => str.trim())
       .map(str => Number(str));
     if (lat < -90 || lat > 90) {
@@ -150,7 +161,7 @@ class Util {
     }
   }
 
-  static slugify(str) {
+  static slugify(str: string) {
     // Credit: https://byby.dev/js-slugify-string
     return String(str)
       .normalize('NFKD') // split accented characters into their base characters and diacritical marks
@@ -165,17 +176,7 @@ class Util {
 
 class App {
 
-  
-  static favorites = {
-    "Durham, NC, USA": "durham_nc.json",  
-    "Taipei, Taiwan": "taipei_taiwan.json",
-    "Paris, France": "paris-france.json",
-    "Paris, Idaho, USA": "paris-idaho-usa.json",
-    "Millennium Park, Chicago, IL, USA": "millennium-park-chicago-il-usa.json",
-    "Raleigh, NC, USA": "raleigh-nc-usa.json",
-    "Duke Gardens, Durham, NC, USA": "duke-gardens-durham-nc-usa.json",
-  }
-  
+
   constructor() {
     this.$controls = document.querySelector("section.controls");
     this.$favorites = document.querySelector("section.favorites");
@@ -200,6 +201,16 @@ class App {
     })
 
 
+  }
+
+  static favorites = {
+    "Durham, NC, USA": "durham_nc.json",  
+    "Taipei, Taiwan": "taipei_taiwan.json",
+    "Paris, France": "paris-france.json",
+    "Paris, Idaho, USA": "paris-idaho-usa.json",
+    "Millennium Park, Chicago, IL, USA": "millennium-park-chicago-il-usa.json",
+    "Raleigh, NC, USA": "raleigh-nc-usa.json",
+    "Duke Gardens, Durham, NC, USA": "duke-gardens-durham-nc-usa.json",
   }
 
   async init() {
