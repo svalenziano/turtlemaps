@@ -145,6 +145,9 @@ class App {
         this.initFavorites();
         this.map = new StreetMap();
         this.map.clear();
+        if (!this.$jumpForm ||
+            !this.$jumpBox)
+            throw new Error("Element was not found");
         this.$jumpForm.addEventListener("submit", (ev) => __awaiter(this, void 0, void 0, function* () {
             ev.preventDefault();
             console.log("Jumping to", this.$jumpBox.value);
@@ -472,7 +475,7 @@ class StreetMap {
         });
     }
     jump(query_1) {
-        return __awaiter(this, arguments, void 0, function* (query, zoom = StreetMap.DEFAULT_ZOOM, localJSON) {
+        return __awaiter(this, arguments, void 0, function* (query, zoom = StreetMap.DEFAULT_ZOOM, localJSON = null) {
             /*
             INPUTS:
             - `query` text placename or query (string) (required)

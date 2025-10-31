@@ -14,8 +14,9 @@ TODO / KNOWN LIMITATIONS:
   - Support for OSM multipolygons needs to be improved
 */
 
-
-
+///////////////////////////////////////////////////////////
+// TYPES
+type bbox = [number, number, number, number];
 
 ///////////////////////////////////////////////////////////
 // CLASSES AND HELPER FUNCTIONS
@@ -175,7 +176,11 @@ class Util {
 }
 
 class App {
-
+  $controls: HTMLElement | null;
+  $favorites: HTMLElement | null;
+  $jumpForm: HTMLFormElement | null;
+  $jumpBox:  HTMLInputElement | null;
+  map: StreetMap;
 
   constructor() {
     this.$controls = document.querySelector("section.controls");
@@ -186,10 +191,15 @@ class App {
     this.map = new StreetMap();
     this.map.clear();
     
+    if (
+      !this.$jumpForm ||
+      !this.$jumpBox
+      ) throw new Error("Element was not found")
+
     this.$jumpForm.addEventListener("submit", async (ev) => {
       ev.preventDefault();
-      console.log("Jumping to", this.$jumpBox.value);
-      await this.map.jump(this.$jumpBox.value);
+      console.log("Jumping to", this.$jumpBox!.value);
+      await this.map.jump(this.$jumpBox!.value);
     })
 
     document.querySelector("button.show-controls").addEventListener("click", (e) => {
@@ -518,8 +528,7 @@ class Layer {
 Map contains and orchestrates Layers
 */
 class StreetMap {
-
-  static DEFAULT_ZOOM = 15;
+  bbox: bbox | null;
 
   constructor() {
     this.bbox = null;
@@ -537,11 +546,17 @@ class StreetMap {
     this.updateDispatchHash();  // todo - remove?
   }
 
+  static DEFAULT_ZOOM = 15;
+
   async init() {
 
   }
 
-  async jump(query, zoom=StreetMap.DEFAULT_ZOOM, localJSON) {
+  async jump(
+    query: string, 
+    zoom:number = StreetMap.DEFAULT_ZOOM, 
+    localJSON=null
+    ) {
     /*
     INPUTS:
     - `query` text placename or query (string) (required)
