@@ -36,8 +36,12 @@ class SlowFetcher {
                 console.log("SlowFetcher: Creating timer");
                 this.timer = setInterval(() => __awaiter(this, void 0, void 0, function* () {
                     if (this.queue.length > 0) {
-                        const { url, options, resolve, reject } = this.queue.shift();
+                        const item = this.queue.shift();
+                        const { url, options, resolve, reject } = item;
                         const response = yield fetch(url, options);
+                        if (typeof resolve !== "function" || typeof reject !== "function") {
+                            throw new Error("Unexpected type");
+                        }
                         if (response.ok) {
                             resolve(response);
                         }
@@ -138,6 +142,7 @@ class Util {
 }
 class App {
     constructor() {
+        var _a, _b;
         this.$controls = document.querySelector("section.controls");
         this.$favorites = document.querySelector("section.favorites");
         this.$jumpForm = document.querySelector("form.jump");
@@ -153,11 +158,13 @@ class App {
             console.log("Jumping to", this.$jumpBox.value);
             yield this.map.jump(this.$jumpBox.value);
         }));
-        document.querySelector("button.show-controls").addEventListener("click", (e) => {
-            this.$controls.classList.remove("hide");
+        (_a = document.querySelector("button.show-controls")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", (e) => {
+            var _a;
+            (_a = this.$controls) === null || _a === void 0 ? void 0 : _a.classList.remove("hide");
         });
-        document.querySelector("button.hide-controls").addEventListener("click", (e) => {
-            this.$controls.classList.add("hide");
+        (_b = document.querySelector("button.hide-controls")) === null || _b === void 0 ? void 0 : _b.addEventListener("click", (e) => {
+            var _a;
+            (_a = this.$controls) === null || _a === void 0 ? void 0 : _a.classList.add("hide");
         });
     }
     init() {
@@ -166,6 +173,7 @@ class App {
         });
     }
     initFavorites() {
+        var _a;
         // Adds favorites to the UI
         const $ul = document.createElement("UL");
         let listItems = "";
@@ -173,7 +181,7 @@ class App {
             listItems += `<a href="#"><li data-name="${fav}" data-localjson="${App.favorites[fav]}">${fav}</li></a>`;
         }
         $ul.innerHTML = listItems;
-        this.$favorites.append($ul);
+        (_a = this.$favorites) === null || _a === void 0 ? void 0 : _a.append($ul);
         $ul.addEventListener("click", (ev) => {
             var _a;
             /*

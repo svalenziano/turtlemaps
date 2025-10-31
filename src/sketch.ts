@@ -62,8 +62,12 @@ class SlowFetcher {
       console.log("SlowFetcher: Creating timer")
       this.timer = setInterval(async () => {
         if (this.queue.length > 0) {
-          const {url, options, resolve, reject} = this.queue.shift();
+          const item: SlowFetchQueue = this.queue.shift()!;
+          const {url, options, resolve, reject} = item;
           const response = await fetch(url, options);
+          if (typeof resolve !== "function" || typeof reject !== "function") {
+            throw new Error("Unexpected type")
+          }
           if (response.ok) {
             resolve(response);
           } else {
@@ -202,18 +206,18 @@ class App {
       await this.map.jump(this.$jumpBox!.value);
     })
 
-    document.querySelector("button.show-controls").addEventListener("click", (e) => {
-      this.$controls.classList.remove("hide");
+    document.querySelector("button.show-controls")?.addEventListener("click", (e) => {
+      this.$controls?.classList.remove("hide");
     });
 
-    document.querySelector("button.hide-controls").addEventListener("click", (e) => {
-      this.$controls.classList.add("hide");
+    document.querySelector("button.hide-controls")?.addEventListener("click", (e) => {
+      this.$controls?.classList.add("hide");
     })
 
 
   }
 
-  static favorites = {
+  static favorites: {[key: string]: unknown} = {
     "Durham, NC, USA": "durham_nc.json",  
     "Taipei, Taiwan": "taipei_taiwan.json",
     "Paris, France": "paris-france.json",
@@ -235,7 +239,7 @@ class App {
       listItems += `<a href="#"><li data-name="${fav}" data-localjson="${App.favorites[fav]}">${fav}</li></a>`
     }
     $ul.innerHTML = listItems;
-    this.$favorites.append($ul);
+    this.$favorites?.append($ul);
 
     $ul.addEventListener("click", (ev) => {
       /*
@@ -554,8 +558,8 @@ class StreetMap {
 
   async jump(
     query: string, 
-    zoom:number = StreetMap.DEFAULT_ZOOM, 
-    localJSON=null
+    zoom: number | null = StreetMap.DEFAULT_ZOOM, 
+    localJSON: string | null = null
     ) {
     /*
     INPUTS:
