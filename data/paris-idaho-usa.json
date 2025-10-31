@@ -1,0 +1,8825 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.8 e802775f",
+  "osm3s": {
+    "timestamp_osm_base": "2025-09-21T20:38:00Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+    {
+      "type": "way",
+      "id": 13709739,
+      "bounds": {
+        "minlat": 42.229732,
+        "minlon": -111.401498,
+        "maxlat": 42.2298426,
+        "maxlon": -111.4009713
+      },
+      "nodes": [
+        126474777,
+        126474779,
+        126474781
+      ],
+      "geometry": [
+        {
+          "lat": 42.2298426,
+          "lon": -111.4009713
+        },
+        {
+          "lat": 42.229834,
+          "lon": -111.401492
+        },
+        {
+          "lat": 42.229732,
+          "lon": -111.401498
+        }
+      ],
+      "tags": {
+        "access": "private",
+        "highway": "service",
+        "tiger:cfcc": "A74",
+        "tiger:county": "Bear Lake, ID",
+        "tiger:reviewed": "no",
+        "tiger:source": "tiger_import_dch_v0.6_20070809",
+        "tiger:tlid": "167332268",
+        "tiger:upload_uuid": "bulk_upload.pl-93b636b1-b64b-42a1-9fa9-583e6c711992"
+      }
+    },
+    {
+      "type": "way",
+      "id": 13709740,
+      "bounds": {
+        "minlat": 42.2290284,
+        "minlon": -111.405863,
+        "maxlat": 42.2295414,
+        "maxlon": -111.405793
+      },
+      "nodes": [
+        126474787,
+        126474791,
+        126474794
+      ],
+      "geometry": [
+        {
+          "lat": 42.2290284,
+          "lon": -111.405793
+        },
+        {
+          "lat": 42.2291204,
+          "lon": -111.405863
+        },
+        {
+          "lat": 42.2295414,
+          "lon": -111.405856
+        }
+      ],
+      "tags": {
+        "access": "private",
+        "highway": "service",
+        "tiger:cfcc": "A74",
+        "tiger:county": "Bear Lake, ID",
+        "tiger:reviewed": "no",
+        "tiger:source": "tiger_import_dch_v0.6_20070809",
+        "tiger:tlid": "167332269",
+        "tiger:upload_uuid": "bulk_upload.pl-93b636b1-b64b-42a1-9fa9-583e6c711992"
+      }
+    },
+    {
+      "type": "way",
+      "id": 13712070,
+      "bounds": {
+        "minlat": 42.229872,
+        "minlon": -111.406968,
+        "maxlat": 42.231205,
+        "maxlon": -111.406935
+      },
+      "nodes": [
+        126533851,
+        126533855,
+        126533858
+      ],
+      "geometry": [
+        {
+          "lat": 42.231205,
+          "lon": -111.406968
+        },
+        {
+          "lat": 42.230627,
+          "lon": -111.406961
+        },
+        {
+          "lat": 42.229872,
+          "lon": -111.406935
+        }
+      ],
+      "tags": {
+        "access": "private",
+        "highway": "service",
+        "tiger:cfcc": "A74",
+        "tiger:county": "Bear Lake, ID",
+        "tiger:reviewed": "no",
+        "tiger:source": "tiger_import_dch_v0.6_20070809",
+        "tiger:tlid": "167316184",
+        "tiger:upload_uuid": "bulk_upload.pl-93b636b1-b64b-42a1-9fa9-583e6c711992"
+      }
+    },
+    {
+      "type": "way",
+      "id": 13714499,
+      "bounds": {
+        "minlat": 42.239415,
+        "minlon": -111.4009392,
+        "maxlat": 42.239605,
+        "maxlon": -111.400159
+      },
+      "nodes": [
+        126597545,
+        126597548,
+        126597553,
+        126597559
+      ],
+      "geometry": [
+        {
+          "lat": 42.2396029,
+          "lon": -111.4009392
+        },
+        {
+          "lat": 42.239605,
+          "lon": -111.400718
+        },
+        {
+          "lat": 42.239531,
+          "lon": -111.400355
+        },
+        {
+          "lat": 42.239415,
+          "lon": -111.400159
+        }
+      ],
+      "tags": {
+        "access": "private",
+        "highway": "service",
+        "tiger:cfcc": "A74",
+        "tiger:county": "Bear Lake, ID",
+        "tiger:reviewed": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 13714500,
+      "bounds": {
+        "minlat": 42.238883,
+        "minlon": -111.40115,
+        "maxlat": 42.2389244,
+        "maxlon": -111.4009376
+      },
+      "nodes": [
+        126597564,
+        126597565,
+        126597569
+      ],
+      "geometry": [
+        {
+          "lat": 42.2389244,
+          "lon": -111.4009376
+        },
+        {
+          "lat": 42.238909,
+          "lon": -111.401017
+        },
+        {
+          "lat": 42.238883,
+          "lon": -111.40115
+        }
+      ],
+      "tags": {
+        "access": "private",
+        "highway": "service",
+        "tiger:cfcc": "A74",
+        "tiger:county": "Bear Lake, ID",
+        "tiger:reviewed": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 13714501,
+      "bounds": {
+        "minlat": 42.237877,
+        "minlon": -111.4009426,
+        "maxlat": 42.237888,
+        "maxlon": -111.399202
+      },
+      "nodes": [
+        126597575,
+        126597577,
+        126597581
+      ],
+      "geometry": [
+        {
+          "lat": 42.2378857,
+          "lon": -111.4009426
+        },
+        {
+          "lat": 42.237877,
+          "lon": -111.399406
+        },
+        {
+          "lat": 42.237888,
+          "lon": -111.399202
+        }
+      ],
+      "tags": {
+        "access": "private",
+        "highway": "service",
+        "tiger:cfcc": "A74",
+        "tiger:county": "Bear Lake, ID",
+        "tiger:reviewed": "no",
+        "tiger:source": "tiger_import_dch_v0.6_20070809",
+        "tiger:tlid": "167332617",
+        "tiger:upload_uuid": "bulk_upload.pl-93b636b1-b64b-42a1-9fa9-583e6c711992"
+      }
+    },
+    {
+      "type": "way",
+      "id": 13714502,
+      "bounds": {
+        "minlat": 42.2368296,
+        "minlon": -111.4009548,
+        "maxlat": 42.237031,
+        "maxlon": -111.400415
+      },
+      "nodes": [
+        126597587,
+        126597590,
+        126597593
+      ],
+      "geometry": [
+        {
+          "lat": 42.2368296,
+          "lon": -111.4009548
+        },
+        {
+          "lat": 42.236904,
+          "lon": -111.400415
+        },
+        {
+          "lat": 42.237031,
+          "lon": -111.400448
+        }
+      ],
+      "tags": {
+        "access": "private",
+        "highway": "service",
+        "tiger:cfcc": "A74",
+        "tiger:county": "Bear Lake, ID",
+        "tiger:reviewed": "no",
+        "tiger:source": "tiger_import_dch_v0.6_20070809",
+        "tiger:tlid": "167332618",
+        "tiger:upload_uuid": "bulk_upload.pl-93b636b1-b64b-42a1-9fa9-583e6c711992"
+      }
+    },
+    {
+      "type": "way",
+      "id": 13714504,
+      "bounds": {
+        "minlat": 42.2360944,
+        "minlon": -111.40294,
+        "maxlat": 42.236177,
+        "maxlon": -111.4009562
+      },
+      "nodes": [
+        126597598,
+        126597600,
+        126597604,
+        126597607
+      ],
+      "geometry": [
+        {
+          "lat": 42.2360944,
+          "lon": -111.4009562
+        },
+        {
+          "lat": 42.236112,
+          "lon": -111.401167
+        },
+        {
+          "lat": 42.236177,
+          "lon": -111.401799
+        },
+        {
+          "lat": 42.236173,
+          "lon": -111.40294
+        }
+      ],
+      "tags": {
+        "access": "private",
+        "highway": "service",
+        "tiger:cfcc": "A74",
+        "tiger:county": "Bear Lake, ID",
+        "tiger:reviewed": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 13715171,
+      "bounds": {
+        "minlat": 42.238589,
+        "minlon": -111.4014,
+        "maxlat": 42.238893,
+        "maxlon": -111.40115
+      },
+      "nodes": [
+        126612216,
+        126597569,
+        126612224,
+        126612233,
+        126612242,
+        126612245,
+        126612216
+      ],
+      "geometry": [
+        {
+          "lat": 42.238893,
+          "lon": -111.40123
+        },
+        {
+          "lat": 42.238883,
+          "lon": -111.40115
+        },
+        {
+          "lat": 42.238639,
+          "lon": -111.401221
+        },
+        {
+          "lat": 42.238589,
+          "lon": -111.40134
+        },
+        {
+          "lat": 42.238698,
+          "lon": -111.4014
+        },
+        {
+          "lat": 42.238833,
+          "lon": -111.401369
+        },
+        {
+          "lat": 42.238893,
+          "lon": -111.40123
+        }
+      ],
+      "tags": {
+        "access": "private",
+        "highway": "service",
+        "tiger:cfcc": "A74",
+        "tiger:county": "Bear Lake, ID",
+        "tiger:reviewed": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 13715176,
+      "bounds": {
+        "minlat": 42.237888,
+        "minlon": -111.399202,
+        "maxlat": 42.2381,
+        "maxlon": -111.398785
+      },
+      "nodes": [
+        126612392,
+        126597581,
+        126612401,
+        126612406,
+        126612410,
+        126612392
+      ],
+      "geometry": [
+        {
+          "lat": 42.237948,
+          "lon": -111.399164
+        },
+        {
+          "lat": 42.237888,
+          "lon": -111.399202
+        },
+        {
+          "lat": 42.237974,
+          "lon": -111.398806
+        },
+        {
+          "lat": 42.238056,
+          "lon": -111.398785
+        },
+        {
+          "lat": 42.2381,
+          "lon": -111.398846
+        },
+        {
+          "lat": 42.237948,
+          "lon": -111.399164
+        }
+      ],
+      "tags": {
+        "access": "private",
+        "highway": "service",
+        "tiger:cfcc": "A74",
+        "tiger:county": "Bear Lake, ID",
+        "tiger:reviewed": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 13715582,
+      "bounds": {
+        "minlat": 42.229054,
+        "minlon": -111.404691,
+        "maxlat": 42.229206,
+        "maxlon": -111.404068
+      },
+      "nodes": [
+        126622441,
+        126622446,
+        126622449,
+        126622452,
+        126622455
+      ],
+      "geometry": [
+        {
+          "lat": 42.229054,
+          "lon": -111.404691
+        },
+        {
+          "lat": 42.229154,
+          "lon": -111.404616
+        },
+        {
+          "lat": 42.229206,
+          "lon": -111.404528
+        },
+        {
+          "lat": 42.229197,
+          "lon": -111.404433
+        },
+        {
+          "lat": 42.229056,
+          "lon": -111.404068
+        }
+      ],
+      "tags": {
+        "access": "private",
+        "highway": "service",
+        "tiger:cfcc": "A74",
+        "tiger:county": "Bear Lake, ID",
+        "tiger:reviewed": "no",
+        "tiger:source": "tiger_import_dch_v0.6_20070809",
+        "tiger:tlid": "167332270",
+        "tiger:upload_uuid": "bulk_upload.pl-93b636b1-b64b-42a1-9fa9-583e6c711992"
+      }
+    },
+    {
+      "type": "way",
+      "id": 13715583,
+      "bounds": {
+        "minlat": 42.229045,
+        "minlon": -111.399495,
+        "maxlat": 42.22951,
+        "maxlon": -111.399361
+      },
+      "nodes": [
+        126622464,
+        126622467,
+        126622480
+      ],
+      "geometry": [
+        {
+          "lat": 42.229045,
+          "lon": -111.399495
+        },
+        {
+          "lat": 42.22944,
+          "lon": -111.399492
+        },
+        {
+          "lat": 42.22951,
+          "lon": -111.399361
+        }
+      ],
+      "tags": {
+        "access": "private",
+        "highway": "service",
+        "tiger:cfcc": "A74",
+        "tiger:county": "Bear Lake, ID",
+        "tiger:reviewed": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 13715586,
+      "bounds": {
+        "minlat": 42.228694,
+        "minlon": -111.4009838,
+        "maxlat": 42.229048,
+        "maxlon": -111.4004
+      },
+      "nodes": [
+        126622512,
+        126622515,
+        126622518,
+        126622521,
+        126622524
+      ],
+      "geometry": [
+        {
+          "lat": 42.2287178,
+          "lon": -111.4009838
+        },
+        {
+          "lat": 42.228694,
+          "lon": -111.400694
+        },
+        {
+          "lat": 42.228695,
+          "lon": -111.400493
+        },
+        {
+          "lat": 42.228788,
+          "lon": -111.400405
+        },
+        {
+          "lat": 42.229048,
+          "lon": -111.4004
+        }
+      ],
+      "tags": {
+        "access": "private",
+        "highway": "service",
+        "tiger:cfcc": "A74",
+        "tiger:county": "Bear Lake, ID",
+        "tiger:reviewed": "no",
+        "tiger:source": "tiger_import_dch_v0.6_20070809",
+        "tiger:tlid": "167332273",
+        "tiger:upload_uuid": "bulk_upload.pl-93b636b1-b64b-42a1-9fa9-583e6c711992"
+      }
+    },
+    {
+      "type": "way",
+      "id": 13715588,
+      "bounds": {
+        "minlat": 42.228603,
+        "minlon": -111.400084,
+        "maxlat": 42.229047,
+        "maxlon": -111.399971
+      },
+      "nodes": [
+        126622529,
+        126622531,
+        126622533
+      ],
+      "geometry": [
+        {
+          "lat": 42.229047,
+          "lon": -111.400084
+        },
+        {
+          "lat": 42.228906,
+          "lon": -111.40006
+        },
+        {
+          "lat": 42.228603,
+          "lon": -111.399971
+        }
+      ],
+      "tags": {
+        "access": "private",
+        "highway": "service",
+        "tiger:cfcc": "A74",
+        "tiger:county": "Bear Lake, ID",
+        "tiger:reviewed": "no",
+        "tiger:source": "tiger_import_dch_v0.6_20070809",
+        "tiger:tlid": "167332274",
+        "tiger:upload_uuid": "bulk_upload.pl-93b636b1-b64b-42a1-9fa9-583e6c711992"
+      }
+    },
+    {
+      "type": "way",
+      "id": 13717678,
+      "bounds": {
+        "minlat": 42.229018,
+        "minlon": -111.40668,
+        "maxlat": 42.229077,
+        "maxlon": -111.4059143
+      },
+      "nodes": [
+        126664480,
+        126664482,
+        126664488
+      ],
+      "geometry": [
+        {
+          "lat": 42.2290232,
+          "lon": -111.4059143
+        },
+        {
+          "lat": 42.229077,
+          "lon": -111.406324
+        },
+        {
+          "lat": 42.229018,
+          "lon": -111.40668
+        }
+      ],
+      "tags": {
+        "highway": "residential",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Bear Lake, ID",
+        "tiger:reviewed": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 13718033,
+      "bounds": {
+        "minlat": 42.231206,
+        "minlon": -111.408169,
+        "maxlat": 42.232843,
+        "maxlon": -111.407713
+      },
+      "nodes": [
+        126671335,
+        126671337,
+        126671342,
+        126671344,
+        126671348,
+        126671354
+      ],
+      "geometry": [
+        {
+          "lat": 42.231206,
+          "lon": -111.407713
+        },
+        {
+          "lat": 42.231354,
+          "lon": -111.407752
+        },
+        {
+          "lat": 42.231997,
+          "lon": -111.407736
+        },
+        {
+          "lat": 42.232102,
+          "lon": -111.407788
+        },
+        {
+          "lat": 42.232309,
+          "lon": -111.40803
+        },
+        {
+          "lat": 42.232843,
+          "lon": -111.408169
+        }
+      ],
+      "tags": {
+        "highway": "residential",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Bear Lake, ID",
+        "tiger:reviewed": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 13718035,
+      "bounds": {
+        "minlat": 42.231191,
+        "minlon": -111.403303,
+        "maxlat": 42.232092,
+        "maxlon": -111.403296
+      },
+      "nodes": [
+        126671361,
+        126671363
+      ],
+      "geometry": [
+        {
+          "lat": 42.231191,
+          "lon": -111.403303
+        },
+        {
+          "lat": 42.232092,
+          "lon": -111.403296
+        }
+      ],
+      "tags": {
+        "access": "private",
+        "highway": "service",
+        "tiger:cfcc": "A74",
+        "tiger:county": "Bear Lake, ID",
+        "tiger:reviewed": "no",
+        "tiger:source": "tiger_import_dch_v0.6_20070809",
+        "tiger:tlid": "167332621",
+        "tiger:upload_uuid": "bulk_upload.pl-93b636b1-b64b-42a1-9fa9-583e6c711992"
+      }
+    },
+    {
+      "type": "way",
+      "id": 13718036,
+      "bounds": {
+        "minlat": 42.230721,
+        "minlon": -111.402698,
+        "maxlat": 42.23119,
+        "maxlon": -111.402676
+      },
+      "nodes": [
+        126671369,
+        126671372
+      ],
+      "geometry": [
+        {
+          "lat": 42.23119,
+          "lon": -111.402676
+        },
+        {
+          "lat": 42.230721,
+          "lon": -111.402698
+        }
+      ],
+      "tags": {
+        "access": "private",
+        "highway": "service",
+        "tiger:cfcc": "A74",
+        "tiger:county": "Bear Lake, ID",
+        "tiger:reviewed": "no",
+        "tiger:source": "tiger_import_dch_v0.6_20070809",
+        "tiger:tlid": "167332622",
+        "tiger:upload_uuid": "bulk_upload.pl-93b636b1-b64b-42a1-9fa9-583e6c711992"
+      }
+    },
+    {
+      "type": "way",
+      "id": 13718037,
+      "bounds": {
+        "minlat": 42.230699,
+        "minlon": -111.399695,
+        "maxlat": 42.231186,
+        "maxlon": -111.399683
+      },
+      "nodes": [
+        126671382,
+        126612427
+      ],
+      "geometry": [
+        {
+          "lat": 42.231186,
+          "lon": -111.399695
+        },
+        {
+          "lat": 42.230699,
+          "lon": -111.399683
+        }
+      ],
+      "tags": {
+        "access": "private",
+        "highway": "service",
+        "tiger:cfcc": "A74",
+        "tiger:county": "Bear Lake, ID",
+        "tiger:reviewed": "no",
+        "tiger:source": "tiger_import_dch_v0.6_20070809",
+        "tiger:tlid": "167332623",
+        "tiger:upload_uuid": "bulk_upload.pl-93b636b1-b64b-42a1-9fa9-583e6c711992"
+      }
+    },
+    {
+      "type": "way",
+      "id": 13718904,
+      "bounds": {
+        "minlat": 42.229023,
+        "minlon": -111.4009802,
+        "maxlat": 42.2290498,
+        "maxlon": -111.392277
+      },
+      "nodes": [
+        126611014,
+        126622487,
+        126689704,
+        126689707,
+        126622464,
+        126622529,
+        126622524,
+        126689710
+      ],
+      "geometry": [
+        {
+          "lat": 42.229023,
+          "lon": -111.392277
+        },
+        {
+          "lat": 42.229025,
+          "lon": -111.392661
+        },
+        {
+          "lat": 42.2290342,
+          "lon": -111.3950887
+        },
+        {
+          "lat": 42.22904,
+          "lon": -111.398039
+        },
+        {
+          "lat": 42.229045,
+          "lon": -111.399495
+        },
+        {
+          "lat": 42.229047,
+          "lon": -111.400084
+        },
+        {
+          "lat": 42.229048,
+          "lon": -111.4004
+        },
+        {
+          "lat": 42.2290498,
+          "lon": -111.4009802
+        }
+      ],
+      "tags": {
+        "highway": "residential",
+        "name": "East 1st North Street",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Bear Lake, ID",
+        "tiger:name_base": "1st North",
+        "tiger:name_direction_prefix": "E",
+        "tiger:name_type": "St",
+        "tiger:reviewed": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 13718928,
+      "bounds": {
+        "minlat": 42.23119,
+        "minlon": -111.411653,
+        "maxlat": 42.231229,
+        "maxlon": -111.4009627
+      },
+      "nodes": [
+        126690508,
+        126671369,
+        126671361,
+        126690512,
+        126690515,
+        126533851,
+        126671335,
+        126619122,
+        126690521
+      ],
+      "geometry": [
+        {
+          "lat": 42.2311906,
+          "lon": -111.4009627
+        },
+        {
+          "lat": 42.23119,
+          "lon": -111.402676
+        },
+        {
+          "lat": 42.231191,
+          "lon": -111.403303
+        },
+        {
+          "lat": 42.231192,
+          "lon": -111.403878
+        },
+        {
+          "lat": 42.231205,
+          "lon": -111.40605
+        },
+        {
+          "lat": 42.231205,
+          "lon": -111.406968
+        },
+        {
+          "lat": 42.231206,
+          "lon": -111.407713
+        },
+        {
+          "lat": 42.231223,
+          "lon": -111.410965
+        },
+        {
+          "lat": 42.231229,
+          "lon": -111.411653
+        }
+      ],
+      "tags": {
+        "highway": "residential",
+        "name": "West 2nd North Street",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Bear Lake, ID",
+        "tiger:name_base": "2nd North",
+        "tiger:name_direction_prefix": "W",
+        "tiger:name_type": "St",
+        "tiger:reviewed": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 13720508,
+      "bounds": {
+        "minlat": 42.226861,
+        "minlon": -111.398047,
+        "maxlat": 42.231183,
+        "maxlon": -111.398029
+      },
+      "nodes": [
+        126697501,
+        126476593,
+        126689707,
+        126723703
+      ],
+      "geometry": [
+        {
+          "lat": 42.226861,
+          "lon": -111.398047
+        },
+        {
+          "lat": 42.227289,
+          "lon": -111.398044
+        },
+        {
+          "lat": 42.22904,
+          "lon": -111.398039
+        },
+        {
+          "lat": 42.231183,
+          "lon": -111.398029
+        }
+      ],
+      "tags": {
+        "highway": "residential",
+        "name": "North 1st East Street",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Bear Lake, ID",
+        "tiger:name_base": "1st East",
+        "tiger:name_direction_prefix": "N",
+        "tiger:name_type": "St",
+        "tiger:reviewed": "no",
+        "tiger:separated": "no",
+        "tiger:source": "tiger_import_dch_v0.6_20070809",
+        "tiger:tlid": "167310273"
+      }
+    },
+    {
+      "type": "way",
+      "id": 13720898,
+      "bounds": {
+        "minlat": 42.224728,
+        "minlon": -111.405915,
+        "maxlat": 42.2290232,
+        "maxlon": -111.405882
+      },
+      "nodes": [
+        126622970,
+        126505435,
+        126692074,
+        126622537,
+        126664480
+      ],
+      "geometry": [
+        {
+          "lat": 42.224728,
+          "lon": -111.405895
+        },
+        {
+          "lat": 42.226626,
+          "lon": -111.405915
+        },
+        {
+          "lat": 42.22687,
+          "lon": -111.40591
+        },
+        {
+          "lat": 42.228026,
+          "lon": -111.405882
+        },
+        {
+          "lat": 42.2290232,
+          "lon": -111.4059143
+        }
+      ],
+      "tags": {
+        "highway": "residential",
+        "name": "2nd West Street",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Bear Lake, ID",
+        "tiger:name_base": "2nd West",
+        "tiger:name_type": "St",
+        "tiger:reviewed": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 13721465,
+      "bounds": {
+        "minlat": 42.22689,
+        "minlon": -111.403887,
+        "maxlat": 42.231192,
+        "maxlon": -111.403872
+      },
+      "nodes": [
+        126692070,
+        126751452,
+        126751456,
+        126690512
+      ],
+      "geometry": [
+        {
+          "lat": 42.22689,
+          "lon": -111.403876
+        },
+        {
+          "lat": 42.227522,
+          "lon": -111.403872
+        },
+        {
+          "lat": 42.229056,
+          "lon": -111.403887
+        },
+        {
+          "lat": 42.231192,
+          "lon": -111.403878
+        }
+      ],
+      "tags": {
+        "highway": "residential",
+        "name": "North 1st West Street",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Bear Lake, ID",
+        "tiger:name_base": "1st West",
+        "tiger:name_direction_prefix": "N",
+        "tiger:name_type": "St",
+        "tiger:reviewed": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 13721472,
+      "bounds": {
+        "minlat": 42.2311906,
+        "minlon": -111.4009731,
+        "maxlat": 42.2411694,
+        "maxlon": -111.4009292
+      },
+      "nodes": [
+        126690508,
+        126751530,
+        126597598,
+        126597587,
+        126597575,
+        126597564,
+        126597545,
+        126597509,
+        126597536
+      ],
+      "geometry": [
+        {
+          "lat": 42.2311906,
+          "lon": -111.4009627
+        },
+        {
+          "lat": 42.232868,
+          "lon": -111.4009731
+        },
+        {
+          "lat": 42.2360944,
+          "lon": -111.4009562
+        },
+        {
+          "lat": 42.2368296,
+          "lon": -111.4009548
+        },
+        {
+          "lat": 42.2378857,
+          "lon": -111.4009426
+        },
+        {
+          "lat": 42.2389244,
+          "lon": -111.4009376
+        },
+        {
+          "lat": 42.2396029,
+          "lon": -111.4009392
+        },
+        {
+          "lat": 42.2409338,
+          "lon": -111.4009328
+        },
+        {
+          "lat": 42.2411694,
+          "lon": -111.4009292
+        }
+      ],
+      "tags": {
+        "NHS": "yes",
+        "hgv": "designated",
+        "hgv:national_network": "yes",
+        "highway": "primary",
+        "lanes": "2",
+        "name": "North Main Street",
+        "ref": "US 89",
+        "source:hgv:national_network": "Title 23: Highways Part 658 http://ecfr.gpoaccess.gov/cgi/t/text/text-idx?c=ecfr&rgn=div5&view=text&node=23:1.0.1.7.33&idno=23",
+        "surface": "asphalt",
+        "tiger:cfcc": "A21",
+        "tiger:county": "Bear Lake, ID",
+        "tiger:name_base": "Main",
+        "tiger:name_base_1": "United States Highway 89",
+        "tiger:name_direction_prefix": "N",
+        "tiger:name_type": "St",
+        "tiger:reviewed": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 13721880,
+      "bounds": {
+        "minlat": 42.2290232,
+        "minlon": -111.4059143,
+        "maxlat": 42.229056,
+        "maxlon": -111.4009802
+      },
+      "nodes": [
+        126689710,
+        126751456,
+        126622455,
+        126622441,
+        126474787,
+        126664480
+      ],
+      "geometry": [
+        {
+          "lat": 42.2290498,
+          "lon": -111.4009802
+        },
+        {
+          "lat": 42.229056,
+          "lon": -111.403887
+        },
+        {
+          "lat": 42.229056,
+          "lon": -111.404068
+        },
+        {
+          "lat": 42.229054,
+          "lon": -111.404691
+        },
+        {
+          "lat": 42.2290284,
+          "lon": -111.405793
+        },
+        {
+          "lat": 42.2290232,
+          "lon": -111.4059143
+        }
+      ],
+      "tags": {
+        "highway": "residential",
+        "name": "West 1st North Street",
+        "tiger:cfcc": "A41",
+        "tiger:county": "Bear Lake, ID",
+        "tiger:name_base": "1st North",
+        "tiger:name_direction_prefix": "W",
+        "tiger:name_type": "St",
+        "tiger:reviewed": "no"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315121,
+      "bounds": {
+        "minlat": 42.230811,
+        "minlon": -111.407952,
+        "maxlat": 42.230952,
+        "maxlon": -111.407818
+      },
+      "nodes": [
+        7122968149,
+        7122969640,
+        7122971304,
+        7122967270,
+        7122968149
+      ],
+      "geometry": [
+        {
+          "lat": 42.230952,
+          "lon": -111.407952
+        },
+        {
+          "lat": 42.230811,
+          "lon": -111.407952
+        },
+        {
+          "lat": 42.230811,
+          "lon": -111.407818
+        },
+        {
+          "lat": 42.230952,
+          "lon": -111.407818
+        },
+        {
+          "lat": 42.230952,
+          "lon": -111.407952
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315125,
+      "bounds": {
+        "minlat": 42.228561,
+        "minlon": -111.402217,
+        "maxlat": 42.228652,
+        "maxlon": -111.402116
+      },
+      "nodes": [
+        7122970554,
+        7122968131,
+        7122969622,
+        7122971286,
+        7122970554
+      ],
+      "geometry": [
+        {
+          "lat": 42.228652,
+          "lon": -111.402116
+        },
+        {
+          "lat": 42.228652,
+          "lon": -111.402217
+        },
+        {
+          "lat": 42.228561,
+          "lon": -111.402217
+        },
+        {
+          "lat": 42.228561,
+          "lon": -111.402116
+        },
+        {
+          "lat": 42.228652,
+          "lon": -111.402116
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315135,
+      "bounds": {
+        "minlat": 42.229235,
+        "minlon": -111.404674,
+        "maxlat": 42.229367,
+        "maxlon": -111.404532
+      },
+      "nodes": [
+        7122967958,
+        7122969132,
+        7122970639,
+        7122968216,
+        7122967958
+      ],
+      "geometry": [
+        {
+          "lat": 42.229345,
+          "lon": -111.404532
+        },
+        {
+          "lat": 42.229367,
+          "lon": -111.404628
+        },
+        {
+          "lat": 42.229257,
+          "lon": -111.404674
+        },
+        {
+          "lat": 42.229235,
+          "lon": -111.404579
+        },
+        {
+          "lat": 42.229345,
+          "lon": -111.404532
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315141,
+      "bounds": {
+        "minlat": 42.231435,
+        "minlon": -111.404398,
+        "maxlat": 42.231556,
+        "maxlon": -111.404277
+      },
+      "nodes": [
+        7122967891,
+        7122969388,
+        7122971041,
+        7122968141,
+        7122967891
+      ],
+      "geometry": [
+        {
+          "lat": 42.231435,
+          "lon": -111.404398
+        },
+        {
+          "lat": 42.231435,
+          "lon": -111.404277
+        },
+        {
+          "lat": 42.231556,
+          "lon": -111.404277
+        },
+        {
+          "lat": 42.231556,
+          "lon": -111.404398
+        },
+        {
+          "lat": 42.231435,
+          "lon": -111.404398
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315149,
+      "bounds": {
+        "minlat": 42.228666,
+        "minlon": -111.395812,
+        "maxlat": 42.228853,
+        "maxlon": -111.395756
+      },
+      "nodes": [
+        7122970261,
+        7122971507,
+        7122969012,
+        7122970508,
+        7122970261
+      ],
+      "geometry": [
+        {
+          "lat": 42.228853,
+          "lon": -111.395756
+        },
+        {
+          "lat": 42.228853,
+          "lon": -111.395812
+        },
+        {
+          "lat": 42.228666,
+          "lon": -111.395812
+        },
+        {
+          "lat": 42.228666,
+          "lon": -111.395756
+        },
+        {
+          "lat": 42.228853,
+          "lon": -111.395756
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315151,
+      "bounds": {
+        "minlat": 42.235977,
+        "minlon": -111.400576,
+        "maxlat": 42.236029,
+        "maxlon": -111.400506
+      },
+      "nodes": [
+        7122967693,
+        7122969359,
+        7122970461,
+        7122968045,
+        7122967693
+      ],
+      "geometry": [
+        {
+          "lat": 42.236029,
+          "lon": -111.400506
+        },
+        {
+          "lat": 42.236029,
+          "lon": -111.400576
+        },
+        {
+          "lat": 42.235977,
+          "lon": -111.400576
+        },
+        {
+          "lat": 42.235977,
+          "lon": -111.400506
+        },
+        {
+          "lat": 42.236029,
+          "lon": -111.400506
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315164,
+      "bounds": {
+        "minlat": 42.229282,
+        "minlon": -111.399074,
+        "maxlat": 42.229479,
+        "maxlon": -111.398747
+      },
+      "nodes": [
+        7122970844,
+        7122968026,
+        7122968647,
+        7122969760,
+        7122971412,
+        7122968941,
+        7122970844
+      ],
+      "geometry": [
+        {
+          "lat": 42.229479,
+          "lon": -111.399073
+        },
+        {
+          "lat": 42.229282,
+          "lon": -111.399074
+        },
+        {
+          "lat": 42.229312,
+          "lon": -111.398747
+        },
+        {
+          "lat": 42.229379,
+          "lon": -111.398747
+        },
+        {
+          "lat": 42.22938,
+          "lon": -111.398996
+        },
+        {
+          "lat": 42.229479,
+          "lon": -111.398996
+        },
+        {
+          "lat": 42.229479,
+          "lon": -111.399073
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315169,
+      "bounds": {
+        "minlat": 42.230827,
+        "minlon": -111.405087,
+        "maxlat": 42.230954,
+        "maxlon": -111.404964
+      },
+      "nodes": [
+        7122968557,
+        7122970118,
+        7122967594,
+        7122968796,
+        7122968557
+      ],
+      "geometry": [
+        {
+          "lat": 42.230954,
+          "lon": -111.405087
+        },
+        {
+          "lat": 42.230827,
+          "lon": -111.405087
+        },
+        {
+          "lat": 42.230827,
+          "lon": -111.404964
+        },
+        {
+          "lat": 42.230954,
+          "lon": -111.404964
+        },
+        {
+          "lat": 42.230954,
+          "lon": -111.405087
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315174,
+      "bounds": {
+        "minlat": 42.238347,
+        "minlon": -111.40143,
+        "maxlat": 42.238476,
+        "maxlon": -111.401259
+      },
+      "nodes": [
+        7122969765,
+        7122969256,
+        7122970757,
+        7122967940,
+        7122969765
+      ],
+      "geometry": [
+        {
+          "lat": 42.238448,
+          "lon": -111.401261
+        },
+        {
+          "lat": 42.238476,
+          "lon": -111.40143
+        },
+        {
+          "lat": 42.238347,
+          "lon": -111.401426
+        },
+        {
+          "lat": 42.238349,
+          "lon": -111.401259
+        },
+        {
+          "lat": 42.238448,
+          "lon": -111.401261
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315175,
+      "bounds": {
+        "minlat": 42.228968,
+        "minlon": -111.406997,
+        "maxlat": 42.229123,
+        "maxlon": -111.406698
+      },
+      "nodes": [
+        7122969119,
+        7122970230,
+        7122967713,
+        7122969376,
+        7122963968,
+        7122968064,
+        7122969119
+      ],
+      "geometry": [
+        {
+          "lat": 42.228968,
+          "lon": -111.406905
+        },
+        {
+          "lat": 42.229012,
+          "lon": -111.406698
+        },
+        {
+          "lat": 42.229074,
+          "lon": -111.406722
+        },
+        {
+          "lat": 42.22905,
+          "lon": -111.40683
+        },
+        {
+          "lat": 42.229123,
+          "lon": -111.406859
+        },
+        {
+          "lat": 42.229093,
+          "lon": -111.406997
+        },
+        {
+          "lat": 42.228968,
+          "lon": -111.406905
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315198,
+      "bounds": {
+        "minlat": 42.228585,
+        "minlon": -111.406249,
+        "maxlat": 42.228668,
+        "maxlon": -111.406133
+      },
+      "nodes": [
+        7122967700,
+        7122969366,
+        7122970471,
+        7122968053,
+        7122967700
+      ],
+      "geometry": [
+        {
+          "lat": 42.228585,
+          "lon": -111.406133
+        },
+        {
+          "lat": 42.228668,
+          "lon": -111.406133
+        },
+        {
+          "lat": 42.228668,
+          "lon": -111.406249
+        },
+        {
+          "lat": 42.228585,
+          "lon": -111.406249
+        },
+        {
+          "lat": 42.228585,
+          "lon": -111.406133
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315200,
+      "bounds": {
+        "minlat": 42.228536,
+        "minlon": -111.397219,
+        "maxlat": 42.228601,
+        "maxlon": -111.397122
+      },
+      "nodes": [
+        7122967272,
+        7122969932,
+        7122971169,
+        7122968641,
+        7122967272
+      ],
+      "geometry": [
+        {
+          "lat": 42.228601,
+          "lon": -111.397129
+        },
+        {
+          "lat": 42.228595,
+          "lon": -111.397219
+        },
+        {
+          "lat": 42.228536,
+          "lon": -111.397212
+        },
+        {
+          "lat": 42.228542,
+          "lon": -111.397122
+        },
+        {
+          "lat": 42.228601,
+          "lon": -111.397129
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315203,
+      "bounds": {
+        "minlat": 42.230911,
+        "minlon": -111.397821,
+        "maxlat": 42.231002,
+        "maxlon": -111.39758
+      },
+      "nodes": [
+        7122968608,
+        7122970162,
+        7122967632,
+        7122969295,
+        7122968608
+      ],
+      "geometry": [
+        {
+          "lat": 42.230911,
+          "lon": -111.397821
+        },
+        {
+          "lat": 42.230911,
+          "lon": -111.39758
+        },
+        {
+          "lat": 42.231002,
+          "lon": -111.39758
+        },
+        {
+          "lat": 42.231002,
+          "lon": -111.397821
+        },
+        {
+          "lat": 42.230911,
+          "lon": -111.397821
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315207,
+      "bounds": {
+        "minlat": 42.230317,
+        "minlon": -111.401485,
+        "maxlat": 42.230382,
+        "maxlon": -111.401362
+      },
+      "nodes": [
+        7122971058,
+        7122968526,
+        7122970088,
+        7122959476,
+        7122971058
+      ],
+      "geometry": [
+        {
+          "lat": 42.230317,
+          "lon": -111.401362
+        },
+        {
+          "lat": 42.230382,
+          "lon": -111.401362
+        },
+        {
+          "lat": 42.230382,
+          "lon": -111.401485
+        },
+        {
+          "lat": 42.230317,
+          "lon": -111.401485
+        },
+        {
+          "lat": 42.230317,
+          "lon": -111.401362
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315225,
+      "bounds": {
+        "minlat": 42.231932,
+        "minlon": -111.402024,
+        "maxlat": 42.232058,
+        "maxlon": -111.401883
+      },
+      "nodes": [
+        7122969912,
+        7122971544,
+        7122969046,
+        7122970541,
+        7122969912
+      ],
+      "geometry": [
+        {
+          "lat": 42.231932,
+          "lon": -111.401985
+        },
+        {
+          "lat": 42.231953,
+          "lon": -111.401883
+        },
+        {
+          "lat": 42.232058,
+          "lon": -111.401922
+        },
+        {
+          "lat": 42.232037,
+          "lon": -111.402024
+        },
+        {
+          "lat": 42.231932,
+          "lon": -111.401985
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315229,
+      "bounds": {
+        "minlat": 42.230831,
+        "minlon": -111.404685,
+        "maxlat": 42.230903,
+        "maxlon": -111.404575
+      },
+      "nodes": [
+        7122968285,
+        7122969772,
+        7122971424,
+        7122968952,
+        7122968285
+      ],
+      "geometry": [
+        {
+          "lat": 42.230903,
+          "lon": -111.404575
+        },
+        {
+          "lat": 42.230903,
+          "lon": -111.404685
+        },
+        {
+          "lat": 42.230831,
+          "lon": -111.404685
+        },
+        {
+          "lat": 42.230831,
+          "lon": -111.404575
+        },
+        {
+          "lat": 42.230903,
+          "lon": -111.404575
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315239,
+      "bounds": {
+        "minlat": 42.235943,
+        "minlon": -111.402067,
+        "maxlat": 42.236014,
+        "maxlon": -111.401879
+      },
+      "nodes": [
+        7122969168,
+        7122970673,
+        7122968253,
+        7122963855,
+        7122969168
+      ],
+      "geometry": [
+        {
+          "lat": 42.235943,
+          "lon": -111.401879
+        },
+        {
+          "lat": 42.236014,
+          "lon": -111.401879
+        },
+        {
+          "lat": 42.236014,
+          "lon": -111.402067
+        },
+        {
+          "lat": 42.235943,
+          "lon": -111.402067
+        },
+        {
+          "lat": 42.235943,
+          "lon": -111.401879
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315240,
+      "bounds": {
+        "minlat": 42.229616,
+        "minlon": -111.39648,
+        "maxlat": 42.229741,
+        "maxlon": -111.396376
+      },
+      "nodes": [
+        7122961077,
+        7122971504,
+        7122968576,
+        7122970133,
+        7122961077
+      ],
+      "geometry": [
+        {
+          "lat": 42.229741,
+          "lon": -111.396376
+        },
+        {
+          "lat": 42.229741,
+          "lon": -111.39648
+        },
+        {
+          "lat": 42.229616,
+          "lon": -111.39648
+        },
+        {
+          "lat": 42.229616,
+          "lon": -111.396376
+        },
+        {
+          "lat": 42.229741,
+          "lon": -111.396376
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315243,
+      "bounds": {
+        "minlat": 42.230627,
+        "minlon": -111.398784,
+        "maxlat": 42.230738,
+        "maxlon": -111.398728
+      },
+      "nodes": [
+        7122968715,
+        7122970264,
+        7122967747,
+        7122963842,
+        7122968715
+      ],
+      "geometry": [
+        {
+          "lat": 42.230627,
+          "lon": -111.398784
+        },
+        {
+          "lat": 42.230627,
+          "lon": -111.398728
+        },
+        {
+          "lat": 42.230738,
+          "lon": -111.398728
+        },
+        {
+          "lat": 42.230738,
+          "lon": -111.398784
+        },
+        {
+          "lat": 42.230627,
+          "lon": -111.398784
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315244,
+      "bounds": {
+        "minlat": 42.230436,
+        "minlon": -111.40351,
+        "maxlat": 42.23049,
+        "maxlon": -111.40343
+      },
+      "nodes": [
+        7122969758,
+        7122971411,
+        7122968940,
+        7122970441,
+        7122969758
+      ],
+      "geometry": [
+        {
+          "lat": 42.230436,
+          "lon": -111.40351
+        },
+        {
+          "lat": 42.230436,
+          "lon": -111.40343
+        },
+        {
+          "lat": 42.23049,
+          "lon": -111.40343
+        },
+        {
+          "lat": 42.23049,
+          "lon": -111.40351
+        },
+        {
+          "lat": 42.230436,
+          "lon": -111.40351
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315257,
+      "bounds": {
+        "minlat": 42.237043,
+        "minlon": -111.400582,
+        "maxlat": 42.237264,
+        "maxlon": -111.40043
+      },
+      "nodes": [
+        7122971321,
+        7122968390,
+        7122969945,
+        7122971577,
+        7122971321
+      ],
+      "geometry": [
+        {
+          "lat": 42.237043,
+          "lon": -111.400548
+        },
+        {
+          "lat": 42.237043,
+          "lon": -111.40043
+        },
+        {
+          "lat": 42.237264,
+          "lon": -111.400432
+        },
+        {
+          "lat": 42.237263,
+          "lon": -111.400582
+        },
+        {
+          "lat": 42.237043,
+          "lon": -111.400548
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315260,
+      "bounds": {
+        "minlat": 42.230623,
+        "minlon": -111.400603,
+        "maxlat": 42.230712,
+        "maxlon": -111.400423
+      },
+      "nodes": [
+        7122970607,
+        7122968188,
+        7122969363,
+        7122970869,
+        7122970607
+      ],
+      "geometry": [
+        {
+          "lat": 42.230623,
+          "lon": -111.400603
+        },
+        {
+          "lat": 42.230623,
+          "lon": -111.400423
+        },
+        {
+          "lat": 42.230712,
+          "lon": -111.400423
+        },
+        {
+          "lat": 42.230712,
+          "lon": -111.400603
+        },
+        {
+          "lat": 42.230623,
+          "lon": -111.400603
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315263,
+      "bounds": {
+        "minlat": 42.229254,
+        "minlon": -111.405823,
+        "maxlat": 42.229384,
+        "maxlon": -111.405546
+      },
+      "nodes": [
+        7122970864,
+        7122968408,
+        7122969963,
+        7122967447,
+        7122968660,
+        7122970210,
+        7122970864
+      ],
+      "geometry": [
+        {
+          "lat": 42.229254,
+          "lon": -111.405821
+        },
+        {
+          "lat": 42.229256,
+          "lon": -111.405546
+        },
+        {
+          "lat": 42.229348,
+          "lon": -111.405547
+        },
+        {
+          "lat": 42.229346,
+          "lon": -111.405697
+        },
+        {
+          "lat": 42.229384,
+          "lon": -111.405697
+        },
+        {
+          "lat": 42.229383,
+          "lon": -111.405823
+        },
+        {
+          "lat": 42.229254,
+          "lon": -111.405821
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315268,
+      "bounds": {
+        "minlat": 42.230883,
+        "minlon": -111.400675,
+        "maxlat": 42.230984,
+        "maxlon": -111.400436
+      },
+      "nodes": [
+        7122969700,
+        7122971351,
+        7122968812,
+        7122969986,
+        7122969700
+      ],
+      "geometry": [
+        {
+          "lat": 42.230984,
+          "lon": -111.400438
+        },
+        {
+          "lat": 42.230981,
+          "lon": -111.400675
+        },
+        {
+          "lat": 42.230883,
+          "lon": -111.400673
+        },
+        {
+          "lat": 42.230886,
+          "lon": -111.400436
+        },
+        {
+          "lat": 42.230984,
+          "lon": -111.400438
+        }
+      ],
+      "tags": {
+        "building": "detached",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315270,
+      "bounds": {
+        "minlat": 42.228675,
+        "minlon": -111.396305,
+        "maxlat": 42.228861,
+        "maxlon": -111.396022
+      },
+      "nodes": [
+        7122969590,
+        7122970773,
+        7122968348,
+        7122969886,
+        7122971512,
+        7122968582,
+        7122970141,
+        7122967611,
+        7122969590
+      ],
+      "geometry": [
+        {
+          "lat": 42.228675,
+          "lon": -111.396154
+        },
+        {
+          "lat": 42.228779,
+          "lon": -111.396152
+        },
+        {
+          "lat": 42.228778,
+          "lon": -111.396024
+        },
+        {
+          "lat": 42.228859,
+          "lon": -111.396022
+        },
+        {
+          "lat": 42.228861,
+          "lon": -111.396169
+        },
+        {
+          "lat": 42.228799,
+          "lon": -111.396171
+        },
+        {
+          "lat": 42.228801,
+          "lon": -111.396302
+        },
+        {
+          "lat": 42.228677,
+          "lon": -111.396305
+        },
+        {
+          "lat": 42.228675,
+          "lon": -111.396154
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315277,
+      "bounds": {
+        "minlat": 42.230202,
+        "minlon": -111.40328,
+        "maxlat": 42.230287,
+        "maxlon": -111.403213
+      },
+      "nodes": [
+        7122969770,
+        7122971423,
+        7122968512,
+        7122970076,
+        7122969770
+      ],
+      "geometry": [
+        {
+          "lat": 42.230287,
+          "lon": -111.403213
+        },
+        {
+          "lat": 42.230287,
+          "lon": -111.40328
+        },
+        {
+          "lat": 42.230202,
+          "lon": -111.40328
+        },
+        {
+          "lat": 42.230202,
+          "lon": -111.403213
+        },
+        {
+          "lat": 42.230287,
+          "lon": -111.403213
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315278,
+      "bounds": {
+        "minlat": 42.230823,
+        "minlon": -111.397247,
+        "maxlat": 42.230992,
+        "maxlon": -111.397129
+      },
+      "nodes": [
+        7122971260,
+        7122967233,
+        7122969897,
+        7122971524,
+        7122971260
+      ],
+      "geometry": [
+        {
+          "lat": 42.230823,
+          "lon": -111.397129
+        },
+        {
+          "lat": 42.230992,
+          "lon": -111.397129
+        },
+        {
+          "lat": 42.230992,
+          "lon": -111.397247
+        },
+        {
+          "lat": 42.230823,
+          "lon": -111.397247
+        },
+        {
+          "lat": 42.230823,
+          "lon": -111.397129
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315282,
+      "bounds": {
+        "minlat": 42.231715,
+        "minlon": -111.398551,
+        "maxlat": 42.231772,
+        "maxlon": -111.398425
+      },
+      "nodes": [
+        7122969744,
+        7122971018,
+        7122968488,
+        7122970048,
+        7122969744
+      ],
+      "geometry": [
+        {
+          "lat": 42.231772,
+          "lon": -111.398425
+        },
+        {
+          "lat": 42.231772,
+          "lon": -111.398551
+        },
+        {
+          "lat": 42.231715,
+          "lon": -111.398551
+        },
+        {
+          "lat": 42.231715,
+          "lon": -111.398425
+        },
+        {
+          "lat": 42.231772,
+          "lon": -111.398425
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315286,
+      "bounds": {
+        "minlat": 42.232094,
+        "minlon": -111.406346,
+        "maxlat": 42.232143,
+        "maxlon": -111.406063
+      },
+      "nodes": [
+        7122971218,
+        7122968685,
+        7122969798,
+        7122971452,
+        7122971218
+      ],
+      "geometry": [
+        {
+          "lat": 42.232094,
+          "lon": -111.406064
+        },
+        {
+          "lat": 42.23214,
+          "lon": -111.406063
+        },
+        {
+          "lat": 42.232143,
+          "lon": -111.406345
+        },
+        {
+          "lat": 42.232098,
+          "lon": -111.406346
+        },
+        {
+          "lat": 42.232094,
+          "lon": -111.406064
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315304,
+      "bounds": {
+        "minlat": 42.228623,
+        "minlon": -111.40274,
+        "maxlat": 42.228748,
+        "maxlon": -111.40262
+      },
+      "nodes": [
+        7122971359,
+        7122968445,
+        7122970000,
+        7122967479,
+        7122971359
+      ],
+      "geometry": [
+        {
+          "lat": 42.228748,
+          "lon": -111.40274
+        },
+        {
+          "lat": 42.228623,
+          "lon": -111.40274
+        },
+        {
+          "lat": 42.228623,
+          "lon": -111.40262
+        },
+        {
+          "lat": 42.228748,
+          "lon": -111.40262
+        },
+        {
+          "lat": 42.228748,
+          "lon": -111.40274
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315317,
+      "bounds": {
+        "minlat": 42.228718,
+        "minlon": -111.399235,
+        "maxlat": 42.228833,
+        "maxlon": -111.399128
+      },
+      "nodes": [
+        7122968944,
+        7122970444,
+        7122968029,
+        7122968325,
+        7122968944
+      ],
+      "geometry": [
+        {
+          "lat": 42.228833,
+          "lon": -111.399128
+        },
+        {
+          "lat": 42.228833,
+          "lon": -111.399235
+        },
+        {
+          "lat": 42.228718,
+          "lon": -111.399235
+        },
+        {
+          "lat": 42.228718,
+          "lon": -111.399128
+        },
+        {
+          "lat": 42.228833,
+          "lon": -111.399128
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315331,
+      "bounds": {
+        "minlat": 42.229333,
+        "minlon": -111.396754,
+        "maxlat": 42.229592,
+        "maxlon": -111.396506
+      },
+      "nodes": [
+        7122967545,
+        7122969205,
+        7122970702,
+        7122968279,
+        7122971431,
+        7122968962,
+        7122967545
+      ],
+      "geometry": [
+        {
+          "lat": 42.229492,
+          "lon": -111.396666
+        },
+        {
+          "lat": 42.229379,
+          "lon": -111.396754
+        },
+        {
+          "lat": 42.229333,
+          "lon": -111.396645
+        },
+        {
+          "lat": 42.229512,
+          "lon": -111.396506
+        },
+        {
+          "lat": 42.229592,
+          "lon": -111.396693
+        },
+        {
+          "lat": 42.229526,
+          "lon": -111.396744
+        },
+        {
+          "lat": 42.229492,
+          "lon": -111.396666
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315338,
+      "bounds": {
+        "minlat": 42.238005,
+        "minlon": -111.399889,
+        "maxlat": 42.238162,
+        "maxlon": -111.399327
+      },
+      "nodes": [
+        7122971216,
+        7122968684,
+        7122970235,
+        7122971451,
+        7122971216
+      ],
+      "geometry": [
+        {
+          "lat": 42.238005,
+          "lon": -111.399328
+        },
+        {
+          "lat": 42.238162,
+          "lon": -111.399327
+        },
+        {
+          "lat": 42.238162,
+          "lon": -111.399889
+        },
+        {
+          "lat": 42.238005,
+          "lon": -111.399889
+        },
+        {
+          "lat": 42.238005,
+          "lon": -111.399328
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315343,
+      "bounds": {
+        "minlat": 42.239327,
+        "minlon": -111.402869,
+        "maxlat": 42.23944,
+        "maxlon": -111.40251
+      },
+      "nodes": [
+        7122968478,
+        7122969604,
+        7122971268,
+        7122968732,
+        7122968478
+      ],
+      "geometry": [
+        {
+          "lat": 42.23944,
+          "lon": -111.40251
+        },
+        {
+          "lat": 42.23944,
+          "lon": -111.402869
+        },
+        {
+          "lat": 42.239327,
+          "lon": -111.402869
+        },
+        {
+          "lat": 42.239327,
+          "lon": -111.40251
+        },
+        {
+          "lat": 42.23944,
+          "lon": -111.40251
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315345,
+      "bounds": {
+        "minlat": 42.229618,
+        "minlon": -111.398814,
+        "maxlat": 42.229733,
+        "maxlon": -111.398658
+      },
+      "nodes": [
+        7122969503,
+        7122971166,
+        7122968262,
+        7122969742,
+        7122969503
+      ],
+      "geometry": [
+        {
+          "lat": 42.229618,
+          "lon": -111.398658
+        },
+        {
+          "lat": 42.229733,
+          "lon": -111.398658
+        },
+        {
+          "lat": 42.229733,
+          "lon": -111.398814
+        },
+        {
+          "lat": 42.229618,
+          "lon": -111.398814
+        },
+        {
+          "lat": 42.229618,
+          "lon": -111.398658
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315350,
+      "bounds": {
+        "minlat": 42.229254,
+        "minlon": -111.396968,
+        "maxlat": 42.22931,
+        "maxlon": -111.396896
+      },
+      "nodes": [
+        7122968443,
+        7122969997,
+        7122971227,
+        7122968692,
+        7122968443
+      ],
+      "geometry": [
+        {
+          "lat": 42.22931,
+          "lon": -111.396896
+        },
+        {
+          "lat": 42.22931,
+          "lon": -111.396968
+        },
+        {
+          "lat": 42.229254,
+          "lon": -111.396968
+        },
+        {
+          "lat": 42.229254,
+          "lon": -111.396896
+        },
+        {
+          "lat": 42.22931,
+          "lon": -111.396896
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315352,
+      "bounds": {
+        "minlat": 42.229209,
+        "minlon": -111.406898,
+        "maxlat": 42.22933,
+        "maxlon": -111.40682
+      },
+      "nodes": [
+        7122967580,
+        7122969235,
+        7122970734,
+        7122968307,
+        7122967580
+      ],
+      "geometry": [
+        {
+          "lat": 42.22933,
+          "lon": -111.40682
+        },
+        {
+          "lat": 42.22933,
+          "lon": -111.406898
+        },
+        {
+          "lat": 42.229209,
+          "lon": -111.406898
+        },
+        {
+          "lat": 42.229209,
+          "lon": -111.40682
+        },
+        {
+          "lat": 42.22933,
+          "lon": -111.40682
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315355,
+      "bounds": {
+        "minlat": 42.230279,
+        "minlon": -111.400592,
+        "maxlat": 42.230392,
+        "maxlon": -111.40045
+      },
+      "nodes": [
+        7122970167,
+        7122967636,
+        7122969299,
+        7122970806,
+        7122970167
+      ],
+      "geometry": [
+        {
+          "lat": 42.230392,
+          "lon": -111.40045
+        },
+        {
+          "lat": 42.230392,
+          "lon": -111.400592
+        },
+        {
+          "lat": 42.230279,
+          "lon": -111.400592
+        },
+        {
+          "lat": 42.230279,
+          "lon": -111.400474
+        },
+        {
+          "lat": 42.230392,
+          "lon": -111.40045
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315360,
+      "bounds": {
+        "minlat": 42.232031,
+        "minlon": -111.40494,
+        "maxlat": 42.232088,
+        "maxlon": -111.404806
+      },
+      "nodes": [
+        7122969272,
+        7122970775,
+        7122967959,
+        7122969456,
+        7122969272
+      ],
+      "geometry": [
+        {
+          "lat": 42.232031,
+          "lon": -111.40494
+        },
+        {
+          "lat": 42.232031,
+          "lon": -111.404806
+        },
+        {
+          "lat": 42.232088,
+          "lon": -111.404806
+        },
+        {
+          "lat": 42.232088,
+          "lon": -111.40494
+        },
+        {
+          "lat": 42.232031,
+          "lon": -111.40494
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315362,
+      "bounds": {
+        "minlat": 42.231957,
+        "minlon": -111.406901,
+        "maxlat": 42.232047,
+        "maxlon": -111.40678
+      },
+      "nodes": [
+        7122967628,
+        7122969289,
+        7122970796,
+        7122971180,
+        7122967628
+      ],
+      "geometry": [
+        {
+          "lat": 42.231957,
+          "lon": -111.40678
+        },
+        {
+          "lat": 42.232047,
+          "lon": -111.40678
+        },
+        {
+          "lat": 42.232047,
+          "lon": -111.406901
+        },
+        {
+          "lat": 42.231957,
+          "lon": -111.406901
+        },
+        {
+          "lat": 42.231957,
+          "lon": -111.40678
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315382,
+      "bounds": {
+        "minlat": 42.231409,
+        "minlon": -111.405844,
+        "maxlat": 42.231512,
+        "maxlon": -111.405624
+      },
+      "nodes": [
+        7122967489,
+        7122968705,
+        7122970254,
+        7122967737,
+        7122967489
+      ],
+      "geometry": [
+        {
+          "lat": 42.231512,
+          "lon": -111.405624
+        },
+        {
+          "lat": 42.231512,
+          "lon": -111.405844
+        },
+        {
+          "lat": 42.231409,
+          "lon": -111.405844
+        },
+        {
+          "lat": 42.231409,
+          "lon": -111.405624
+        },
+        {
+          "lat": 42.231512,
+          "lon": -111.405624
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315396,
+      "bounds": {
+        "minlat": 42.23081,
+        "minlon": -111.405367,
+        "maxlat": 42.230953,
+        "maxlon": -111.405182
+      },
+      "nodes": [
+        7122968609,
+        7122970163,
+        7122967633,
+        7122969296,
+        7122968609
+      ],
+      "geometry": [
+        {
+          "lat": 42.23081,
+          "lon": -111.405366
+        },
+        {
+          "lat": 42.230811,
+          "lon": -111.405182
+        },
+        {
+          "lat": 42.230953,
+          "lon": -111.405184
+        },
+        {
+          "lat": 42.230952,
+          "lon": -111.405367
+        },
+        {
+          "lat": 42.23081,
+          "lon": -111.405366
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315404,
+      "bounds": {
+        "minlat": 42.22929,
+        "minlon": -111.398497,
+        "maxlat": 42.229481,
+        "maxlon": -111.398393
+      },
+      "nodes": [
+        7122969212,
+        7122970315,
+        7122967895,
+        7122969391,
+        7122969212
+      ],
+      "geometry": [
+        {
+          "lat": 42.22929,
+          "lon": -111.398497
+        },
+        {
+          "lat": 42.22929,
+          "lon": -111.398393
+        },
+        {
+          "lat": 42.229481,
+          "lon": -111.398393
+        },
+        {
+          "lat": 42.229481,
+          "lon": -111.398497
+        },
+        {
+          "lat": 42.22929,
+          "lon": -111.398497
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315405,
+      "bounds": {
+        "minlat": 42.229711,
+        "minlon": -111.400737,
+        "maxlat": 42.229773,
+        "maxlon": -111.400635
+      },
+      "nodes": [
+        7122968999,
+        7122970128,
+        7122967601,
+        7122969260,
+        7122968999
+      ],
+      "geometry": [
+        {
+          "lat": 42.229711,
+          "lon": -111.400635
+        },
+        {
+          "lat": 42.229773,
+          "lon": -111.400635
+        },
+        {
+          "lat": 42.229773,
+          "lon": -111.400737
+        },
+        {
+          "lat": 42.229711,
+          "lon": -111.400737
+        },
+        {
+          "lat": 42.229711,
+          "lon": -111.400635
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315411,
+      "bounds": {
+        "minlat": 42.230849,
+        "minlon": -111.407643,
+        "maxlat": 42.230951,
+        "maxlon": -111.407442
+      },
+      "nodes": [
+        7122967482,
+        7122969139,
+        7122970644,
+        7122967727,
+        7122967482
+      ],
+      "geometry": [
+        {
+          "lat": 42.23095,
+          "lon": -111.407442
+        },
+        {
+          "lat": 42.230951,
+          "lon": -111.407641
+        },
+        {
+          "lat": 42.230851,
+          "lon": -111.407643
+        },
+        {
+          "lat": 42.230849,
+          "lon": -111.407444
+        },
+        {
+          "lat": 42.23095,
+          "lon": -111.407442
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315415,
+      "bounds": {
+        "minlat": 42.230489,
+        "minlon": -111.402547,
+        "maxlat": 42.230625,
+        "maxlon": -111.402307
+      },
+      "nodes": [
+        7122967453,
+        7122969107,
+        7122970613,
+        7122967701,
+        7122967453
+      ],
+      "geometry": [
+        {
+          "lat": 42.230489,
+          "lon": -111.402308
+        },
+        {
+          "lat": 42.230624,
+          "lon": -111.402307
+        },
+        {
+          "lat": 42.230625,
+          "lon": -111.402546
+        },
+        {
+          "lat": 42.23049,
+          "lon": -111.402547
+        },
+        {
+          "lat": 42.230489,
+          "lon": -111.402308
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315427,
+      "bounds": {
+        "minlat": 42.231443,
+        "minlon": -111.401684,
+        "maxlat": 42.231585,
+        "maxlon": -111.401496
+      },
+      "nodes": [
+        7122968745,
+        7122969915,
+        7122971547,
+        7122969051,
+        7122970546,
+        7122970860,
+        7122968745
+      ],
+      "geometry": [
+        {
+          "lat": 42.231447,
+          "lon": -111.401496
+        },
+        {
+          "lat": 42.231534,
+          "lon": -111.401499
+        },
+        {
+          "lat": 42.231531,
+          "lon": -111.401622
+        },
+        {
+          "lat": 42.231585,
+          "lon": -111.401624
+        },
+        {
+          "lat": 42.231584,
+          "lon": -111.401684
+        },
+        {
+          "lat": 42.231443,
+          "lon": -111.401678
+        },
+        {
+          "lat": 42.231447,
+          "lon": -111.401496
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315429,
+      "bounds": {
+        "minlat": 42.230839,
+        "minlon": -111.406115,
+        "maxlat": 42.23095,
+        "maxlon": -111.405978
+      },
+      "nodes": [
+        7122968823,
+        7122959482,
+        7122967965,
+        7122969138,
+        7122968823
+      ],
+      "geometry": [
+        {
+          "lat": 42.230839,
+          "lon": -111.406115
+        },
+        {
+          "lat": 42.230839,
+          "lon": -111.405978
+        },
+        {
+          "lat": 42.23095,
+          "lon": -111.405978
+        },
+        {
+          "lat": 42.23095,
+          "lon": -111.406115
+        },
+        {
+          "lat": 42.230839,
+          "lon": -111.406115
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315433,
+      "bounds": {
+        "minlat": 42.229322,
+        "minlon": -111.396038,
+        "maxlat": 42.229415,
+        "maxlon": -111.395957
+      },
+      "nodes": [
+        7122970572,
+        7122968145,
+        7122969634,
+        7122970823,
+        7122970572
+      ],
+      "geometry": [
+        {
+          "lat": 42.229415,
+          "lon": -111.395957
+        },
+        {
+          "lat": 42.229415,
+          "lon": -111.396038
+        },
+        {
+          "lat": 42.229322,
+          "lon": -111.396038
+        },
+        {
+          "lat": 42.229322,
+          "lon": -111.395957
+        },
+        {
+          "lat": 42.229415,
+          "lon": -111.395957
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315439,
+      "bounds": {
+        "minlat": 42.230163,
+        "minlon": -111.403654,
+        "maxlat": 42.230391,
+        "maxlon": -111.403369
+      },
+      "nodes": [
+        7122963866,
+        7122970539,
+        7122968117,
+        7122969610,
+        7122969909,
+        7122970160,
+        7122967630,
+        7122969292,
+        7122963866
+      ],
+      "geometry": [
+        {
+          "lat": 42.230164,
+          "lon": -111.403528
+        },
+        {
+          "lat": 42.230163,
+          "lon": -111.40337
+        },
+        {
+          "lat": 42.230238,
+          "lon": -111.403369
+        },
+        {
+          "lat": 42.230239,
+          "lon": -111.403528
+        },
+        {
+          "lat": 42.23035,
+          "lon": -111.403445
+        },
+        {
+          "lat": 42.230391,
+          "lon": -111.403652
+        },
+        {
+          "lat": 42.23023,
+          "lon": -111.403654
+        },
+        {
+          "lat": 42.230229,
+          "lon": -111.403527
+        },
+        {
+          "lat": 42.230164,
+          "lon": -111.403528
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315441,
+      "bounds": {
+        "minlat": 42.231432,
+        "minlon": -111.402108,
+        "maxlat": 42.231584,
+        "maxlon": -111.401985
+      },
+      "nodes": [
+        7122971308,
+        7122968768,
+        7122970325,
+        7122971572,
+        7122971308
+      ],
+      "geometry": [
+        {
+          "lat": 42.231584,
+          "lon": -111.402107
+        },
+        {
+          "lat": 42.231432,
+          "lon": -111.402108
+        },
+        {
+          "lat": 42.231432,
+          "lon": -111.401986
+        },
+        {
+          "lat": 42.231564,
+          "lon": -111.401985
+        },
+        {
+          "lat": 42.231584,
+          "lon": -111.402107
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315445,
+      "bounds": {
+        "minlat": 42.230834,
+        "minlon": -111.402673,
+        "maxlat": 42.230926,
+        "maxlon": -111.402402
+      },
+      "nodes": [
+        7122970363,
+        7122967951,
+        7122969449,
+        7122970632,
+        7122970363
+      ],
+      "geometry": [
+        {
+          "lat": 42.230834,
+          "lon": -111.402673
+        },
+        {
+          "lat": 42.230835,
+          "lon": -111.402402
+        },
+        {
+          "lat": 42.230926,
+          "lon": -111.402402
+        },
+        {
+          "lat": 42.230925,
+          "lon": -111.402673
+        },
+        {
+          "lat": 42.230834,
+          "lon": -111.402673
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315454,
+      "bounds": {
+        "minlat": 42.236114,
+        "minlon": -111.403342,
+        "maxlat": 42.236234,
+        "maxlon": -111.403197
+      },
+      "nodes": [
+        7122968950,
+        7122970449,
+        7122968033,
+        7122969529,
+        7122968950
+      ],
+      "geometry": [
+        {
+          "lat": 42.236126,
+          "lon": -111.403197
+        },
+        {
+          "lat": 42.236234,
+          "lon": -111.403216
+        },
+        {
+          "lat": 42.236222,
+          "lon": -111.403342
+        },
+        {
+          "lat": 42.236114,
+          "lon": -111.403323
+        },
+        {
+          "lat": 42.236126,
+          "lon": -111.403197
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315456,
+      "bounds": {
+        "minlat": 42.231596,
+        "minlon": -111.408993,
+        "maxlat": 42.231721,
+        "maxlon": -111.408679
+      },
+      "nodes": [
+        7122969519,
+        7122969804,
+        7122971485,
+        7122968991,
+        7122969519
+      ],
+      "geometry": [
+        {
+          "lat": 42.231596,
+          "lon": -111.408679
+        },
+        {
+          "lat": 42.231721,
+          "lon": -111.408679
+        },
+        {
+          "lat": 42.231721,
+          "lon": -111.408993
+        },
+        {
+          "lat": 42.231596,
+          "lon": -111.408993
+        },
+        {
+          "lat": 42.231596,
+          "lon": -111.408679
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315457,
+      "bounds": {
+        "minlat": 42.230147,
+        "minlon": -111.400446,
+        "maxlat": 42.230188,
+        "maxlon": -111.400356
+      },
+      "nodes": [
+        7122969731,
+        7122971381,
+        7122968901,
+        7122970026,
+        7122969731
+      ],
+      "geometry": [
+        {
+          "lat": 42.230158,
+          "lon": -111.400446
+        },
+        {
+          "lat": 42.230147,
+          "lon": -111.400363
+        },
+        {
+          "lat": 42.230177,
+          "lon": -111.400356
+        },
+        {
+          "lat": 42.230188,
+          "lon": -111.400439
+        },
+        {
+          "lat": 42.230158,
+          "lon": -111.400446
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315460,
+      "bounds": {
+        "minlat": 42.229236,
+        "minlon": -111.395885,
+        "maxlat": 42.229381,
+        "maxlon": -111.395622
+      },
+      "nodes": [
+        7122969814,
+        7122971493,
+        7122967642,
+        7122969303,
+        7122969814
+      ],
+      "geometry": [
+        {
+          "lat": 42.229381,
+          "lon": -111.395885
+        },
+        {
+          "lat": 42.229236,
+          "lon": -111.395885
+        },
+        {
+          "lat": 42.229236,
+          "lon": -111.395622
+        },
+        {
+          "lat": 42.229381,
+          "lon": -111.395622
+        },
+        {
+          "lat": 42.229381,
+          "lon": -111.395885
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315466,
+      "bounds": {
+        "minlat": 42.231379,
+        "minlon": -111.406029,
+        "maxlat": 42.231522,
+        "maxlon": -111.405908
+      },
+      "nodes": [
+        7122968269,
+        7122969750,
+        7122971403,
+        7122968929,
+        7122968269
+      ],
+      "geometry": [
+        {
+          "lat": 42.231379,
+          "lon": -111.405908
+        },
+        {
+          "lat": 42.231522,
+          "lon": -111.405908
+        },
+        {
+          "lat": 42.231522,
+          "lon": -111.406029
+        },
+        {
+          "lat": 42.231379,
+          "lon": -111.406029
+        },
+        {
+          "lat": 42.231379,
+          "lon": -111.405908
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315472,
+      "bounds": {
+        "minlat": 42.228646,
+        "minlon": -111.402467,
+        "maxlat": 42.228785,
+        "maxlon": -111.402333
+      },
+      "nodes": [
+        7122970013,
+        7122971245,
+        7122967743,
+        7122969007,
+        7122970013
+      ],
+      "geometry": [
+        {
+          "lat": 42.228646,
+          "lon": -111.402467
+        },
+        {
+          "lat": 42.228646,
+          "lon": -111.402333
+        },
+        {
+          "lat": 42.228785,
+          "lon": -111.402376
+        },
+        {
+          "lat": 42.228785,
+          "lon": -111.402467
+        },
+        {
+          "lat": 42.228646,
+          "lon": -111.402467
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315474,
+      "bounds": {
+        "minlat": 42.230735,
+        "minlon": -111.403016,
+        "maxlat": 42.230973,
+        "maxlon": -111.402793
+      },
+      "nodes": [
+        7122967245,
+        7122969478,
+        7122971137,
+        7122971374,
+        7122968892,
+        7122970398,
+        7122967983,
+        7122968240,
+        7122967245
+      ],
+      "geometry": [
+        {
+          "lat": 42.230735,
+          "lon": -111.402794
+        },
+        {
+          "lat": 42.230837,
+          "lon": -111.402793
+        },
+        {
+          "lat": 42.230837,
+          "lon": -111.402879
+        },
+        {
+          "lat": 42.230972,
+          "lon": -111.402905
+        },
+        {
+          "lat": 42.230973,
+          "lon": -111.403015
+        },
+        {
+          "lat": 42.230844,
+          "lon": -111.403016
+        },
+        {
+          "lat": 42.230843,
+          "lon": -111.402915
+        },
+        {
+          "lat": 42.230736,
+          "lon": -111.402894
+        },
+        {
+          "lat": 42.230735,
+          "lon": -111.402794
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315477,
+      "bounds": {
+        "minlat": 42.231445,
+        "minlon": -111.407606,
+        "maxlat": 42.231604,
+        "maxlon": -111.407467
+      },
+      "nodes": [
+        7122968683,
+        7122970234,
+        7122971450,
+        7122968983,
+        7122968683
+      ],
+      "geometry": [
+        {
+          "lat": 42.231445,
+          "lon": -111.407606
+        },
+        {
+          "lat": 42.231445,
+          "lon": -111.407467
+        },
+        {
+          "lat": 42.231604,
+          "lon": -111.407467
+        },
+        {
+          "lat": 42.231604,
+          "lon": -111.407606
+        },
+        {
+          "lat": 42.231445,
+          "lon": -111.407606
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315480,
+      "bounds": {
+        "minlat": 42.228718,
+        "minlon": -111.396791,
+        "maxlat": 42.228841,
+        "maxlon": -111.396625
+      },
+      "nodes": [
+        7122971082,
+        7122968554,
+        7122969676,
+        7122971334,
+        7122971082
+      ],
+      "geometry": [
+        {
+          "lat": 42.228841,
+          "lon": -111.396625
+        },
+        {
+          "lat": 42.228841,
+          "lon": -111.396791
+        },
+        {
+          "lat": 42.228718,
+          "lon": -111.396791
+        },
+        {
+          "lat": 42.228718,
+          "lon": -111.396625
+        },
+        {
+          "lat": 42.228841,
+          "lon": -111.396625
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315492,
+      "bounds": {
+        "minlat": 42.22928,
+        "minlon": -111.402899,
+        "maxlat": 42.229404,
+        "maxlon": -111.402794
+      },
+      "nodes": [
+        7122971578,
+        7122969084,
+        7122970587,
+        7122969679,
+        7122971578
+      ],
+      "geometry": [
+        {
+          "lat": 42.22928,
+          "lon": -111.402794
+        },
+        {
+          "lat": 42.229404,
+          "lon": -111.402795
+        },
+        {
+          "lat": 42.229404,
+          "lon": -111.402899
+        },
+        {
+          "lat": 42.22928,
+          "lon": -111.402899
+        },
+        {
+          "lat": 42.22928,
+          "lon": -111.402794
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315493,
+      "bounds": {
+        "minlat": 42.232153,
+        "minlon": -111.402302,
+        "maxlat": 42.232208,
+        "maxlon": -111.402176
+      },
+      "nodes": [
+        7122969548,
+        7122971204,
+        7122968305,
+        7122969792,
+        7122969548
+      ],
+      "geometry": [
+        {
+          "lat": 42.232207,
+          "lon": -111.402176
+        },
+        {
+          "lat": 42.232208,
+          "lon": -111.402301
+        },
+        {
+          "lat": 42.232155,
+          "lon": -111.402302
+        },
+        {
+          "lat": 42.232153,
+          "lon": -111.402177
+        },
+        {
+          "lat": 42.232207,
+          "lon": -111.402176
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315495,
+      "bounds": {
+        "minlat": 42.230313,
+        "minlon": -111.396829,
+        "maxlat": 42.230583,
+        "maxlon": -111.396759
+      },
+      "nodes": [
+        7122968493,
+        7122969617,
+        7122971282,
+        7122968746,
+        7122968493
+      ],
+      "geometry": [
+        {
+          "lat": 42.230313,
+          "lon": -111.396759
+        },
+        {
+          "lat": 42.230583,
+          "lon": -111.396759
+        },
+        {
+          "lat": 42.230583,
+          "lon": -111.396829
+        },
+        {
+          "lat": 42.230313,
+          "lon": -111.396829
+        },
+        {
+          "lat": 42.230313,
+          "lon": -111.396759
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315497,
+      "bounds": {
+        "minlat": 42.229346,
+        "minlon": -111.404527,
+        "maxlat": 42.229443,
+        "maxlon": -111.404371
+      },
+      "nodes": [
+        7122968088,
+        7122969581,
+        7122971241,
+        7122970555,
+        7122968088
+      ],
+      "geometry": [
+        {
+          "lat": 42.229346,
+          "lon": -111.404527
+        },
+        {
+          "lat": 42.229346,
+          "lon": -111.404371
+        },
+        {
+          "lat": 42.229443,
+          "lon": -111.404371
+        },
+        {
+          "lat": 42.229427,
+          "lon": -111.404527
+        },
+        {
+          "lat": 42.229346,
+          "lon": -111.404527
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315499,
+      "bounds": {
+        "minlat": 42.230905,
+        "minlon": -111.406941,
+        "maxlat": 42.230946,
+        "maxlon": -111.406665
+      },
+      "nodes": [
+        7122971004,
+        7122968467,
+        7122970025,
+        7122967506,
+        7122971004
+      ],
+      "geometry": [
+        {
+          "lat": 42.230905,
+          "lon": -111.406941
+        },
+        {
+          "lat": 42.230905,
+          "lon": -111.406665
+        },
+        {
+          "lat": 42.230946,
+          "lon": -111.406665
+        },
+        {
+          "lat": 42.230946,
+          "lon": -111.406941
+        },
+        {
+          "lat": 42.230905,
+          "lon": -111.406941
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315501,
+      "bounds": {
+        "minlat": 42.23045,
+        "minlon": -111.400718,
+        "maxlat": 42.230579,
+        "maxlon": -111.400597
+      },
+      "nodes": [
+        7122963884,
+        7122970561,
+        7122968137,
+        7122969631,
+        7122963884
+      ],
+      "geometry": [
+        {
+          "lat": 42.230579,
+          "lon": -111.400597
+        },
+        {
+          "lat": 42.230579,
+          "lon": -111.400718
+        },
+        {
+          "lat": 42.23045,
+          "lon": -111.400718
+        },
+        {
+          "lat": 42.23045,
+          "lon": -111.400597
+        },
+        {
+          "lat": 42.230579,
+          "lon": -111.400597
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315510,
+      "bounds": {
+        "minlat": 42.22979,
+        "minlon": -111.400742,
+        "maxlat": 42.229918,
+        "maxlon": -111.400554
+      },
+      "nodes": [
+        7122971008,
+        7122968471,
+        7122970028,
+        7122967508,
+        7122968724,
+        7122970277,
+        7122971008
+      ],
+      "geometry": [
+        {
+          "lat": 42.229864,
+          "lon": -111.400659
+        },
+        {
+          "lat": 42.229864,
+          "lon": -111.400742
+        },
+        {
+          "lat": 42.22979,
+          "lon": -111.400742
+        },
+        {
+          "lat": 42.22979,
+          "lon": -111.400554
+        },
+        {
+          "lat": 42.229918,
+          "lon": -111.400554
+        },
+        {
+          "lat": 42.229918,
+          "lon": -111.400659
+        },
+        {
+          "lat": 42.229864,
+          "lon": -111.400659
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315515,
+      "bounds": {
+        "minlat": 42.228742,
+        "minlon": -111.396563,
+        "maxlat": 42.228837,
+        "maxlon": -111.396461
+      },
+      "nodes": [
+        7122968636,
+        7122970186,
+        7122971396,
+        7122968920,
+        7122968636
+      ],
+      "geometry": [
+        {
+          "lat": 42.228837,
+          "lon": -111.396461
+        },
+        {
+          "lat": 42.228837,
+          "lon": -111.396563
+        },
+        {
+          "lat": 42.228742,
+          "lon": -111.396563
+        },
+        {
+          "lat": 42.228742,
+          "lon": -111.396461
+        },
+        {
+          "lat": 42.228837,
+          "lon": -111.396461
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315516,
+      "bounds": {
+        "minlat": 42.231969,
+        "minlon": -111.407731,
+        "maxlat": 42.232067,
+        "maxlon": -111.407464
+      },
+      "nodes": [
+        7122968701,
+        7122970250,
+        7122967730,
+        7122968996,
+        7122968701
+      ],
+      "geometry": [
+        {
+          "lat": 42.232067,
+          "lon": -111.407464
+        },
+        {
+          "lat": 42.232067,
+          "lon": -111.407731
+        },
+        {
+          "lat": 42.231969,
+          "lon": -111.407731
+        },
+        {
+          "lat": 42.231969,
+          "lon": -111.407464
+        },
+        {
+          "lat": 42.232067,
+          "lon": -111.407464
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315523,
+      "bounds": {
+        "minlat": 42.231419,
+        "minlon": -111.406986,
+        "maxlat": 42.231516,
+        "maxlon": -111.406852
+      },
+      "nodes": [
+        7122970835,
+        7122967277,
+        7122969936,
+        7122970238,
+        7122970835
+      ],
+      "geometry": [
+        {
+          "lat": 42.231516,
+          "lon": -111.406986
+        },
+        {
+          "lat": 42.231419,
+          "lon": -111.406986
+        },
+        {
+          "lat": 42.231419,
+          "lon": -111.406852
+        },
+        {
+          "lat": 42.231516,
+          "lon": -111.406852
+        },
+        {
+          "lat": 42.231516,
+          "lon": -111.406986
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315525,
+      "bounds": {
+        "minlat": 42.238477,
+        "minlon": -111.401509,
+        "maxlat": 42.238534,
+        "maxlon": -111.401448
+      },
+      "nodes": [
+        7122969550,
+        7122971206,
+        7122968676,
+        7122970225,
+        7122969550
+      ],
+      "geometry": [
+        {
+          "lat": 42.238534,
+          "lon": -111.401448
+        },
+        {
+          "lat": 42.238534,
+          "lon": -111.401509
+        },
+        {
+          "lat": 42.238477,
+          "lon": -111.401509
+        },
+        {
+          "lat": 42.238477,
+          "lon": -111.401448
+        },
+        {
+          "lat": 42.238534,
+          "lon": -111.401448
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315527,
+      "bounds": {
+        "minlat": 42.228708,
+        "minlon": -111.397765,
+        "maxlat": 42.228797,
+        "maxlon": -111.397652
+      },
+      "nodes": [
+        7122968622,
+        7122970176,
+        7122967646,
+        7122968907,
+        7122968622
+      ],
+      "geometry": [
+        {
+          "lat": 42.228708,
+          "lon": -111.397727
+        },
+        {
+          "lat": 42.228708,
+          "lon": -111.397652
+        },
+        {
+          "lat": 42.228797,
+          "lon": -111.397652
+        },
+        {
+          "lat": 42.228797,
+          "lon": -111.397765
+        },
+        {
+          "lat": 42.228708,
+          "lon": -111.397727
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315533,
+      "bounds": {
+        "minlat": 42.239306,
+        "minlon": -111.400539,
+        "maxlat": 42.239387,
+        "maxlon": -111.400379
+      },
+      "nodes": [
+        7122970198,
+        7122967676,
+        7122969338,
+        7122970439,
+        7122970198
+      ],
+      "geometry": [
+        {
+          "lat": 42.239376,
+          "lon": -111.400379
+        },
+        {
+          "lat": 42.239387,
+          "lon": -111.400529
+        },
+        {
+          "lat": 42.239316,
+          "lon": -111.400539
+        },
+        {
+          "lat": 42.239306,
+          "lon": -111.400388
+        },
+        {
+          "lat": 42.239376,
+          "lon": -111.400379
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315537,
+      "bounds": {
+        "minlat": 42.228547,
+        "minlon": -111.40152,
+        "maxlat": 42.228637,
+        "maxlon": -111.40137
+      },
+      "nodes": [
+        7122970872,
+        7122968415,
+        7122969540,
+        7122971197,
+        7122970872
+      ],
+      "geometry": [
+        {
+          "lat": 42.228547,
+          "lon": -111.40137
+        },
+        {
+          "lat": 42.228637,
+          "lon": -111.40137
+        },
+        {
+          "lat": 42.228637,
+          "lon": -111.40152
+        },
+        {
+          "lat": 42.228547,
+          "lon": -111.40152
+        },
+        {
+          "lat": 42.228547,
+          "lon": -111.40137
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315538,
+      "bounds": {
+        "minlat": 42.228746,
+        "minlon": -111.400758,
+        "maxlat": 42.228889,
+        "maxlon": -111.400573
+      },
+      "nodes": [
+        7122967912,
+        7122968164,
+        7122969662,
+        7122971323,
+        7122967912
+      ],
+      "geometry": [
+        {
+          "lat": 42.228783,
+          "lon": -111.400758
+        },
+        {
+          "lat": 42.228746,
+          "lon": -111.400573
+        },
+        {
+          "lat": 42.228889,
+          "lon": -111.400573
+        },
+        {
+          "lat": 42.228889,
+          "lon": -111.400758
+        },
+        {
+          "lat": 42.228783,
+          "lon": -111.400758
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315543,
+      "bounds": {
+        "minlat": 42.230881,
+        "minlon": -111.404878,
+        "maxlat": 42.230956,
+        "maxlon": -111.404696
+      },
+      "nodes": [
+        7122970056,
+        7122967537,
+        7122969196,
+        7122969419,
+        7122970056
+      ],
+      "geometry": [
+        {
+          "lat": 42.230881,
+          "lon": -111.404878
+        },
+        {
+          "lat": 42.230881,
+          "lon": -111.404696
+        },
+        {
+          "lat": 42.230956,
+          "lon": -111.404696
+        },
+        {
+          "lat": 42.230956,
+          "lon": -111.404878
+        },
+        {
+          "lat": 42.230881,
+          "lon": -111.404878
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315549,
+      "bounds": {
+        "minlat": 42.231469,
+        "minlon": -111.406796,
+        "maxlat": 42.231536,
+        "maxlon": -111.406729
+      },
+      "nodes": [
+        7122968249,
+        7122969728,
+        7122971379,
+        7122968465,
+        7122968249
+      ],
+      "geometry": [
+        {
+          "lat": 42.231536,
+          "lon": -111.406729
+        },
+        {
+          "lat": 42.231536,
+          "lon": -111.406796
+        },
+        {
+          "lat": 42.231469,
+          "lon": -111.406796
+        },
+        {
+          "lat": 42.231469,
+          "lon": -111.406729
+        },
+        {
+          "lat": 42.231536,
+          "lon": -111.406729
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315556,
+      "bounds": {
+        "minlat": 42.230768,
+        "minlon": -111.400114,
+        "maxlat": 42.230856,
+        "maxlon": -111.39985
+      },
+      "nodes": [
+        7122971090,
+        7122968192,
+        7122969682,
+        7122971338,
+        7122971090
+      ],
+      "geometry": [
+        {
+          "lat": 42.230768,
+          "lon": -111.399851
+        },
+        {
+          "lat": 42.230855,
+          "lon": -111.39985
+        },
+        {
+          "lat": 42.230856,
+          "lon": -111.400113
+        },
+        {
+          "lat": 42.230768,
+          "lon": -111.400114
+        },
+        {
+          "lat": 42.230768,
+          "lon": -111.399851
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315561,
+      "bounds": {
+        "minlat": 42.239454,
+        "minlon": -111.400721,
+        "maxlat": 42.239486,
+        "maxlon": -111.400648
+      },
+      "nodes": [
+        7122970659,
+        7122971037,
+        7122968507,
+        7122970071,
+        7122970659
+      ],
+      "geometry": [
+        {
+          "lat": 42.239454,
+          "lon": -111.400648
+        },
+        {
+          "lat": 42.239486,
+          "lon": -111.400648
+        },
+        {
+          "lat": 42.239486,
+          "lon": -111.400721
+        },
+        {
+          "lat": 42.239454,
+          "lon": -111.400721
+        },
+        {
+          "lat": 42.239454,
+          "lon": -111.400648
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315564,
+      "bounds": {
+        "minlat": 42.231927,
+        "minlon": -111.406985,
+        "maxlat": 42.232084,
+        "maxlon": -111.40693
+      },
+      "nodes": [
+        7122968056,
+        7122969546,
+        7122971202,
+        7122968672,
+        7122968056
+      ],
+      "geometry": [
+        {
+          "lat": 42.231927,
+          "lon": -111.406985
+        },
+        {
+          "lat": 42.231927,
+          "lon": -111.406931
+        },
+        {
+          "lat": 42.232084,
+          "lon": -111.40693
+        },
+        {
+          "lat": 42.232084,
+          "lon": -111.406983
+        },
+        {
+          "lat": 42.231927,
+          "lon": -111.406985
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315572,
+      "bounds": {
+        "minlat": 42.230772,
+        "minlon": -111.399195,
+        "maxlat": 42.230861,
+        "maxlon": -111.398983
+      },
+      "nodes": [
+        7122969156,
+        7122970265,
+        7122967749,
+        7122963844,
+        7122969156
+      ],
+      "geometry": [
+        {
+          "lat": 42.230772,
+          "lon": -111.399195
+        },
+        {
+          "lat": 42.230772,
+          "lon": -111.398983
+        },
+        {
+          "lat": 42.230861,
+          "lon": -111.398983
+        },
+        {
+          "lat": 42.230861,
+          "lon": -111.399195
+        },
+        {
+          "lat": 42.230772,
+          "lon": -111.399195
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315573,
+      "bounds": {
+        "minlat": 42.228595,
+        "minlon": -111.396861,
+        "maxlat": 42.228639,
+        "maxlon": -111.39674
+      },
+      "nodes": [
+        7122967255,
+        7122969920,
+        7122971552,
+        7122968620,
+        7122967255
+      ],
+      "geometry": [
+        {
+          "lat": 42.228595,
+          "lon": -111.396861
+        },
+        {
+          "lat": 42.228595,
+          "lon": -111.39674
+        },
+        {
+          "lat": 42.228639,
+          "lon": -111.39674
+        },
+        {
+          "lat": 42.228639,
+          "lon": -111.396861
+        },
+        {
+          "lat": 42.228595,
+          "lon": -111.396861
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315580,
+      "bounds": {
+        "minlat": 42.231457,
+        "minlon": -111.396735,
+        "maxlat": 42.231651,
+        "maxlon": -111.396625
+      },
+      "nodes": [
+        7122967234,
+        7122969896,
+        7122971124,
+        7122968594,
+        7122967234
+      ],
+      "geometry": [
+        {
+          "lat": 42.231651,
+          "lon": -111.396625
+        },
+        {
+          "lat": 42.231651,
+          "lon": -111.396735
+        },
+        {
+          "lat": 42.231457,
+          "lon": -111.396735
+        },
+        {
+          "lat": 42.231457,
+          "lon": -111.396625
+        },
+        {
+          "lat": 42.231651,
+          "lon": -111.396625
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315585,
+      "bounds": {
+        "minlat": 42.228718,
+        "minlon": -111.402199,
+        "maxlat": 42.228863,
+        "maxlon": -111.402089
+      },
+      "nodes": [
+        7122971573,
+        7122969074,
+        7122970578,
+        7122967670,
+        7122971573
+      ],
+      "geometry": [
+        {
+          "lat": 42.228863,
+          "lon": -111.402199
+        },
+        {
+          "lat": 42.228718,
+          "lon": -111.402199
+        },
+        {
+          "lat": 42.228718,
+          "lon": -111.402089
+        },
+        {
+          "lat": 42.228863,
+          "lon": -111.402089
+        },
+        {
+          "lat": 42.228863,
+          "lon": -111.402199
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315592,
+      "bounds": {
+        "minlat": 42.2303786,
+        "minlon": -111.3997855,
+        "maxlat": 42.2305306,
+        "maxlon": -111.3996636
+      },
+      "nodes": [
+        7122970609,
+        7122968189,
+        7122968411,
+        7122969965,
+        7122970609
+      ],
+      "geometry": [
+        {
+          "lat": 42.2305306,
+          "lon": -111.3997851
+        },
+        {
+          "lat": 42.2303788,
+          "lon": -111.3997855
+        },
+        {
+          "lat": 42.2303786,
+          "lon": -111.3996639
+        },
+        {
+          "lat": 42.2305305,
+          "lon": -111.3996636
+        },
+        {
+          "lat": 42.2305306,
+          "lon": -111.3997851
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315597,
+      "bounds": {
+        "minlat": 42.237463,
+        "minlon": -111.401634,
+        "maxlat": 42.237642,
+        "maxlon": -111.401358
+      },
+      "nodes": [
+        7122969667,
+        7122969952,
+        7122967438,
+        7122969087,
+        7122969667
+      ],
+      "geometry": [
+        {
+          "lat": 42.237642,
+          "lon": -111.401428
+        },
+        {
+          "lat": 42.23754,
+          "lon": -111.401634
+        },
+        {
+          "lat": 42.237463,
+          "lon": -111.401534
+        },
+        {
+          "lat": 42.237589,
+          "lon": -111.401358
+        },
+        {
+          "lat": 42.237642,
+          "lon": -111.401428
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315601,
+      "bounds": {
+        "minlat": 42.22992,
+        "minlon": -111.407268,
+        "maxlat": 42.229998,
+        "maxlon": -111.407048
+      },
+      "nodes": [
+        7122971487,
+        7122968992,
+        7122970496,
+        7122970804,
+        7122971487
+      ],
+      "geometry": [
+        {
+          "lat": 42.22992,
+          "lon": -111.40705
+        },
+        {
+          "lat": 42.229995,
+          "lon": -111.407048
+        },
+        {
+          "lat": 42.229998,
+          "lon": -111.407266
+        },
+        {
+          "lat": 42.229922,
+          "lon": -111.407268
+        },
+        {
+          "lat": 42.22992,
+          "lon": -111.40705
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315604,
+      "bounds": {
+        "minlat": 42.229578,
+        "minlon": -111.404583,
+        "maxlat": 42.229693,
+        "maxlon": -111.404336
+      },
+      "nodes": [
+        7122971357,
+        7122968819,
+        7122959479,
+        7122967477,
+        7122971357
+      ],
+      "geometry": [
+        {
+          "lat": 42.229578,
+          "lon": -111.404336
+        },
+        {
+          "lat": 42.229693,
+          "lon": -111.404336
+        },
+        {
+          "lat": 42.229693,
+          "lon": -111.404583
+        },
+        {
+          "lat": 42.229578,
+          "lon": -111.404583
+        },
+        {
+          "lat": 42.229578,
+          "lon": -111.404336
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315615,
+      "bounds": {
+        "minlat": 42.230652,
+        "minlon": -111.405801,
+        "maxlat": 42.230781,
+        "maxlon": -111.405718
+      },
+      "nodes": [
+        7122970704,
+        7122968281,
+        7122969764,
+        7122971036,
+        7122970704
+      ],
+      "geometry": [
+        {
+          "lat": 42.230781,
+          "lon": -111.405801
+        },
+        {
+          "lat": 42.230652,
+          "lon": -111.405801
+        },
+        {
+          "lat": 42.230652,
+          "lon": -111.405718
+        },
+        {
+          "lat": 42.230781,
+          "lon": -111.405718
+        },
+        {
+          "lat": 42.230781,
+          "lon": -111.405801
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315616,
+      "bounds": {
+        "minlat": 42.231451,
+        "minlon": -111.405227,
+        "maxlat": 42.231544,
+        "maxlon": -111.405093
+      },
+      "nodes": [
+        7122970446,
+        7122967548,
+        7122969209,
+        7122970706,
+        7122970446
+      ],
+      "geometry": [
+        {
+          "lat": 42.231544,
+          "lon": -111.405093
+        },
+        {
+          "lat": 42.231544,
+          "lon": -111.405227
+        },
+        {
+          "lat": 42.231451,
+          "lon": -111.405227
+        },
+        {
+          "lat": 42.231451,
+          "lon": -111.405093
+        },
+        {
+          "lat": 42.231544,
+          "lon": -111.405093
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315621,
+      "bounds": {
+        "minlat": 42.229341,
+        "minlon": -111.401998,
+        "maxlat": 42.229546,
+        "maxlon": -111.401873
+      },
+      "nodes": [
+        7122969266,
+        7122970770,
+        7122968345,
+        7122961082,
+        7122969266
+      ],
+      "geometry": [
+        {
+          "lat": 42.229341,
+          "lon": -111.401998
+        },
+        {
+          "lat": 42.229341,
+          "lon": -111.401875
+        },
+        {
+          "lat": 42.229545,
+          "lon": -111.401873
+        },
+        {
+          "lat": 42.229546,
+          "lon": -111.401997
+        },
+        {
+          "lat": 42.229341,
+          "lon": -111.401998
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315624,
+      "bounds": {
+        "minlat": 42.230838,
+        "minlon": -111.407303,
+        "maxlat": 42.230955,
+        "maxlon": -111.407081
+      },
+      "nodes": [
+        7122969113,
+        7122970621,
+        7122968203,
+        7122969695,
+        7122963964,
+        7122968426,
+        7122969113
+      ],
+      "geometry": [
+        {
+          "lat": 42.230955,
+          "lon": -111.407301
+        },
+        {
+          "lat": 42.230873,
+          "lon": -111.407303
+        },
+        {
+          "lat": 42.230873,
+          "lon": -111.407227
+        },
+        {
+          "lat": 42.230839,
+          "lon": -111.407228
+        },
+        {
+          "lat": 42.230838,
+          "lon": -111.407083
+        },
+        {
+          "lat": 42.230953,
+          "lon": -111.407081
+        },
+        {
+          "lat": 42.230955,
+          "lon": -111.407301
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315634,
+      "bounds": {
+        "minlat": 42.229733,
+        "minlon": -111.401861,
+        "maxlat": 42.229886,
+        "maxlon": -111.401665
+      },
+      "nodes": [
+        7122967935,
+        7122969106,
+        7122970612,
+        7122968194,
+        7122969685,
+        7122970022,
+        7122967935
+      ],
+      "geometry": [
+        {
+          "lat": 42.229886,
+          "lon": -111.401861
+        },
+        {
+          "lat": 42.229733,
+          "lon": -111.401861
+        },
+        {
+          "lat": 42.229733,
+          "lon": -111.401665
+        },
+        {
+          "lat": 42.229802,
+          "lon": -111.401665
+        },
+        {
+          "lat": 42.229802,
+          "lon": -111.40174
+        },
+        {
+          "lat": 42.229886,
+          "lon": -111.40174
+        },
+        {
+          "lat": 42.229886,
+          "lon": -111.401861
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315642,
+      "bounds": {
+        "minlat": 42.230196,
+        "minlon": -111.404512,
+        "maxlat": 42.23038,
+        "maxlon": -111.404263
+      },
+      "nodes": [
+        7122971104,
+        7122968570,
+        7122968807,
+        7122970358,
+        7122971104
+      ],
+      "geometry": [
+        {
+          "lat": 42.230332,
+          "lon": -111.404512
+        },
+        {
+          "lat": 42.230196,
+          "lon": -111.404431
+        },
+        {
+          "lat": 42.230213,
+          "lon": -111.404263
+        },
+        {
+          "lat": 42.23038,
+          "lon": -111.404363
+        },
+        {
+          "lat": 42.230332,
+          "lon": -111.404512
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315646,
+      "bounds": {
+        "minlat": 42.229353,
+        "minlon": -111.406356,
+        "maxlat": 42.229433,
+        "maxlon": -111.406171
+      },
+      "nodes": [
+        7122968816,
+        7122970368,
+        7122967955,
+        7122969128,
+        7122968816
+      ],
+      "geometry": [
+        {
+          "lat": 42.229433,
+          "lon": -111.406171
+        },
+        {
+          "lat": 42.229433,
+          "lon": -111.406356
+        },
+        {
+          "lat": 42.229353,
+          "lon": -111.406356
+        },
+        {
+          "lat": 42.229353,
+          "lon": -111.406171
+        },
+        {
+          "lat": 42.229433,
+          "lon": -111.406171
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315649,
+      "bounds": {
+        "minlat": 42.231396,
+        "minlon": -111.406412,
+        "maxlat": 42.231505,
+        "maxlon": -111.406235
+      },
+      "nodes": [
+        7122968416,
+        7122969542,
+        7122971199,
+        7122968667,
+        7122968416
+      ],
+      "geometry": [
+        {
+          "lat": 42.231505,
+          "lon": -111.406406
+        },
+        {
+          "lat": 42.231401,
+          "lon": -111.406412
+        },
+        {
+          "lat": 42.231396,
+          "lon": -111.406239
+        },
+        {
+          "lat": 42.231481,
+          "lon": -111.406235
+        },
+        {
+          "lat": 42.231505,
+          "lon": -111.406406
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315651,
+      "bounds": {
+        "minlat": 42.230688,
+        "minlon": -111.401598,
+        "maxlat": 42.230774,
+        "maxlon": -111.401348
+      },
+      "nodes": [
+        7122970430,
+        7122968015,
+        7122969193,
+        7122970688,
+        7122970430
+      ],
+      "geometry": [
+        {
+          "lat": 42.230688,
+          "lon": -111.401598
+        },
+        {
+          "lat": 42.230688,
+          "lon": -111.401348
+        },
+        {
+          "lat": 42.230774,
+          "lon": -111.401348
+        },
+        {
+          "lat": 42.230774,
+          "lon": -111.401598
+        },
+        {
+          "lat": 42.230688,
+          "lon": -111.401598
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315660,
+      "bounds": {
+        "minlat": 42.231451,
+        "minlon": -111.402647,
+        "maxlat": 42.231651,
+        "maxlon": -111.402507
+      },
+      "nodes": [
+        7122969228,
+        7122970725,
+        7122968299,
+        7122969787,
+        7122969228
+      ],
+      "geometry": [
+        {
+          "lat": 42.231451,
+          "lon": -111.402647
+        },
+        {
+          "lat": 42.231451,
+          "lon": -111.402507
+        },
+        {
+          "lat": 42.231651,
+          "lon": -111.402507
+        },
+        {
+          "lat": 42.231651,
+          "lon": -111.402647
+        },
+        {
+          "lat": 42.231451,
+          "lon": -111.402647
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315661,
+      "bounds": {
+        "minlat": 42.228714,
+        "minlon": -111.401434,
+        "maxlat": 42.228907,
+        "maxlon": -111.401268
+      },
+      "nodes": [
+        7122967625,
+        7122968887,
+        7122970391,
+        7122967974,
+        7122967625
+      ],
+      "geometry": [
+        {
+          "lat": 42.228714,
+          "lon": -111.401269
+        },
+        {
+          "lat": 42.228907,
+          "lon": -111.401268
+        },
+        {
+          "lat": 42.228907,
+          "lon": -111.401433
+        },
+        {
+          "lat": 42.228752,
+          "lon": -111.401434
+        },
+        {
+          "lat": 42.228714,
+          "lon": -111.401269
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315667,
+      "bounds": {
+        "minlat": 42.228668,
+        "minlon": -111.397184,
+        "maxlat": 42.228795,
+        "maxlon": -111.397014
+      },
+      "nodes": [
+        7122968738,
+        7122970293,
+        7122971542,
+        7122969045,
+        7122968738
+      ],
+      "geometry": [
+        {
+          "lat": 42.228668,
+          "lon": -111.397015
+        },
+        {
+          "lat": 42.228794,
+          "lon": -111.397014
+        },
+        {
+          "lat": 42.228795,
+          "lon": -111.397183
+        },
+        {
+          "lat": 42.228668,
+          "lon": -111.397184
+        },
+        {
+          "lat": 42.228668,
+          "lon": -111.397015
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315668,
+      "bounds": {
+        "minlat": 42.230028,
+        "minlon": -111.401451,
+        "maxlat": 42.230116,
+        "maxlon": -111.401244
+      },
+      "nodes": [
+        7122968058,
+        7122969551,
+        7122971207,
+        7122968306,
+        7122968058
+      ],
+      "geometry": [
+        {
+          "lat": 42.230028,
+          "lon": -111.40145
+        },
+        {
+          "lat": 42.230029,
+          "lon": -111.401244
+        },
+        {
+          "lat": 42.230116,
+          "lon": -111.401244
+        },
+        {
+          "lat": 42.230115,
+          "lon": -111.401451
+        },
+        {
+          "lat": 42.230028,
+          "lon": -111.40145
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315679,
+      "bounds": {
+        "minlat": 42.230693,
+        "minlon": -111.400721,
+        "maxlat": 42.230782,
+        "maxlon": -111.400619
+      },
+      "nodes": [
+        7122970342,
+        7122967920,
+        7122969093,
+        7122970594,
+        7122970342
+      ],
+      "geometry": [
+        {
+          "lat": 42.230693,
+          "lon": -111.400717
+        },
+        {
+          "lat": 42.230695,
+          "lon": -111.400619
+        },
+        {
+          "lat": 42.230782,
+          "lon": -111.400623
+        },
+        {
+          "lat": 42.23078,
+          "lon": -111.400721
+        },
+        {
+          "lat": 42.230693,
+          "lon": -111.400717
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315706,
+      "bounds": {
+        "minlat": 42.231421,
+        "minlon": -111.398191,
+        "maxlat": 42.231496,
+        "maxlon": -111.398103
+      },
+      "nodes": [
+        7122967516,
+        7122968730,
+        7122970284,
+        7122966767,
+        7122967516
+      ],
+      "geometry": [
+        {
+          "lat": 42.231496,
+          "lon": -111.398103
+        },
+        {
+          "lat": 42.231496,
+          "lon": -111.398191
+        },
+        {
+          "lat": 42.231421,
+          "lon": -111.398191
+        },
+        {
+          "lat": 42.231421,
+          "lon": -111.398103
+        },
+        {
+          "lat": 42.231496,
+          "lon": -111.398103
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315711,
+      "bounds": {
+        "minlat": 42.228819,
+        "minlon": -111.406513,
+        "maxlat": 42.228928,
+        "maxlon": -111.406365
+      },
+      "nodes": [
+        7122971012,
+        7122968480,
+        7122969606,
+        7122971271,
+        7122971012
+      ],
+      "geometry": [
+        {
+          "lat": 42.228891,
+          "lon": -111.406365
+        },
+        {
+          "lat": 42.228928,
+          "lon": -111.406463
+        },
+        {
+          "lat": 42.228856,
+          "lon": -111.406513
+        },
+        {
+          "lat": 42.228819,
+          "lon": -111.406416
+        },
+        {
+          "lat": 42.228891,
+          "lon": -111.406365
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315713,
+      "bounds": {
+        "minlat": 42.230807,
+        "minlon": -111.403627,
+        "maxlat": 42.230976,
+        "maxlon": -111.403446
+      },
+      "nodes": [
+        7122970329,
+        7122967908,
+        7122969081,
+        7122970584,
+        7122968159,
+        7122969654,
+        7122970329
+      ],
+      "geometry": [
+        {
+          "lat": 42.230976,
+          "lon": -111.403627
+        },
+        {
+          "lat": 42.230807,
+          "lon": -111.403627
+        },
+        {
+          "lat": 42.230808,
+          "lon": -111.403513
+        },
+        {
+          "lat": 42.230889,
+          "lon": -111.403513
+        },
+        {
+          "lat": 42.230889,
+          "lon": -111.403446
+        },
+        {
+          "lat": 42.230976,
+          "lon": -111.403446
+        },
+        {
+          "lat": 42.230976,
+          "lon": -111.403627
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315719,
+      "bounds": {
+        "minlat": 42.23067,
+        "minlon": -111.406238,
+        "maxlat": 42.230742,
+        "maxlon": -111.406136
+      },
+      "nodes": [
+        7122967893,
+        7122969069,
+        7122970569,
+        7122968143,
+        7122967893
+      ],
+      "geometry": [
+        {
+          "lat": 42.23067,
+          "lon": -111.406238
+        },
+        {
+          "lat": 42.23067,
+          "lon": -111.406136
+        },
+        {
+          "lat": 42.230742,
+          "lon": -111.406136
+        },
+        {
+          "lat": 42.230742,
+          "lon": -111.406238
+        },
+        {
+          "lat": 42.23067,
+          "lon": -111.406238
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315721,
+      "bounds": {
+        "minlat": 42.235979,
+        "minlon": -111.403215,
+        "maxlat": 42.236105,
+        "maxlon": -111.403002
+      },
+      "nodes": [
+        7122970039,
+        7122967519,
+        7122968733,
+        7122970286,
+        7122970039
+      ],
+      "geometry": [
+        {
+          "lat": 42.236105,
+          "lon": -111.403016
+        },
+        {
+          "lat": 42.236092,
+          "lon": -111.403215
+        },
+        {
+          "lat": 42.235979,
+          "lon": -111.403201
+        },
+        {
+          "lat": 42.235993,
+          "lon": -111.403002
+        },
+        {
+          "lat": 42.236105,
+          "lon": -111.403016
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315727,
+      "bounds": {
+        "minlat": 42.236298,
+        "minlon": -111.403525,
+        "maxlat": 42.236451,
+        "maxlon": -111.403283
+      },
+      "nodes": [
+        7122970485,
+        7122968066,
+        7122969560,
+        7122971217,
+        7122970485
+      ],
+      "geometry": [
+        {
+          "lat": 42.236451,
+          "lon": -111.403289
+        },
+        {
+          "lat": 42.236447,
+          "lon": -111.403525
+        },
+        {
+          "lat": 42.236298,
+          "lon": -111.403519
+        },
+        {
+          "lat": 42.236303,
+          "lon": -111.403283
+        },
+        {
+          "lat": 42.236451,
+          "lon": -111.403289
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315730,
+      "bounds": {
+        "minlat": 42.230835,
+        "minlon": -111.404355,
+        "maxlat": 42.230978,
+        "maxlon": -111.404272
+      },
+      "nodes": [
+        7122967441,
+        7122969092,
+        7122970593,
+        7122967685,
+        7122967441
+      ],
+      "geometry": [
+        {
+          "lat": 42.230835,
+          "lon": -111.404355
+        },
+        {
+          "lat": 42.230835,
+          "lon": -111.404272
+        },
+        {
+          "lat": 42.230978,
+          "lon": -111.404272
+        },
+        {
+          "lat": 42.230978,
+          "lon": -111.404355
+        },
+        {
+          "lat": 42.230835,
+          "lon": -111.404355
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315731,
+      "bounds": {
+        "minlat": 42.230831,
+        "minlon": -111.396609,
+        "maxlat": 42.230946,
+        "maxlon": -111.396469
+      },
+      "nodes": [
+        7122969076,
+        7122970195,
+        7122970836,
+        7122968019,
+        7122969076
+      ],
+      "geometry": [
+        {
+          "lat": 42.230946,
+          "lon": -111.396609
+        },
+        {
+          "lat": 42.230855,
+          "lon": -111.396609
+        },
+        {
+          "lat": 42.230831,
+          "lon": -111.396469
+        },
+        {
+          "lat": 42.230946,
+          "lon": -111.396469
+        },
+        {
+          "lat": 42.230946,
+          "lon": -111.396609
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315739,
+      "bounds": {
+        "minlat": 42.231349,
+        "minlon": -111.395986,
+        "maxlat": 42.231437,
+        "maxlon": -111.395732
+      },
+      "nodes": [
+        7122967454,
+        7122969109,
+        7122970220,
+        7122967702,
+        7122967454
+      ],
+      "geometry": [
+        {
+          "lat": 42.231435,
+          "lon": -111.395732
+        },
+        {
+          "lat": 42.231437,
+          "lon": -111.395984
+        },
+        {
+          "lat": 42.231351,
+          "lon": -111.395986
+        },
+        {
+          "lat": 42.231349,
+          "lon": -111.395733
+        },
+        {
+          "lat": 42.231435,
+          "lon": -111.395732
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315740,
+      "bounds": {
+        "minlat": 42.237644,
+        "minlon": -111.400652,
+        "maxlat": 42.237841,
+        "maxlon": -111.400477
+      },
+      "nodes": [
+        7122968102,
+        7122969595,
+        7122971257,
+        7122967231,
+        7122969892,
+        7122971519,
+        7122969028,
+        7122970149,
+        7122968102
+      ],
+      "geometry": [
+        {
+          "lat": 42.237737,
+          "lon": -111.400516
+        },
+        {
+          "lat": 42.237839,
+          "lon": -111.400514
+        },
+        {
+          "lat": 42.237841,
+          "lon": -111.40065
+        },
+        {
+          "lat": 42.237781,
+          "lon": -111.400652
+        },
+        {
+          "lat": 42.23778,
+          "lon": -111.400613
+        },
+        {
+          "lat": 42.237646,
+          "lon": -111.400616
+        },
+        {
+          "lat": 42.237644,
+          "lon": -111.400479
+        },
+        {
+          "lat": 42.237737,
+          "lon": -111.400477
+        },
+        {
+          "lat": 42.237737,
+          "lon": -111.400516
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315744,
+      "bounds": {
+        "minlat": 42.239263,
+        "minlon": -111.400262,
+        "maxlat": 42.239376,
+        "maxlon": -111.400195
+      },
+      "nodes": [
+        7122969325,
+        7122970828,
+        7122968012,
+        7122969506,
+        7122969325
+      ],
+      "geometry": [
+        {
+          "lat": 42.239376,
+          "lon": -111.400195
+        },
+        {
+          "lat": 42.239376,
+          "lon": -111.400262
+        },
+        {
+          "lat": 42.239263,
+          "lon": -111.400262
+        },
+        {
+          "lat": 42.239263,
+          "lon": -111.400195
+        },
+        {
+          "lat": 42.239376,
+          "lon": -111.400195
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315752,
+      "bounds": {
+        "minlat": 42.231359,
+        "minlon": -111.398446,
+        "maxlat": 42.23149,
+        "maxlon": -111.39832
+      },
+      "nodes": [
+        7122970742,
+        7122967926,
+        7122969418,
+        7122971078,
+        7122970742
+      ],
+      "geometry": [
+        {
+          "lat": 42.23149,
+          "lon": -111.398446
+        },
+        {
+          "lat": 42.231359,
+          "lon": -111.398446
+        },
+        {
+          "lat": 42.231359,
+          "lon": -111.39832
+        },
+        {
+          "lat": 42.23149,
+          "lon": -111.39832
+        },
+        {
+          "lat": 42.23149,
+          "lon": -111.398446
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315755,
+      "bounds": {
+        "minlat": 42.228579,
+        "minlon": -111.399919,
+        "maxlat": 42.228805,
+        "maxlon": -111.399761
+      },
+      "nodes": [
+        7122968331,
+        7122969813,
+        7122971492,
+        7122968566,
+        7122968331
+      ],
+      "geometry": [
+        {
+          "lat": 42.228805,
+          "lon": -111.399761
+        },
+        {
+          "lat": 42.228805,
+          "lon": -111.399919
+        },
+        {
+          "lat": 42.228579,
+          "lon": -111.399919
+        },
+        {
+          "lat": 42.228579,
+          "lon": -111.399761
+        },
+        {
+          "lat": 42.228805,
+          "lon": -111.399761
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315757,
+      "bounds": {
+        "minlat": 42.228629,
+        "minlon": -111.404788,
+        "maxlat": 42.228766,
+        "maxlon": -111.404594
+      },
+      "nodes": [
+        7122969692,
+        7122963961,
+        7122968424,
+        7122969976,
+        7122967460,
+        7122968674,
+        7122969692
+      ],
+      "geometry": [
+        {
+          "lat": 42.228766,
+          "lon": -111.404595
+        },
+        {
+          "lat": 42.228765,
+          "lon": -111.404735
+        },
+        {
+          "lat": 42.228723,
+          "lon": -111.404734
+        },
+        {
+          "lat": 42.228723,
+          "lon": -111.404788
+        },
+        {
+          "lat": 42.228629,
+          "lon": -111.404787
+        },
+        {
+          "lat": 42.22863,
+          "lon": -111.404594
+        },
+        {
+          "lat": 42.228766,
+          "lon": -111.404595
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315765,
+      "bounds": {
+        "minlat": 42.230529,
+        "minlon": -111.40362,
+        "maxlat": 42.230625,
+        "maxlon": -111.40347
+      },
+      "nodes": [
+        7122969206,
+        7122970703,
+        7122968280,
+        7122969763,
+        7122969206
+      ],
+      "geometry": [
+        {
+          "lat": 42.230625,
+          "lon": -111.4035
+        },
+        {
+          "lat": 42.230625,
+          "lon": -111.40362
+        },
+        {
+          "lat": 42.230529,
+          "lon": -111.40362
+        },
+        {
+          "lat": 42.230529,
+          "lon": -111.40347
+        },
+        {
+          "lat": 42.230625,
+          "lon": -111.4035
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315771,
+      "bounds": {
+        "minlat": 42.231622,
+        "minlon": -111.406576,
+        "maxlat": 42.231661,
+        "maxlon": -111.406479
+      },
+      "nodes": [
+        7122969734,
+        7122971387,
+        7122968475,
+        7122970032,
+        7122969734
+      ],
+      "geometry": [
+        {
+          "lat": 42.231661,
+          "lon": -111.406479
+        },
+        {
+          "lat": 42.231661,
+          "lon": -111.406576
+        },
+        {
+          "lat": 42.231622,
+          "lon": -111.406576
+        },
+        {
+          "lat": 42.231622,
+          "lon": -111.406479
+        },
+        {
+          "lat": 42.231661,
+          "lon": -111.406479
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315802,
+      "bounds": {
+        "minlat": 42.228686,
+        "minlon": -111.403061,
+        "maxlat": 42.228787,
+        "maxlon": -111.402955
+      },
+      "nodes": [
+        7122968506,
+        7122969630,
+        7122971295,
+        7122971561,
+        7122968506
+      ],
+      "geometry": [
+        {
+          "lat": 42.228686,
+          "lon": -111.402955
+        },
+        {
+          "lat": 42.228787,
+          "lon": -111.402955
+        },
+        {
+          "lat": 42.228787,
+          "lon": -111.403044
+        },
+        {
+          "lat": 42.228686,
+          "lon": -111.403061
+        },
+        {
+          "lat": 42.228686,
+          "lon": -111.402955
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315805,
+      "bounds": {
+        "minlat": 42.229254,
+        "minlon": -111.39784,
+        "maxlat": 42.229367,
+        "maxlon": -111.39769
+      },
+      "nodes": [
+        7122969600,
+        7122971265,
+        7122968727,
+        7122969899,
+        7122969600
+      ],
+      "geometry": [
+        {
+          "lat": 42.229367,
+          "lon": -111.39769
+        },
+        {
+          "lat": 42.229367,
+          "lon": -111.39784
+        },
+        {
+          "lat": 42.229254,
+          "lon": -111.39784
+        },
+        {
+          "lat": 42.229254,
+          "lon": -111.39769
+        },
+        {
+          "lat": 42.229367,
+          "lon": -111.39769
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315810,
+      "bounds": {
+        "minlat": 42.230159,
+        "minlon": -111.401527,
+        "maxlat": 42.230296,
+        "maxlon": -111.401258
+      },
+      "nodes": [
+        7122970106,
+        7122970340,
+        7122970592,
+        7122968172,
+        7122970857,
+        7122968402,
+        7122969957,
+        7122970106
+      ],
+      "geometry": [
+        {
+          "lat": 42.230274,
+          "lon": -111.401258
+        },
+        {
+          "lat": 42.230296,
+          "lon": -111.401481
+        },
+        {
+          "lat": 42.230231,
+          "lon": -111.401527
+        },
+        {
+          "lat": 42.230231,
+          "lon": -111.401403
+        },
+        {
+          "lat": 42.230159,
+          "lon": -111.401366
+        },
+        {
+          "lat": 42.230211,
+          "lon": -111.401366
+        },
+        {
+          "lat": 42.23021,
+          "lon": -111.401259
+        },
+        {
+          "lat": 42.230274,
+          "lon": -111.401258
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315814,
+      "bounds": {
+        "minlat": 42.231369,
+        "minlon": -111.39636,
+        "maxlat": 42.231469,
+        "maxlon": -111.396236
+      },
+      "nodes": [
+        7122968065,
+        7122969557,
+        7122971213,
+        7122971530,
+        7122968065
+      ],
+      "geometry": [
+        {
+          "lat": 42.231469,
+          "lon": -111.396263
+        },
+        {
+          "lat": 42.231469,
+          "lon": -111.39636
+        },
+        {
+          "lat": 42.231369,
+          "lon": -111.39636
+        },
+        {
+          "lat": 42.231369,
+          "lon": -111.396236
+        },
+        {
+          "lat": 42.231469,
+          "lon": -111.396263
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315815,
+      "bounds": {
+        "minlat": 42.231858,
+        "minlon": -111.401493,
+        "maxlat": 42.232076,
+        "maxlon": -111.401429
+      },
+      "nodes": [
+        7122969024,
+        7122970517,
+        7122968099,
+        7122969276,
+        7122969024
+      ],
+      "geometry": [
+        {
+          "lat": 42.231858,
+          "lon": -111.401429
+        },
+        {
+          "lat": 42.232076,
+          "lon": -111.401429
+        },
+        {
+          "lat": 42.232076,
+          "lon": -111.401493
+        },
+        {
+          "lat": 42.231858,
+          "lon": -111.401493
+        },
+        {
+          "lat": 42.231858,
+          "lon": -111.401429
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315816,
+      "bounds": {
+        "minlat": 42.228633,
+        "minlon": -111.398426,
+        "maxlat": 42.228848,
+        "maxlon": -111.398253
+      },
+      "nodes": [
+        7122967898,
+        7122969393,
+        7122971046,
+        7122968514,
+        7122969638,
+        7122971303,
+        7122968761,
+        7122970319,
+        7122967898
+      ],
+      "geometry": [
+        {
+          "lat": 42.22872,
+          "lon": -111.398426
+        },
+        {
+          "lat": 42.22872,
+          "lon": -111.398367
+        },
+        {
+          "lat": 42.228633,
+          "lon": -111.398367
+        },
+        {
+          "lat": 42.228633,
+          "lon": -111.398254
+        },
+        {
+          "lat": 42.228719,
+          "lon": -111.398253
+        },
+        {
+          "lat": 42.228719,
+          "lon": -111.398328
+        },
+        {
+          "lat": 42.228847,
+          "lon": -111.398328
+        },
+        {
+          "lat": 42.228848,
+          "lon": -111.398426
+        },
+        {
+          "lat": 42.22872,
+          "lon": -111.398426
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315819,
+      "bounds": {
+        "minlat": 42.231423,
+        "minlon": -111.40373,
+        "maxlat": 42.23161,
+        "maxlon": -111.403443
+      },
+      "nodes": [
+        7122969573,
+        7122969807,
+        7122971488,
+        7122968993,
+        7122970497,
+        7122967598,
+        7122969573
+      ],
+      "geometry": [
+        {
+          "lat": 42.231449,
+          "lon": -111.403443
+        },
+        {
+          "lat": 42.23161,
+          "lon": -111.403505
+        },
+        {
+          "lat": 42.23161,
+          "lon": -111.403601
+        },
+        {
+          "lat": 42.231532,
+          "lon": -111.403601
+        },
+        {
+          "lat": 42.231532,
+          "lon": -111.40373
+        },
+        {
+          "lat": 42.231423,
+          "lon": -111.40373
+        },
+        {
+          "lat": 42.231449,
+          "lon": -111.403443
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315827,
+      "bounds": {
+        "minlat": 42.2295563,
+        "minlon": -111.4059242,
+        "maxlat": 42.2296433,
+        "maxlon": -111.4057092
+      },
+      "nodes": [
+        7122971376,
+        7122968896,
+        7122970403,
+        7122967500,
+        7122971376
+      ],
+      "geometry": [
+        {
+          "lat": 42.2295563,
+          "lon": -111.4059242
+        },
+        {
+          "lat": 42.2295563,
+          "lon": -111.4057092
+        },
+        {
+          "lat": 42.2296433,
+          "lon": -111.4057092
+        },
+        {
+          "lat": 42.2296433,
+          "lon": -111.4059242
+        },
+        {
+          "lat": 42.2295563,
+          "lon": -111.4059242
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315830,
+      "bounds": {
+        "minlat": 42.231635,
+        "minlon": -111.403269,
+        "maxlat": 42.231707,
+        "maxlon": -111.403186
+      },
+      "nodes": [
+        7122971355,
+        7122968818,
+        7122969995,
+        7122967474,
+        7122971355
+      ],
+      "geometry": [
+        {
+          "lat": 42.231707,
+          "lon": -111.403186
+        },
+        {
+          "lat": 42.231707,
+          "lon": -111.403269
+        },
+        {
+          "lat": 42.231635,
+          "lon": -111.403269
+        },
+        {
+          "lat": 42.231635,
+          "lon": -111.403186
+        },
+        {
+          "lat": 42.231707,
+          "lon": -111.403186
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315834,
+      "bounds": {
+        "minlat": 42.230861,
+        "minlon": -111.401512,
+        "maxlat": 42.230948,
+        "maxlon": -111.401351
+      },
+      "nodes": [
+        7122968003,
+        7122969499,
+        7122971162,
+        7122968631,
+        7122968003
+      ],
+      "geometry": [
+        {
+          "lat": 42.230948,
+          "lon": -111.401351
+        },
+        {
+          "lat": 42.230948,
+          "lon": -111.401512
+        },
+        {
+          "lat": 42.230861,
+          "lon": -111.401512
+        },
+        {
+          "lat": 42.230861,
+          "lon": -111.401351
+        },
+        {
+          "lat": 42.230948,
+          "lon": -111.401351
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315836,
+      "bounds": {
+        "minlat": 42.230488,
+        "minlon": -111.399329,
+        "maxlat": 42.230551,
+        "maxlon": -111.39924
+      },
+      "nodes": [
+        7122963965,
+        7122968427,
+        7122969978,
+        7122967462,
+        7122963965
+      ],
+      "geometry": [
+        {
+          "lat": 42.230488,
+          "lon": -111.399329
+        },
+        {
+          "lat": 42.230488,
+          "lon": -111.39924
+        },
+        {
+          "lat": 42.230551,
+          "lon": -111.39924
+        },
+        {
+          "lat": 42.230551,
+          "lon": -111.399329
+        },
+        {
+          "lat": 42.230488,
+          "lon": -111.399329
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315842,
+      "bounds": {
+        "minlat": 42.230505,
+        "minlon": -111.400158,
+        "maxlat": 42.230583,
+        "maxlon": -111.399959
+      },
+      "nodes": [
+        7122968643,
+        7122970194,
+        7122967671,
+        7122968933,
+        7122968643
+      ],
+      "geometry": [
+        {
+          "lat": 42.230505,
+          "lon": -111.400158
+        },
+        {
+          "lat": 42.230505,
+          "lon": -111.399959
+        },
+        {
+          "lat": 42.230583,
+          "lon": -111.399959
+        },
+        {
+          "lat": 42.230583,
+          "lon": -111.400158
+        },
+        {
+          "lat": 42.230505,
+          "lon": -111.400158
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315846,
+      "bounds": {
+        "minlat": 42.229303,
+        "minlon": -111.399483,
+        "maxlat": 42.229457,
+        "maxlon": -111.399253
+      },
+      "nodes": [
+        7122967635,
+        7122969298,
+        7122969484,
+        7122971143,
+        7122968247,
+        7122969727,
+        7122967635
+      ],
+      "geometry": [
+        {
+          "lat": 42.229456,
+          "lon": -111.399253
+        },
+        {
+          "lat": 42.229457,
+          "lon": -111.39942
+        },
+        {
+          "lat": 42.229354,
+          "lon": -111.399483
+        },
+        {
+          "lat": 42.229354,
+          "lon": -111.399432
+        },
+        {
+          "lat": 42.229304,
+          "lon": -111.399432
+        },
+        {
+          "lat": 42.229303,
+          "lon": -111.399254
+        },
+        {
+          "lat": 42.229456,
+          "lon": -111.399253
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315849,
+      "bounds": {
+        "minlat": 42.228433,
+        "minlon": -111.398512,
+        "maxlat": 42.228611,
+        "maxlon": -111.398392
+      },
+      "nodes": [
+        7122971191,
+        7122968292,
+        7122969778,
+        7122971430,
+        7122971191
+      ],
+      "geometry": [
+        {
+          "lat": 42.228611,
+          "lon": -111.398394
+        },
+        {
+          "lat": 42.22861,
+          "lon": -111.398512
+        },
+        {
+          "lat": 42.228433,
+          "lon": -111.39851
+        },
+        {
+          "lat": 42.228433,
+          "lon": -111.398392
+        },
+        {
+          "lat": 42.228611,
+          "lon": -111.398394
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315850,
+      "bounds": {
+        "minlat": 42.230833,
+        "minlon": -111.408338,
+        "maxlat": 42.230938,
+        "maxlon": -111.408212
+      },
+      "nodes": [
+        7122971273,
+        7122968735,
+        7122969905,
+        7122971537,
+        7122971273
+      ],
+      "geometry": [
+        {
+          "lat": 42.230833,
+          "lon": -111.408212
+        },
+        {
+          "lat": 42.230938,
+          "lon": -111.408212
+        },
+        {
+          "lat": 42.230938,
+          "lon": -111.408338
+        },
+        {
+          "lat": 42.230833,
+          "lon": -111.408338
+        },
+        {
+          "lat": 42.230833,
+          "lon": -111.408212
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315853,
+      "bounds": {
+        "minlat": 42.229296,
+        "minlon": -111.402298,
+        "maxlat": 42.229441,
+        "maxlon": -111.402191
+      },
+      "nodes": [
+        7122969442,
+        7122971105,
+        7122968571,
+        7122969696,
+        7122969442
+      ],
+      "geometry": [
+        {
+          "lat": 42.229296,
+          "lon": -111.402191
+        },
+        {
+          "lat": 42.229441,
+          "lon": -111.402191
+        },
+        {
+          "lat": 42.229441,
+          "lon": -111.402298
+        },
+        {
+          "lat": 42.229296,
+          "lon": -111.402298
+        },
+        {
+          "lat": 42.229296,
+          "lon": -111.402191
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315861,
+      "bounds": {
+        "minlat": 42.231433,
+        "minlon": -111.404902,
+        "maxlat": 42.231522,
+        "maxlon": -111.40465
+      },
+      "nodes": [
+        7122970302,
+        7122966780,
+        7122963872,
+        7122970550,
+        7122970302
+      ],
+      "geometry": [
+        {
+          "lat": 42.231433,
+          "lon": -111.404902
+        },
+        {
+          "lat": 42.231433,
+          "lon": -111.40465
+        },
+        {
+          "lat": 42.231522,
+          "lon": -111.40465
+        },
+        {
+          "lat": 42.231522,
+          "lon": -111.404902
+        },
+        {
+          "lat": 42.231433,
+          "lon": -111.404902
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315863,
+      "bounds": {
+        "minlat": 42.236066,
+        "minlon": -111.401662,
+        "maxlat": 42.236128,
+        "maxlon": -111.401542
+      },
+      "nodes": [
+        7122963883,
+        7122971034,
+        7122968135,
+        7122969628,
+        7122963883
+      ],
+      "geometry": [
+        {
+          "lat": 42.236066,
+          "lon": -111.401662
+        },
+        {
+          "lat": 42.236066,
+          "lon": -111.401542
+        },
+        {
+          "lat": 42.236128,
+          "lon": -111.401542
+        },
+        {
+          "lat": 42.236128,
+          "lon": -111.401662
+        },
+        {
+          "lat": 42.236066,
+          "lon": -111.401662
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315864,
+      "bounds": {
+        "minlat": 42.231418,
+        "minlon": -111.402397,
+        "maxlat": 42.231559,
+        "maxlon": -111.402225
+      },
+      "nodes": [
+        7122970856,
+        7122968034,
+        7122969530,
+        7122969771,
+        7122971422,
+        7122968951,
+        7122970856
+      ],
+      "geometry": [
+        {
+          "lat": 42.231505,
+          "lon": -111.402271
+        },
+        {
+          "lat": 42.231505,
+          "lon": -111.402225
+        },
+        {
+          "lat": 42.231559,
+          "lon": -111.402225
+        },
+        {
+          "lat": 42.231541,
+          "lon": -111.402397
+        },
+        {
+          "lat": 42.231418,
+          "lon": -111.402397
+        },
+        {
+          "lat": 42.231418,
+          "lon": -111.402271
+        },
+        {
+          "lat": 42.231505,
+          "lon": -111.402271
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315873,
+      "bounds": {
+        "minlat": 42.228652,
+        "minlon": -111.401792,
+        "maxlat": 42.228816,
+        "maxlon": -111.401569
+      },
+      "nodes": [
+        7122970805,
+        7122967251,
+        7122969485,
+        7122971145,
+        7122968611,
+        7122970166,
+        7122971378,
+        7122968899,
+        7122970805
+      ],
+      "geometry": [
+        {
+          "lat": 42.228723,
+          "lon": -111.401791
+        },
+        {
+          "lat": 42.228724,
+          "lon": -111.401713
+        },
+        {
+          "lat": 42.228652,
+          "lon": -111.401712
+        },
+        {
+          "lat": 42.228653,
+          "lon": -111.401621
+        },
+        {
+          "lat": 42.228762,
+          "lon": -111.401622
+        },
+        {
+          "lat": 42.228763,
+          "lon": -111.401569
+        },
+        {
+          "lat": 42.228816,
+          "lon": -111.401569
+        },
+        {
+          "lat": 42.228814,
+          "lon": -111.401792
+        },
+        {
+          "lat": 42.228723,
+          "lon": -111.401791
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315874,
+      "bounds": {
+        "minlat": 42.238789,
+        "minlon": -111.401719,
+        "maxlat": 42.238832,
+        "maxlon": -111.401633
+      },
+      "nodes": [
+        7122970279,
+        7122966764,
+        7122968156,
+        7122969652,
+        7122970279
+      ],
+      "geometry": [
+        {
+          "lat": 42.238789,
+          "lon": -111.401633
+        },
+        {
+          "lat": 42.238832,
+          "lon": -111.401633
+        },
+        {
+          "lat": 42.238832,
+          "lon": -111.401719
+        },
+        {
+          "lat": 42.238789,
+          "lon": -111.401719
+        },
+        {
+          "lat": 42.238789,
+          "lon": -111.401633
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315878,
+      "bounds": {
+        "minlat": 42.2302077,
+        "minlon": -111.3994319,
+        "maxlat": 42.2303178,
+        "maxlon": -111.3991686
+      },
+      "nodes": [
+        7122969280,
+        7122959484,
+        7122967963,
+        7122968221,
+        7122969280
+      ],
+      "geometry": [
+        {
+          "lat": 42.2303177,
+          "lon": -111.3991686
+        },
+        {
+          "lat": 42.2303178,
+          "lon": -111.3994318
+        },
+        {
+          "lat": 42.2302078,
+          "lon": -111.3994319
+        },
+        {
+          "lat": 42.2302077,
+          "lon": -111.3991687
+        },
+        {
+          "lat": 42.2303177,
+          "lon": -111.3991686
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315880,
+      "bounds": {
+        "minlat": 42.229314,
+        "minlon": -111.397634,
+        "maxlat": 42.229443,
+        "maxlon": -111.397454
+      },
+      "nodes": [
+        7122969460,
+        7122971118,
+        7122968588,
+        7122969709,
+        7122971360,
+        7122968822,
+        7122969460
+      ],
+      "geometry": [
+        {
+          "lat": 42.229443,
+          "lon": -111.397634
+        },
+        {
+          "lat": 42.229314,
+          "lon": -111.397634
+        },
+        {
+          "lat": 42.229314,
+          "lon": -111.397497
+        },
+        {
+          "lat": 42.229367,
+          "lon": -111.397497
+        },
+        {
+          "lat": 42.229367,
+          "lon": -111.397454
+        },
+        {
+          "lat": 42.229443,
+          "lon": -111.397454
+        },
+        {
+          "lat": 42.229443,
+          "lon": -111.397634
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315882,
+      "bounds": {
+        "minlat": 42.229296,
+        "minlon": -111.399839,
+        "maxlat": 42.229451,
+        "maxlon": -111.399585
+      },
+      "nodes": [
+        7122969315,
+        7122970419,
+        7122968006,
+        7122969501,
+        7122969315
+      ],
+      "geometry": [
+        {
+          "lat": 42.229451,
+          "lon": -111.399585
+        },
+        {
+          "lat": 42.229451,
+          "lon": -111.399839
+        },
+        {
+          "lat": 42.229296,
+          "lon": -111.399839
+        },
+        {
+          "lat": 42.229296,
+          "lon": -111.399586
+        },
+        {
+          "lat": 42.229451,
+          "lon": -111.399585
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315883,
+      "bounds": {
+        "minlat": 42.229806,
+        "minlon": -111.39861,
+        "maxlat": 42.22988,
+        "maxlon": -111.398457
+      },
+      "nodes": [
+        7122969367,
+        7122970472,
+        7122968054,
+        7122969543,
+        7122969367
+      ],
+      "geometry": [
+        {
+          "lat": 42.229806,
+          "lon": -111.398457
+        },
+        {
+          "lat": 42.22988,
+          "lon": -111.398457
+        },
+        {
+          "lat": 42.22988,
+          "lon": -111.39861
+        },
+        {
+          "lat": 42.229806,
+          "lon": -111.39861
+        },
+        {
+          "lat": 42.229806,
+          "lon": -111.398457
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315889,
+      "bounds": {
+        "minlat": 42.230814,
+        "minlon": -111.405864,
+        "maxlat": 42.23096,
+        "maxlon": -111.405652
+      },
+      "nodes": [
+        7122969234,
+        7122970733,
+        7122967915,
+        7122969410,
+        7122971070,
+        7122968542,
+        7122969234
+      ],
+      "geometry": [
+        {
+          "lat": 42.230959,
+          "lon": -111.405652
+        },
+        {
+          "lat": 42.23096,
+          "lon": -111.405864
+        },
+        {
+          "lat": 42.230881,
+          "lon": -111.405864
+        },
+        {
+          "lat": 42.23088,
+          "lon": -111.405757
+        },
+        {
+          "lat": 42.230815,
+          "lon": -111.405758
+        },
+        {
+          "lat": 42.230814,
+          "lon": -111.40568
+        },
+        {
+          "lat": 42.230959,
+          "lon": -111.405652
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315892,
+      "bounds": {
+        "minlat": 42.229651,
+        "minlon": -111.402188,
+        "maxlat": 42.229723,
+        "maxlon": -111.402081
+      },
+      "nodes": [
+        7122968473,
+        7122970030,
+        7122967511,
+        7122969171,
+        7122968473
+      ],
+      "geometry": [
+        {
+          "lat": 42.229651,
+          "lon": -111.402081
+        },
+        {
+          "lat": 42.229723,
+          "lon": -111.402081
+        },
+        {
+          "lat": 42.229723,
+          "lon": -111.402188
+        },
+        {
+          "lat": 42.229651,
+          "lon": -111.402188
+        },
+        {
+          "lat": 42.229651,
+          "lon": -111.402081
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315898,
+      "bounds": {
+        "minlat": 42.229945,
+        "minlon": -111.403644,
+        "maxlat": 42.230134,
+        "maxlon": -111.403532
+      },
+      "nodes": [
+        7122970739,
+        7122968312,
+        7122969797,
+        7122971077,
+        7122970739
+      ],
+      "geometry": [
+        {
+          "lat": 42.229945,
+          "lon": -111.403532
+        },
+        {
+          "lat": 42.230134,
+          "lon": -111.403532
+        },
+        {
+          "lat": 42.230134,
+          "lon": -111.403644
+        },
+        {
+          "lat": 42.229945,
+          "lon": -111.403644
+        },
+        {
+          "lat": 42.229945,
+          "lon": -111.403532
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315901,
+      "bounds": {
+        "minlat": 42.229274,
+        "minlon": -111.402631,
+        "maxlat": 42.229401,
+        "maxlon": -111.402515
+      },
+      "nodes": [
+        7122968547,
+        7122970107,
+        7122967583,
+        7122969238,
+        7122968547
+      ],
+      "geometry": [
+        {
+          "lat": 42.229274,
+          "lon": -111.402631
+        },
+        {
+          "lat": 42.229274,
+          "lon": -111.402515
+        },
+        {
+          "lat": 42.229401,
+          "lon": -111.402515
+        },
+        {
+          "lat": 42.229401,
+          "lon": -111.402631
+        },
+        {
+          "lat": 42.229274,
+          "lon": -111.402631
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315903,
+      "bounds": {
+        "minlat": 42.230897,
+        "minlon": -111.405959,
+        "maxlat": 42.230962,
+        "maxlon": -111.405895
+      },
+      "nodes": [
+        7122969334,
+        7122970840,
+        7122967280,
+        7122969515,
+        7122969334
+      ],
+      "geometry": [
+        {
+          "lat": 42.230897,
+          "lon": -111.405959
+        },
+        {
+          "lat": 42.230897,
+          "lon": -111.405895
+        },
+        {
+          "lat": 42.230962,
+          "lon": -111.405895
+        },
+        {
+          "lat": 42.230962,
+          "lon": -111.405959
+        },
+        {
+          "lat": 42.230897,
+          "lon": -111.405959
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315906,
+      "bounds": {
+        "minlat": 42.229512,
+        "minlon": -111.399071,
+        "maxlat": 42.229576,
+        "maxlon": -111.398961
+      },
+      "nodes": [
+        7122968531,
+        7122969658,
+        7122971319,
+        7122968779,
+        7122968531
+      ],
+      "geometry": [
+        {
+          "lat": 42.229512,
+          "lon": -111.398961
+        },
+        {
+          "lat": 42.229576,
+          "lon": -111.398961
+        },
+        {
+          "lat": 42.229576,
+          "lon": -111.399071
+        },
+        {
+          "lat": 42.229512,
+          "lon": -111.399071
+        },
+        {
+          "lat": 42.229512,
+          "lon": -111.398961
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315912,
+      "bounds": {
+        "minlat": 42.23776,
+        "minlon": -111.401606,
+        "maxlat": 42.237871,
+        "maxlon": -111.401305
+      },
+      "nodes": [
+        7122968505,
+        7122970068,
+        7122971294,
+        7122968755,
+        7122968505
+      ],
+      "geometry": [
+        {
+          "lat": 42.23776,
+          "lon": -111.401305
+        },
+        {
+          "lat": 42.237871,
+          "lon": -111.401305
+        },
+        {
+          "lat": 42.237871,
+          "lon": -111.401606
+        },
+        {
+          "lat": 42.237784,
+          "lon": -111.401606
+        },
+        {
+          "lat": 42.23776,
+          "lon": -111.401305
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315918,
+      "bounds": {
+        "minlat": 42.230883,
+        "minlon": -111.398505,
+        "maxlat": 42.231008,
+        "maxlon": -111.398312
+      },
+      "nodes": [
+        7122968169,
+        7122969350,
+        7122969951,
+        7122971184,
+        7122968169
+      ],
+      "geometry": [
+        {
+          "lat": 42.231005,
+          "lon": -111.398505
+        },
+        {
+          "lat": 42.230892,
+          "lon": -111.398503
+        },
+        {
+          "lat": 42.230883,
+          "lon": -111.398312
+        },
+        {
+          "lat": 42.231008,
+          "lon": -111.398315
+        },
+        {
+          "lat": 42.231005,
+          "lon": -111.398505
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315927,
+      "bounds": {
+        "minlat": 42.238459,
+        "minlon": -111.401756,
+        "maxlat": 42.238738,
+        "maxlon": -111.401477
+      },
+      "nodes": [
+        7122968552,
+        7122970113,
+        7122967590,
+        7122969245,
+        7122969475,
+        7122971135,
+        7122968552
+      ],
+      "geometry": [
+        {
+          "lat": 42.238462,
+          "lon": -111.401658
+        },
+        {
+          "lat": 42.238634,
+          "lon": -111.401669
+        },
+        {
+          "lat": 42.238641,
+          "lon": -111.401477
+        },
+        {
+          "lat": 42.238738,
+          "lon": -111.401483
+        },
+        {
+          "lat": 42.238729,
+          "lon": -111.401756
+        },
+        {
+          "lat": 42.238459,
+          "lon": -111.401738
+        },
+        {
+          "lat": 42.238462,
+          "lon": -111.401658
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315931,
+      "bounds": {
+        "minlat": 42.229651,
+        "minlon": -111.40145,
+        "maxlat": 42.229816,
+        "maxlon": -111.401276
+      },
+      "nodes": [
+        7122968023,
+        7122969201,
+        7122970695,
+        7122968275,
+        7122968023
+      ],
+      "geometry": [
+        {
+          "lat": 42.229651,
+          "lon": -111.401415
+        },
+        {
+          "lat": 42.229651,
+          "lon": -111.401276
+        },
+        {
+          "lat": 42.229816,
+          "lon": -111.401276
+        },
+        {
+          "lat": 42.229816,
+          "lon": -111.40145
+        },
+        {
+          "lat": 42.229651,
+          "lon": -111.401415
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315940,
+      "bounds": {
+        "minlat": 42.231363,
+        "minlon": -111.400131,
+        "maxlat": 42.231453,
+        "maxlon": -111.399868
+      },
+      "nodes": [
+        7122967645,
+        7122969306,
+        7122970812,
+        7122971194,
+        7122967645
+      ],
+      "geometry": [
+        {
+          "lat": 42.231363,
+          "lon": -111.400131
+        },
+        {
+          "lat": 42.231363,
+          "lon": -111.399868
+        },
+        {
+          "lat": 42.231453,
+          "lon": -111.399868
+        },
+        {
+          "lat": 42.231453,
+          "lon": -111.400131
+        },
+        {
+          "lat": 42.231363,
+          "lon": -111.400131
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315941,
+      "bounds": {
+        "minlat": 42.229276,
+        "minlon": -111.403529,
+        "maxlat": 42.229436,
+        "maxlon": -111.403289
+      },
+      "nodes": [
+        7122970519,
+        7122967616,
+        7122969278,
+        7122970780,
+        7122967228,
+        7122969461,
+        7122970519
+      ],
+      "geometry": [
+        {
+          "lat": 42.229354,
+          "lon": -111.403429
+        },
+        {
+          "lat": 42.229353,
+          "lon": -111.403289
+        },
+        {
+          "lat": 42.229435,
+          "lon": -111.403289
+        },
+        {
+          "lat": 42.229436,
+          "lon": -111.403528
+        },
+        {
+          "lat": 42.229277,
+          "lon": -111.403529
+        },
+        {
+          "lat": 42.229276,
+          "lon": -111.403429
+        },
+        {
+          "lat": 42.229354,
+          "lon": -111.403429
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315942,
+      "bounds": {
+        "minlat": 42.230841,
+        "minlon": -111.396215,
+        "maxlat": 42.23097,
+        "maxlon": -111.396099
+      },
+      "nodes": [
+        7122970595,
+        7122968174,
+        7122969356,
+        7122970861,
+        7122970595
+      ],
+      "geometry": [
+        {
+          "lat": 42.23097,
+          "lon": -111.396099
+        },
+        {
+          "lat": 42.23097,
+          "lon": -111.396215
+        },
+        {
+          "lat": 42.230841,
+          "lon": -111.396215
+        },
+        {
+          "lat": 42.230841,
+          "lon": -111.396099
+        },
+        {
+          "lat": 42.23097,
+          "lon": -111.396099
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315944,
+      "bounds": {
+        "minlat": 42.231454,
+        "minlon": -111.403205,
+        "maxlat": 42.231565,
+        "maxlon": -111.402963
+      },
+      "nodes": [
+        7122971508,
+        7122969011,
+        7122970509,
+        7122967606,
+        7122971508
+      ],
+      "geometry": [
+        {
+          "lat": 42.231546,
+          "lon": -111.403203
+        },
+        {
+          "lat": 42.231457,
+          "lon": -111.403205
+        },
+        {
+          "lat": 42.231454,
+          "lon": -111.402965
+        },
+        {
+          "lat": 42.231565,
+          "lon": -111.402963
+        },
+        {
+          "lat": 42.231546,
+          "lon": -111.403203
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315947,
+      "bounds": {
+        "minlat": 42.231473,
+        "minlon": -111.397864,
+        "maxlat": 42.231572,
+        "maxlon": -111.39755
+      },
+      "nodes": [
+        7122969255,
+        7122970756,
+        7122967939,
+        7122969435,
+        7122969255
+      ],
+      "geometry": [
+        {
+          "lat": 42.231572,
+          "lon": -111.39755
+        },
+        {
+          "lat": 42.231572,
+          "lon": -111.397864
+        },
+        {
+          "lat": 42.231473,
+          "lon": -111.397864
+        },
+        {
+          "lat": 42.231473,
+          "lon": -111.39755
+        },
+        {
+          "lat": 42.231572,
+          "lon": -111.39755
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315952,
+      "bounds": {
+        "minlat": 42.232029,
+        "minlon": -111.403172,
+        "maxlat": 42.232138,
+        "maxlon": -111.403027
+      },
+      "nodes": [
+        7122970556,
+        7122968132,
+        7122969625,
+        7122970815,
+        7122970556
+      ],
+      "geometry": [
+        {
+          "lat": 42.232138,
+          "lon": -111.403027
+        },
+        {
+          "lat": 42.232138,
+          "lon": -111.403172
+        },
+        {
+          "lat": 42.232029,
+          "lon": -111.403172
+        },
+        {
+          "lat": 42.232029,
+          "lon": -111.403027
+        },
+        {
+          "lat": 42.232138,
+          "lon": -111.403027
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315954,
+      "bounds": {
+        "minlat": 42.238924,
+        "minlon": -111.401496,
+        "maxlat": 42.239033,
+        "maxlon": -111.401319
+      },
+      "nodes": [
+        7122971513,
+        7122968583,
+        7122970142,
+        7122967612,
+        7122971513
+      ],
+      "geometry": [
+        {
+          "lat": 42.238924,
+          "lon": -111.401496
+        },
+        {
+          "lat": 42.238924,
+          "lon": -111.401319
+        },
+        {
+          "lat": 42.239033,
+          "lon": -111.401319
+        },
+        {
+          "lat": 42.239033,
+          "lon": -111.401458
+        },
+        {
+          "lat": 42.238924,
+          "lon": -111.401496
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315960,
+      "bounds": {
+        "minlat": 42.230335,
+        "minlon": -111.400372,
+        "maxlat": 42.230382,
+        "maxlon": -111.400254
+      },
+      "nodes": [
+        7122970769,
+        7122968344,
+        7122961081,
+        7122971110,
+        7122970769
+      ],
+      "geometry": [
+        {
+          "lat": 42.230382,
+          "lon": -111.400254
+        },
+        {
+          "lat": 42.230382,
+          "lon": -111.400372
+        },
+        {
+          "lat": 42.230335,
+          "lon": -111.400372
+        },
+        {
+          "lat": 42.230335,
+          "lon": -111.400254
+        },
+        {
+          "lat": 42.230382,
+          "lon": -111.400254
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315965,
+      "bounds": {
+        "minlat": 42.236579,
+        "minlon": -111.400686,
+        "maxlat": 42.236731,
+        "maxlon": -111.400227
+      },
+      "nodes": [
+        7122971349,
+        7122968811,
+        7122969176,
+        7122970677,
+        7122971349
+      ],
+      "geometry": [
+        {
+          "lat": 42.236579,
+          "lon": -111.40023
+        },
+        {
+          "lat": 42.236726,
+          "lon": -111.400227
+        },
+        {
+          "lat": 42.236731,
+          "lon": -111.400683
+        },
+        {
+          "lat": 42.236584,
+          "lon": -111.400686
+        },
+        {
+          "lat": 42.236579,
+          "lon": -111.40023
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315972,
+      "bounds": {
+        "minlat": 42.23843,
+        "minlon": -111.400617,
+        "maxlat": 42.238639,
+        "maxlon": -111.400426
+      },
+      "nodes": [
+        7122971111,
+        7122968578,
+        7122970136,
+        7122970366,
+        7122967953,
+        7122969124,
+        7122971111
+      ],
+      "geometry": [
+        {
+          "lat": 42.23855,
+          "lon": -111.400428
+        },
+        {
+          "lat": 42.238637,
+          "lon": -111.400426
+        },
+        {
+          "lat": 42.238639,
+          "lon": -111.400577
+        },
+        {
+          "lat": 42.238431,
+          "lon": -111.400617
+        },
+        {
+          "lat": 42.23843,
+          "lon": -111.400505
+        },
+        {
+          "lat": 42.238551,
+          "lon": -111.400503
+        },
+        {
+          "lat": 42.23855,
+          "lon": -111.400428
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315973,
+      "bounds": {
+        "minlat": 42.2307,
+        "minlon": -111.407174,
+        "maxlat": 42.230813,
+        "maxlon": -111.407064
+      },
+      "nodes": [
+        7122969050,
+        7122970545,
+        7122967634,
+        7122969297,
+        7122969050
+      ],
+      "geometry": [
+        {
+          "lat": 42.230813,
+          "lon": -111.407064
+        },
+        {
+          "lat": 42.230813,
+          "lon": -111.407174
+        },
+        {
+          "lat": 42.2307,
+          "lon": -111.407174
+        },
+        {
+          "lat": 42.2307,
+          "lon": -111.407064
+        },
+        {
+          "lat": 42.230813,
+          "lon": -111.407064
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315976,
+      "bounds": {
+        "minlat": 42.230746,
+        "minlon": -111.398336,
+        "maxlat": 42.230829,
+        "maxlon": -111.39824
+      },
+      "nodes": [
+        7122968788,
+        7122970338,
+        7122967917,
+        7122969090,
+        7122968788
+      ],
+      "geometry": [
+        {
+          "lat": 42.230746,
+          "lon": -111.39824
+        },
+        {
+          "lat": 42.230829,
+          "lon": -111.39824
+        },
+        {
+          "lat": 42.230829,
+          "lon": -111.398336
+        },
+        {
+          "lat": 42.230746,
+          "lon": -111.398336
+        },
+        {
+          "lat": 42.230746,
+          "lon": -111.39824
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315985,
+      "bounds": {
+        "minlat": 42.236239,
+        "minlon": -111.401477,
+        "maxlat": 42.236384,
+        "maxlon": -111.401327
+      },
+      "nodes": [
+        7122968261,
+        7122969740,
+        7122970101,
+        7122967576,
+        7122968261
+      ],
+      "geometry": [
+        {
+          "lat": 42.236384,
+          "lon": -111.401327
+        },
+        {
+          "lat": 42.236384,
+          "lon": -111.401477
+        },
+        {
+          "lat": 42.236239,
+          "lon": -111.401477
+        },
+        {
+          "lat": 42.236239,
+          "lon": -111.401327
+        },
+        {
+          "lat": 42.236384,
+          "lon": -111.401327
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 762315987,
+      "bounds": {
+        "minlat": 42.228652,
+        "minlon": -111.403687,
+        "maxlat": 42.228868,
+        "maxlon": -111.403427
+      },
+      "nodes": [
+        7122968632,
+        7122969739,
+        7122968915,
+        7122970418,
+        7122967523,
+        7122969183,
+        7122970681,
+        7122968632
+      ],
+      "geometry": [
+        {
+          "lat": 42.228652,
+          "lon": -111.403609
+        },
+        {
+          "lat": 42.228652,
+          "lon": -111.403459
+        },
+        {
+          "lat": 42.228755,
+          "lon": -111.403427
+        },
+        {
+          "lat": 42.228868,
+          "lon": -111.403427
+        },
+        {
+          "lat": 42.228868,
+          "lon": -111.403687
+        },
+        {
+          "lat": 42.228781,
+          "lon": -111.403687
+        },
+        {
+          "lat": 42.22878,
+          "lon": -111.403609
+        },
+        {
+          "lat": 42.228652,
+          "lon": -111.403609
+        }
+      ],
+      "tags": {
+        "building": "yes",
+        "source": "microsoft/BuildingFootprints"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1163055704,
+      "bounds": {
+        "minlat": 42.226898,
+        "minlon": -111.4009838,
+        "maxlat": 42.2311906,
+        "maxlon": -111.4009627
+      },
+      "nodes": [
+        126681828,
+        10820443259,
+        126622512,
+        10820443260,
+        126689710,
+        126474777,
+        126690508
+      ],
+      "geometry": [
+        {
+          "lat": 42.226898,
+          "lon": -111.400971
+        },
+        {
+          "lat": 42.2269945,
+          "lon": -111.4009716
+        },
+        {
+          "lat": 42.2287178,
+          "lon": -111.4009838
+        },
+        {
+          "lat": 42.2289342,
+          "lon": -111.400981
+        },
+        {
+          "lat": 42.2290498,
+          "lon": -111.4009802
+        },
+        {
+          "lat": 42.2298426,
+          "lon": -111.4009713
+        },
+        {
+          "lat": 42.2311906,
+          "lon": -111.4009627
+        }
+      ],
+      "tags": {
+        "NHS": "yes",
+        "cycleway": "lane",
+        "hgv": "designated",
+        "hgv:national_network": "yes",
+        "highway": "primary",
+        "lanes": "2",
+        "name": "North Main Street",
+        "ref": "US 89",
+        "source:hgv:national_network": "Title 23: Highways Part 658 http://ecfr.gpoaccess.gov/cgi/t/text/text-idx?c=ecfr&rgn=div5&view=text&node=23:1.0.1.7.33&idno=23",
+        "surface": "asphalt",
+        "tiger:cfcc": "A21",
+        "tiger:county": "Bear Lake, ID",
+        "tiger:name_base": "Main",
+        "tiger:name_base_1": "United States Highway 89",
+        "tiger:name_direction_prefix": "N",
+        "tiger:name_type": "St",
+        "tiger:reviewed": "no"
+      }
+    }
+  ],
+  "bbox": [
+    42.2286,
+    -111.4106,
+    42.2395,
+    -111.3958
+  ],
+  "centroid": [
+    42.2340495,
+    -111.40322971300566
+  ]
+}
