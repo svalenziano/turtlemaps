@@ -17,8 +17,8 @@ class SlowFetcher {
     }
     fetch(url, options) {
         return __awaiter(this, void 0, void 0, function* () {
-            let resolve;
-            let reject;
+            let resolve = () => { throw new Error('Uninitialized resolve'); }; //  Added by LLM Agent
+            let reject = () => { throw new Error('Uninitialized reject'); }; //  Added by LLM Agent
             const futureFetch = new Promise((res, rej) => {
                 resolve = res;
                 reject = rej;
@@ -183,7 +183,6 @@ class App {
         $ul.innerHTML = listItems;
         (_a = this.$favorites) === null || _a === void 0 ? void 0 : _a.append($ul);
         $ul.addEventListener("click", (ev) => {
-            var _a;
             /*
             - if local file
               - fetch local file and display
@@ -191,14 +190,16 @@ class App {
               - query Nominatum and display
             */
             ev.preventDefault();
-            if (ev.target.tagName !== "LI")
+            const target = ev.target; //  Added by LLM Agent
+            if (!target || target.tagName !== "LI")
                 return;
-            if ((_a = ev.target.dataset) === null || _a === void 0 ? void 0 : _a.localjson) {
-                console.log("TODO: fetch local:", ev.target.dataset.localjson);
-                this.map.jump(ev.target.dataset.name, null, ev.target.dataset.localjson);
+            const ds = target.dataset; //  Added by LLM Agent
+            if (ds === null || ds === void 0 ? void 0 : ds.localjson) {
+                console.log("TODO: fetch local:", ds.localjson);
+                this.map.jump(ds.name, null, ds.localjson);
             }
             else {
-                console.log("TODO: fetch via Overpass:", ev.target.dataset.name);
+                console.log("TODO: fetch via Overpass:", ds.name);
             }
         });
     }
@@ -249,6 +250,7 @@ Nominatum.PATHS = {
 Nominatum.BASE_PATH = Nominatum.PATHS["geocoding.ai"];
 class Layer {
     constructor({ name, tags, color_line, color_fill }) {
+        this.dispatchHash = {}; //  Added by LLM Agent
         /*
         tags = JS object: `{building: null, leisure: [park, garden], landuse: [grass, forest, meadow, orchard]}` where `null` represents ALL tags for that key
         */
@@ -257,11 +259,12 @@ class Layer {
         this.color_line = color_line;
         this.color_fill = color_fill;
         this.elements = []; // collection of elements from OSM API response
-        Object.values(tags).forEach((tag) => {
+        for (const key in tags) { //  Added by LLM Agent
+            const tag = tags[key]; //  Added by LLM Agent
             if (tag !== null && !Array.isArray(tag)) {
                 throw new Error("tag must be `null` or Array");
             }
-        });
+        }
     }
     static relationHasCutouts(element) {
         /*
@@ -282,19 +285,20 @@ class Layer {
             return JSON.stringify(first) === JSON.stringify(last);
         }
         else if (element.type === "relation") {
-            const seen = [];
+            const seen = []; //  Added by LLM Agent
             for (let member of element.members) {
                 if (member.role === "inner" || member.type === "node")
                     continue;
                 for (let pt of member.geometry) {
                     const pointString = JSON.stringify(pt);
-                    if (seen.includes(pointString))
-                        return true;
+                    if (seen.indexOf(pointString) !== -1)
+                        return true; //  Added by LLM Agent
                     seen.push(pointString);
                 }
             }
             return false;
         }
+        return false; //  Added by LLM Agent
     }
     draw({ coords, elements, filterCB }) {
         /*
@@ -348,13 +352,13 @@ class Layer {
                         // ele.members.filter((member) => member.role === "outer")
                         //   .map((member) => member.geometry)
                         //   .forEach((pt) => Layer.addVertex({coords, pt, bounds:ele.bounds}));
-                        for (const member of ele.members.filter((m) => m.role === "outer")) {
+                        for (const member of ele.members.filter((m) => m.role === "outer")) { //  Added by LLM Agent
                             const geo = member.geometry;
                             for (let pt of geo) {
                                 Layer.addVertex({ coords, pt, bounds: ele.bounds });
                             }
                         }
-                        for (const member of ele.members.filter((m) => m.role === "inner")) {
+                        for (const member of ele.members.filter((m) => m.role === "inner")) { //  Added by LLM Agent
                             const geo = member.geometry;
                             if (geo) {
                                 Layer.createCutout({ coords, memberGeometry: geo, bounds: ele.bounds });
@@ -390,6 +394,8 @@ class Layer {
         }
     }
     static createCutout({ coords, memberGeometry, bounds }) {
+    }
+    static createCutout({ coords, memberGeometry, bounds }) {
         /*
         Input = member.geometry eg '[{"lat":35.9894581,"lon":-78.8993456},...]'
         Return: none
@@ -397,7 +403,7 @@ class Layer {
         */
         beginContour();
         memberGeometry
-            .toReversed() // per p5 docs, inner countours (lines) must be drawn in opposite direction as shape (outer line)
+            .slice().reverse() // per p5 docs, inner countours (lines) must be drawn in opposite direction as shape (outer line)
             .forEach((pt) => {
             Layer.addVertex({ coords, pt, bounds });
         });
@@ -437,8 +443,9 @@ class Layer {
           - this.tags = eg {"leisure":["park","garden"],"landuse":["grass"]}
         return = boolean
         */
-        for (let [eleKey, eleTag] of Object.entries(tags)) {
-            if (Object.keys(this.tags).includes(eleKey) && (this.tags[eleKey] === null || this.tags[eleKey].includes(eleTag))) {
+        for (const eleKey in tags) { //  Added by LLM Agent
+            const eleTag = tags[eleKey]; //  Added by LLM Agent
+            if (Object.keys(this.tags).indexOf(eleKey) !== -1 && (this.tags[eleKey] === null || this.tags[eleKey].indexOf(eleTag) !== -1)) {
                 return true;
             }
         }

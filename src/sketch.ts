@@ -18,14 +18,34 @@ TODO / KNOWN LIMITATIONS:
 // TYPES
 type bbox = [number, number, number, number];
 
+type LayerOptions = { name: string; tags: {[k: string]: null | string[]}; color_line: string | null; color_fill: string | null }; //  Added by LLM Agent
+
+// Ambient p5 function declarations to satisfy TypeScript (minimal set used in this file)
+declare function stroke(col: any): void; //  Added by LLM Agent
+declare function noStroke(): void; //  Added by LLM Agent
+declare function fill(col?: any): void; //  Added by LLM Agent
+declare function noFill(): void; //  Added by LLM Agent
+declare function strokeWeight(w: number): void; //  Added by LLM Agent
+declare function beginShape(): void; //  Added by LLM Agent
+declare function endShape(): void; //  Added by LLM Agent
+declare function beginContour(): void; //  Added by LLM Agent
+declare function endContour(): void; //  Added by LLM Agent
+declare function vertex(x: number, y: number): void; //  Added by LLM Agent
+declare function point(x: number, y: number): void; //  Added by LLM Agent
+declare function map(v: number, a: number, b: number, c: number, d: number): number; //  Added by LLM Agent
+declare function createCanvas(w: number, h: number): void; //  Added by LLM Agent
+declare function background(col: any): void; //  Added by LLM Agent
+declare const width: number; //  Added by LLM Agent
+declare const height: number; //  Added by LLM Agent
+
 ///////////////////////////////////////////////////////////
 // CLASSES AND HELPER FUNCTIONS
 
 type SlowFetchQueue = {
   url: string; 
   options: RequestInit;
-  resolve: unknown;  // should be a function? TBD
-  reject: unknown;   // should be a function? TBD
+  resolve: (value: Response) => void;  //  Added by LLM Agent
+  reject: (reason?: any) => void;   //  Added by LLM Agent
 }
 
 // There are more robust methods of throttling, but this does the trick for now
@@ -40,11 +60,11 @@ class SlowFetcher {
     this.timer = null;
   }
 
-  async fetch(url: string, options: RequestInit) {
-    let resolve;
-    let reject;
+  async fetch(url: string, options: RequestInit): Promise<Response> { //  Added by LLM Agent
+  let resolve: (value: Response) => void = () => { throw new Error('Uninitialized resolve'); }; //  Added by LLM Agent
+  let reject: (reason?: any) => void = () => { throw new Error('Uninitialized reject'); }; //  Added by LLM Agent
 
-    const futureFetch =  new Promise((res, rej) => {
+    const futureFetch: Promise<Response> =  new Promise((res, rej) => {
       resolve = res;
       reject = rej;
     });
@@ -217,7 +237,7 @@ class App {
 
   }
 
-  static favorites: {[key: string]: unknown} = {
+  static favorites: {[key: string]: string} = { //  Added by LLM Agent
     "Durham, NC, USA": "durham_nc.json",  
     "Taipei, Taiwan": "taipei_taiwan.json",
     "Paris, France": "paris-france.json",
@@ -227,11 +247,11 @@ class App {
     "Duke Gardens, Durham, NC, USA": "duke-gardens-durham-nc-usa.json",
   }
 
-  async init() {
+  async init(): Promise<void> { //  Added by LLM Agent
     await this.map.jump("Durham, NC, USA", null, "durham_nc.json")
   }
 
-  initFavorites() {
+  initFavorites(): void { //  Added by LLM Agent
     // Adds favorites to the UI
     const $ul = document.createElement("UL");
     let listItems = "";
@@ -241,7 +261,7 @@ class App {
     $ul.innerHTML = listItems;
     this.$favorites?.append($ul);
 
-    $ul.addEventListener("click", (ev) => {
+  $ul.addEventListener("click", (ev: MouseEvent) => { //  Added by LLM Agent
       /*
       - if local file
         - fetch local file and display
@@ -249,13 +269,15 @@ class App {
         - query Nominatum and display
       */
       ev.preventDefault();
-      if (ev.target.tagName !== "LI") return;
+      const target = ev.target as HTMLElement | null; //  Added by LLM Agent
+      if (!target || target.tagName !== "LI") return;
 
-      if (ev.target.dataset?.localjson) {
-        console.log("TODO: fetch local:", ev.target.dataset.localjson);
-        this.map.jump(ev.target.dataset.name, null, ev.target.dataset.localjson);
+      const ds = target.dataset as DOMStringMap; //  Added by LLM Agent
+      if (ds?.localjson) {
+        console.log("TODO: fetch local:", ds.localjson);
+        this.map.jump(ds.name, null, ds.localjson);
       } else {
-        console.log("TODO: fetch via Overpass:", ev.target.dataset.name);
+        console.log("TODO: fetch via Overpass:", ds.name);
       }
     })
   }
@@ -272,7 +294,7 @@ class Nominatum {
   static BASE_PATH = Nominatum.PATHS["geocoding.ai"];
   
 
-  static async freeForm(queryString) {
+  static async freeForm(queryString: string): Promise<any> { //  Added by LLM Agent
     const params = ["q=" + encodeURIComponent(queryString)];
     params.push("format=geojson");  // required to obtain centroid
 
@@ -286,7 +308,7 @@ class Nominatum {
     return json;
   }
 
-  static getCentroid(json) {
+  static getCentroid(json: any): number[] | undefined { //  Added by LLM Agent
     /*
     Input: JSON response from Nominatum API
     Return: coordinates of first location as array, eg [lat, long] / [1.23, 4.56]
@@ -302,8 +324,14 @@ class Nominatum {
 }
 
 class Layer {
+  name: string; //  Added by LLM Agent
+  tags: {[k:string]: null | string[]}; //  Added by LLM Agent
+  color_line: string | null; //  Added by LLM Agent
+  color_fill: string | null; //  Added by LLM Agent
+  elements: any[]; //  Added by LLM Agent
+  dispatchHash: Record<string, any> = {}; //  Added by LLM Agent
 
-  constructor({name, tags, color_line, color_fill}) {
+  constructor({name, tags, color_line, color_fill}: LayerOptions) { //  Added by LLM Agent
     /*
     tags = JS object: `{building: null, leisure: [park, garden], landuse: [grass, forest, meadow, orchard]}` where `null` represents ALL tags for that key
     */
@@ -313,14 +341,15 @@ class Layer {
     this.color_fill = color_fill;
     this.elements = [];  // collection of elements from OSM API response
 
-    Object.values(tags).forEach((tag) => {
+    for (const key in tags) { //  Added by LLM Agent
+      const tag = tags[key] as null | string[]; //  Added by LLM Agent
       if (tag !== null && !Array.isArray(tag)) {
         throw new Error("tag must be `null` or Array");
       }
-    })
+    }
   }
 
-  static relationHasCutouts(element) {
+  static relationHasCutouts(element: any): boolean { //  Added by LLM Agent
     /*
     Given a relation, is at least one of it's members role === 'inner'?
     */
@@ -329,7 +358,7 @@ class Layer {
     return false;
   }
 
-  static isClosed(element) {
+  static isClosed(element: any): boolean { //  Added by LLM Agent
     /*
     Limitation: for relations, this function checks to see if any duplicate points exist.  There's probably a better way.
     */
@@ -341,21 +370,22 @@ class Layer {
 
     } else if (element.type === "relation") {
       
-      const seen = [];
+      const seen: string[] = []; //  Added by LLM Agent
 
       for (let member of element.members) {
         if (member.role === "inner" || member.type === "node") continue;
         for (let pt of member.geometry) {
           const pointString = JSON.stringify(pt);
-          if (seen.includes(pointString)) return true
+          if (seen.indexOf(pointString) !== -1) return true; //  Added by LLM Agent
           seen.push(pointString);
         }
       }
       return false;
     }
+    return false; //  Added by LLM Agent
   }
 
-  draw({coords, elements, filterCB}) {
+  draw({coords, elements, filterCB}: {coords: bbox | null, elements?: any[], filterCB?: (ele:any)=>boolean}): void { //  Added by LLM Agent
     /*
     REQ'D ARGS
       coords = required,
@@ -411,14 +441,14 @@ class Layer {
             // ele.members.filter((member) => member.role === "outer")
             //   .map((member) => member.geometry)
             //   .forEach((pt) => Layer.addVertex({coords, pt, bounds:ele.bounds}));
-            for (const member of ele.members.filter((m) => m.role === "outer")) {
+            for (const member of ele.members.filter((m: any) => m.role === "outer")) { //  Added by LLM Agent
               const geo = member.geometry;
               for (let pt of geo) {
                 Layer.addVertex({coords, pt, bounds:ele.bounds});
               }
             }
 
-            for (const member of ele.members.filter((m) => m.role === "inner")) {
+            for (const member of ele.members.filter((m: any) => m.role === "inner")) { //  Added by LLM Agent
               const geo = member.geometry;
               if (geo) {
                 Layer.createCutout({coords, memberGeometry: geo, bounds:ele.bounds});
@@ -454,6 +484,7 @@ class Layer {
   }
 
   static createCutout({coords, memberGeometry, bounds}) {
+  static createCutout({coords, memberGeometry, bounds}: {coords: bbox | null, memberGeometry: Array<{lat:number, lon:number}>, bounds?: any}): void { //  Added by LLM Agent
     /*
     Input = member.geometry eg '[{"lat":35.9894581,"lon":-78.8993456},...]'
     Return: none
@@ -461,14 +492,14 @@ class Layer {
     */
     beginContour();
     memberGeometry
-      .toReversed()  // per p5 docs, inner countours (lines) must be drawn in opposite direction as shape (outer line)
-      .forEach((pt) => {
+      .slice().reverse()  // per p5 docs, inner countours (lines) must be drawn in opposite direction as shape (outer line)
+      .forEach((pt: {lat:number, lon:number}) => { //  Added by LLM Agent
         Layer.addVertex({coords, pt, bounds});
       })
     endContour();
   }
 
-  static addVertex({coords, pt, bounds}) {
+  static addVertex({coords, pt, bounds}: {coords: any, pt: {lat:number, lon:number}, bounds?: any}): void { //  Added by LLM Agent
     /*
     point = eg {lat: 1.23, lon: 4.56}
     coords = OSM coords array eg [1.23, 4.56, 7.89, 9.99] (latMin, longMin, etc)
@@ -487,7 +518,7 @@ class Layer {
     vertex(x, y);
   }
 
-  addElement(element) {
+  addElement(element: any): void { //  Added by LLM Agent
     /*
     Input = element from OSM json response
     Side effect = mutate this.elements
@@ -495,16 +526,17 @@ class Layer {
     this.elements.push(element);
   }
 
-  matchesTags(tags) {
+  matchesTags(tags: {[k:string]: string}): boolean { //  Added by LLM Agent
     /*
     input = 
       - tags = eg {"destination:street":"Chapel Hill Street","highway":"motorway_link","lanes":"1","oneway":"yes","surface":"concrete"}
       - this.tags = eg {"leisure":["park","garden"],"landuse":["grass"]}
     return = boolean
     */
-    for (let [eleKey, eleTag] of Object.entries(tags)) {
-      if (Object.keys(this.tags).includes(eleKey) && (
-          this.tags[eleKey] === null || this.tags[eleKey].includes(eleTag))) {
+    for (const eleKey in tags) { //  Added by LLM Agent
+      const eleTag = tags[eleKey] as string; //  Added by LLM Agent
+      if (Object.keys(this.tags).indexOf(eleKey) !== -1 && (
+          this.tags[eleKey] === null || (this.tags[eleKey] as string[]).indexOf(eleTag) !== -1)) {
         return true;
       }
     }
