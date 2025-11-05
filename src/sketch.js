@@ -14,33 +14,21 @@ TODO / KNOWN LIMITATIONS:
   - Support for OSM multipolygons needs to be improved
 */
 
-///////////////////////////////////////////////////////////
-// TYPES
-type bbox = [number, number, number, number];
+
+
 
 ///////////////////////////////////////////////////////////
 // CLASSES AND HELPER FUNCTIONS
 
-type SlowFetchQueue = {
-  url: string; 
-  options: RequestInit;
-  resolve: unknown;  // should be a function? TBD
-  reject: unknown;   // should be a function? TBD
-}
-
 // There are more robust methods of throttling, but this does the trick for now
 class SlowFetcher {
-  queue: Array<SlowFetchQueue>;
-  milliseconds: number;
-  timer: number | null;
-
-  constructor(milliseconds: number) {
+  constructor(milliseconds) {
     this.queue = [];
     this.milliseconds = milliseconds;  // Minimum interval between requests.  unit = milliseconds
     this.timer = null;
   }
 
-  async fetch(url: string, options: RequestInit) {
+  async fetch(url, options) {
     let resolve;
     let reject;
 
@@ -62,12 +50,8 @@ class SlowFetcher {
       console.log("SlowFetcher: Creating timer")
       this.timer = setInterval(async () => {
         if (this.queue.length > 0) {
-          const item: SlowFetchQueue = this.queue.shift()!;
-          const {url, options, resolve, reject} = item;
+          const {url, options, resolve, reject} = this.queue.shift();
           const response = await fetch(url, options);
-          if (typeof resolve !== "function" || typeof reject !== "function") {
-            throw new Error("Unexpected type")
-          }
           if (response.ok) {
             resolve(response);
           } else {
@@ -75,7 +59,7 @@ class SlowFetcher {
           }
         } else {
           console.log("SlowFetcher: Destroying timer")
-          if (typeof this.timer === "number") clearInterval(this.timer);
+          clearInterval(this.timer);
           this.timer = null;
         }
       }, this.milliseconds); 
@@ -92,7 +76,7 @@ class Util {
   Misc utilities 
   */
 
-  static saveJSON(data: object, filename: string) {
+  static saveJSON(data, filename) {
     // Convert data to JSON string
     const jsonString = JSON.stringify(data, null, 2);
     
@@ -110,14 +94,14 @@ class Util {
     document.body.removeChild(link);
   }
 
-  static round(num: number, places: number) {
+  static round(num, places) {
     /*
     Returns number
     */
     return Number(num.toFixed(places));
   }
 
-  static toBbox([latitude, longitude]: number[], zoom: number) {
+  static toBbox([latitude, longitude], zoom) {
     /*
     Credit: LLM
     Zoom levels: https://wiki.openstreetmap.org/wiki/Zoom_levels
@@ -149,12 +133,12 @@ class Util {
     return [minLat, minLon, maxLat, maxLon];
   }
 
-  static isLatLon(str: string) {
-    return /(-?\d+\.\d+),\s*(-?\d+\.\d+)/.test(str.trim());
+  static isLatLon(string) {
+    return /(-?\d+\.\d+),\s*(-?\d+\.\d+)/.test(string.trim());
   }
 
-  static parseLatLon(str: string) {
-    const [lat, lon] = str.split(",")
+  static parseLatLon(string) {
+    const [lat, lon] = string.split(",")
       .map(str => str.trim())
       .map(str => Number(str));
     if (lat < -90 || lat > 90) {
@@ -166,7 +150,7 @@ class Util {
     }
   }
 
-  static slugify(str: string) {
+  static slugify(str) {
     // Credit: https://byby.dev/js-slugify-string
     return String(str)
       .normalize('NFKD') // split accented characters into their base characters and diacritical marks
@@ -180,12 +164,18 @@ class Util {
 }
 
 class App {
-  $controls: HTMLElement | null;
-  $favorites: HTMLElement | null;
-  $jumpForm: HTMLFormElement | null;
-  $jumpBox:  HTMLInputElement | null;
-  map: StreetMap;
 
+  
+  static favorites = {
+    "Durham, NC, USA": "durham_nc.json",  
+    "Taipei, Taiwan": "taipei_taiwan.json",
+    "Paris, France": "paris-france.json",
+    "Paris, Idaho, USA": "paris-idaho-usa.json",
+    "Millennium Park, Chicago, IL, USA": "millennium-park-chicago-il-usa.json",
+    "Raleigh, NC, USA": "raleigh-nc-usa.json",
+    "Duke Gardens, Durham, NC, USA": "duke-gardens-durham-nc-usa.json",
+  }
+  
   constructor() {
     this.$controls = document.querySelector("section.controls");
     this.$favorites = document.querySelector("section.favorites");
@@ -195,36 +185,21 @@ class App {
     this.map = new StreetMap();
     this.map.clear();
     
-    if (
-      !this.$jumpForm ||
-      !this.$jumpBox
-      ) throw new Error("Element was not found")
-
     this.$jumpForm.addEventListener("submit", async (ev) => {
       ev.preventDefault();
-      console.log("Jumping to", this.$jumpBox!.value);
-      await this.map.jump(this.$jumpBox!.value);
+      console.log("Jumping to", this.$jumpBox.value);
+      await this.map.jump(this.$jumpBox.value);
     })
 
-    document.querySelector("button.show-controls")?.addEventListener("click", (e) => {
-      this.$controls?.classList.remove("hide");
+    document.querySelector("button.show-controls").addEventListener("click", (e) => {
+      this.$controls.classList.remove("hide");
     });
 
-    document.querySelector("button.hide-controls")?.addEventListener("click", (e) => {
-      this.$controls?.classList.add("hide");
+    document.querySelector("button.hide-controls").addEventListener("click", (e) => {
+      this.$controls.classList.add("hide");
     })
 
 
-  }
-
-  static favorites: {[key: string]: unknown} = {
-    "Durham, NC, USA": "durham_nc.json",  
-    "Taipei, Taiwan": "taipei_taiwan.json",
-    "Paris, France": "paris-france.json",
-    "Paris, Idaho, USA": "paris-idaho-usa.json",
-    "Millennium Park, Chicago, IL, USA": "millennium-park-chicago-il-usa.json",
-    "Raleigh, NC, USA": "raleigh-nc-usa.json",
-    "Duke Gardens, Durham, NC, USA": "duke-gardens-durham-nc-usa.json",
   }
 
   async init() {
@@ -239,7 +214,7 @@ class App {
       listItems += `<a href="#"><li data-name="${fav}" data-localjson="${App.favorites[fav]}">${fav}</li></a>`
     }
     $ul.innerHTML = listItems;
-    this.$favorites?.append($ul);
+    this.$favorites.append($ul);
 
     $ul.addEventListener("click", (ev) => {
       /*
@@ -532,7 +507,8 @@ class Layer {
 Map contains and orchestrates Layers
 */
 class StreetMap {
-  bbox: bbox | null;
+
+  static DEFAULT_ZOOM = 15;
 
   constructor() {
     this.bbox = null;
@@ -550,17 +526,11 @@ class StreetMap {
     this.updateDispatchHash();  // todo - remove?
   }
 
-  static DEFAULT_ZOOM = 15;
-
   async init() {
 
   }
 
-  async jump(
-    query: string, 
-    zoom: number | null = StreetMap.DEFAULT_ZOOM, 
-    localJSON: string | null = null
-    ) {
+  async jump(query, zoom=StreetMap.DEFAULT_ZOOM, localJSON) {
     /*
     INPUTS:
     - `query` text placename or query (string) (required)
