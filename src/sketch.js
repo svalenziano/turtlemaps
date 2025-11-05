@@ -526,10 +526,6 @@ class StreetMap {
     this.updateDispatchHash();  // todo - remove?
   }
 
-  async init() {
-
-  }
-
   async jump(query, zoom=StreetMap.DEFAULT_ZOOM, localJSON) {
     /*
     INPUTS:
@@ -915,6 +911,14 @@ const DEBUG = {
   activeFilter: FILTERS.none,
   drawLarge: false,
   drawVertices: false,
+}
+
+function svgElement(type) {
+
+}
+
+function drawSVG() {
+
 }
 
 async function setup() {
