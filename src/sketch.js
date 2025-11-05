@@ -1,7 +1,6 @@
 "use strict";
 
 import { SlowFetcher } from "./slow-fetch.js"
-import { helloWorld } from "./ts-test.ts"
 
 /*
 Written by Steven Valenziano in 2025 to practice working with DOM manipulation, events, asynchronous programming, network requests (via fetch), with a sprinkling of pre-ES6 syntax just for giggles.
@@ -881,7 +880,5 @@ async function setup() {
   app = new App();
   await app.init();
 
-  console.log("Setup is complete!");
-  console.log(helloWorld("hello world!"));
-  console.log("boo hiss")
+  console.log("Setup is complete!")
 }
