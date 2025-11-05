@@ -8,61 +8,24 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-// There are more robust methods of throttling, but this does the trick for now
-class SlowFetcher {
-    constructor(milliseconds) {
-        this.queue = [];
-        this.milliseconds = milliseconds; // Minimum interval between requests.  unit = milliseconds
-        this.timer = null;
-    }
-    fetch(url, options) {
-        return __awaiter(this, void 0, void 0, function* () {
-            let resolve;
-            let reject;
-            const futureFetch = new Promise((res, rej) => {
-                resolve = res;
-                reject = rej;
-            });
-            // IF TIMER EXISTS, PUSH ARGUMENTS TO QUEUE FOR FUTURE FETCHING
-            if (this.timer !== null) {
-                this.queue.push({ url, options, resolve, reject });
-                console.log("SlowFetcher: Pushing new fetch to queue");
-                console.log(this.queue);
-                return futureFetch;
-                // IF NO TIMER EXISTS, CREATE THE TIMER AND PROCESS THIS FETCH IMMEDIATELY
-            }
-            else {
-                // CREATE TIMER that resolves the `futureFetch`
-                console.log("SlowFetcher: Creating timer");
-                this.timer = setInterval(() => __awaiter(this, void 0, void 0, function* () {
-                    if (this.queue.length > 0) {
-                        const item = this.queue.shift();
-                        const { url, options, resolve, reject } = item;
-                        const response = yield fetch(url, options);
-                        if (typeof resolve !== "function" || typeof reject !== "function") {
-                            throw new Error("Unexpected type");
-                        }
-                        if (response.ok) {
-                            resolve(response);
-                        }
-                        else {
-                            reject(response);
-                        }
-                    }
-                    else {
-                        console.log("SlowFetcher: Destroying timer");
-                        if (typeof this.timer === "number")
-                            clearInterval(this.timer);
-                        this.timer = null;
-                    }
-                }), this.milliseconds);
-                // PROCESS IMMEDIATELY and return Promise
-                // no `await`, since we want this method to act exactly like the native `fetch`
-                return fetch(url, options);
-            }
-        });
-    }
-}
+Object.defineProperty(exports, "__esModule", { value: true });
+const slow_fetch_js_1 = require("./slow-fetch.js");
+const ts_test_ts_1 = require("./ts-test.ts");
+/*
+Written by Steven Valenziano in 2025 to practice working with DOM manipulation, events, asynchronous programming, network requests (via fetch), with a sprinkling of pre-ES6 syntax just for giggles.
+
+HEAVILY INSPIRED BY: Prettymaps, by Marcelo de Oliveira Rosa Prates (https://github.com/marceloprates/prettymaps)
+
+Dependencies: p5js library
+
+Intentionally left out:
+ - p5 "draw" function.  All drawing happens at setup or is event-triggered
+
+TODO / KNOWN LIMITATIONS:
+  - Support for OSM multipolygons needs to be improved
+*/
+///////////////////////////////////////////////////////////
+// CLASSES AND HELPER FUNCTIONS
 class Util {
     /*
     Misc utilities
@@ -111,11 +74,11 @@ class Util {
         const maxLat = Util.round(latitude + halfHeight, 4);
         return [minLat, minLon, maxLat, maxLon];
     }
-    static isLatLon(str) {
-        return /(-?\d+\.\d+),\s*(-?\d+\.\d+)/.test(str.trim());
+    static isLatLon(string) {
+        return /(-?\d+\.\d+),\s*(-?\d+\.\d+)/.test(string.trim());
     }
-    static parseLatLon(str) {
-        const [lat, lon] = str.split(",")
+    static parseLatLon(string) {
+        const [lat, lon] = string.split(",")
             .map(str => str.trim())
             .map(str => Number(str));
         if (lat < -90 || lat > 90) {
@@ -142,7 +105,6 @@ class Util {
 }
 class App {
     constructor() {
-        var _a, _b;
         this.$controls = document.querySelector("section.controls");
         this.$favorites = document.querySelector("section.favorites");
         this.$jumpForm = document.querySelector("form.jump");
@@ -150,21 +112,16 @@ class App {
         this.initFavorites();
         this.map = new StreetMap();
         this.map.clear();
-        if (!this.$jumpForm ||
-            !this.$jumpBox)
-            throw new Error("Element was not found");
         this.$jumpForm.addEventListener("submit", (ev) => __awaiter(this, void 0, void 0, function* () {
             ev.preventDefault();
             console.log("Jumping to", this.$jumpBox.value);
             yield this.map.jump(this.$jumpBox.value);
         }));
-        (_a = document.querySelector("button.show-controls")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", (e) => {
-            var _a;
-            (_a = this.$controls) === null || _a === void 0 ? void 0 : _a.classList.remove("hide");
+        document.querySelector("button.show-controls").addEventListener("click", (e) => {
+            this.$controls.classList.remove("hide");
         });
-        (_b = document.querySelector("button.hide-controls")) === null || _b === void 0 ? void 0 : _b.addEventListener("click", (e) => {
-            var _a;
-            (_a = this.$controls) === null || _a === void 0 ? void 0 : _a.classList.add("hide");
+        document.querySelector("button.hide-controls").addEventListener("click", (e) => {
+            this.$controls.classList.add("hide");
         });
     }
     init() {
@@ -173,7 +130,6 @@ class App {
         });
     }
     initFavorites() {
-        var _a;
         // Adds favorites to the UI
         const $ul = document.createElement("UL");
         let listItems = "";
@@ -181,7 +137,7 @@ class App {
             listItems += `<a href="#"><li data-name="${fav}" data-localjson="${App.favorites[fav]}">${fav}</li></a>`;
         }
         $ul.innerHTML = listItems;
-        (_a = this.$favorites) === null || _a === void 0 ? void 0 : _a.append($ul);
+        this.$favorites.append($ul);
         $ul.addEventListener("click", (ev) => {
             var _a;
             /*
@@ -483,7 +439,7 @@ class StreetMap {
         });
     }
     jump(query_1) {
-        return __awaiter(this, arguments, void 0, function* (query, zoom = StreetMap.DEFAULT_ZOOM, localJSON = null) {
+        return __awaiter(this, arguments, void 0, function* (query, zoom = StreetMap.DEFAULT_ZOOM, localJSON) {
             /*
             INPUTS:
             - `query` text placename or query (string) (required)
@@ -816,7 +772,7 @@ const myQueries = {
 };
 ///////////////////////////////////////////////////////////
 // APP LOGIC
-const osmFetcher = new SlowFetcher(REQUEST_DELAY);
+const osmFetcher = new slow_fetch_js_1.SlowFetcher(REQUEST_DELAY);
 let app;
 const FILTERS = {
     none: null,
@@ -842,5 +798,7 @@ function setup() {
         app = new App();
         yield app.init();
         console.log("Setup is complete!");
+        console.log((0, ts_test_ts_1.helloWorld)("hello world!"));
+        console.log("boo hiss");
     });
 }
