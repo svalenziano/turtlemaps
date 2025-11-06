@@ -1,6 +1,13 @@
 /////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////
 // TYPES
+
+// For disambuigating coordinates
+type minLat = number;
+type minLon = number;
+type maxLat = number;
+type maxLon = number;
+
 type bboxArray = [number, number, number, number];
 
 type Point = [number, number];
@@ -74,32 +81,130 @@ interface OSMResponse {
 /////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////
 // CLASSES
+class BBox {
+  /*
+  Cordinates and bounding boxes are confusing because they are formatted
+  differently by different organizations.
 
+  This class aims to make things a little less ambiguous.
+  */
+  minLat: number | null = null;
+  minLon: number | null = null;
+  maxLat: number | null = null;
+  maxLon: number | null = null;
+  
+  constructor() {}
+
+  parseLatitudeFirst(bbox: [minLat, minLon, maxLat, maxLon]): void {
+    // Example for Durham, NC: [35.9857, -78.9154, 36.0076, -78.8882]
+    this.minLat = bbox[0];
+    this.minLon = bbox[1];
+    this.maxLat = bbox[2];
+    this.maxLon = bbox[3];
+  }
+
+  // Positive numbers are required for width and height
+  // "Values for width or height lower or equal to 0 disable rendering of the element."
+  // https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute/viewBox
+  get svgViewBox(): string {
+    return [this.minLon, this.minLat, this.width, this.height].join(" ");
+  }
+
+  get width() {
+    if (this.minLon !== null && this.maxLon !== null) {
+      return Math.abs(this.minLon - this.maxLon);
+    } else {
+      throw new Error("Not initialized")
+    }
+  }
+
+  get height() {
+    if (this.minLat !== null && this.maxLat !== null) {
+      return Math.abs(this.minLat - this.maxLat)
+    } else {
+      throw new Error("Not initialized")
+    }
+  }
+}
 
 function makeSVGElement(type: "svg" | "rect" | "circle" | "polygon" | "path" | "g"): SVGElement {
   return document.createElementNS("http://www.w3.org/2000/svg", type);
 }
 
+function makeSVGPath(points: Point[]): SVGPathElement {
+  const path = makeSVGElement("path") as SVGPathElement;
+
+  if (points.length < 2) {
+    throw new Error("At least 2 points are required")
+  }
+
+  let commands: string[] = [`M ${points[0][0]},${points[0][1]}`];
+
+  for (let i = 1; i < points.length; i++) {
+    commands.push(`L ${points[i][0]},${points[i][1]}`);
+  }
+  console.log(commands)
+  path.setAttribute("d", commands.join(" "));
+  
+  return path;
+}
+
 class MapApp {
   data: object;  // TODO - import OSM types
-  bbox: bboxArray | null;
+  bbox: BBox;
   query: string | null;
   centroid: [number, number] | null;
+  svgWidth: number = 300;
+  svgHeight: number = 300;
 
   constructor() {
     this.data = {};
-    this.bbox = null;
+    this.bbox = new BBox();
     this.query = null;
     this.centroid = null;
   }
 
   async init() {
     const response = await fetch("./data/durham_nc.json");
-    const json = await response.json();
-    this.bbox = json.bbox;
+    const json = await response.json() as OSMResponse;
+
+    if (json.bbox) {
+      this.bbox.parseLatitudeFirst(json.bbox);
+    } else {
+      throw new Error("no bbox was found");
+    }
+
     this.centroid = json.centroid;
 
     const elements: OSMElement[] = json.elements;
+
+    // Example for Durham, NC: [35.9857, -78.9154, 36.0076, -78.8882]
+    const svg = makeSVGElement("svg");
+    svg.setAttribute("width", String(this.svgWidth));
+    svg.setAttribute("height", String(this.svgHeight));
+    svg.setAttribute("viewBox", this.bbox.svgViewBox);
+  
+    const rect = makeSVGElement("rect");
+    rect.setAttribute("x", String(this.bbox.minLon));
+    rect.setAttribute("y", String(this.bbox.minLat));
+    rect.setAttribute("width", String(this.bbox.width));
+    rect.setAttribute("height", String(this.bbox.height));
+    rect.setAttribute("fill", "red");
+    svg.append(rect)
+
+    let g = makeSVGElement("g") as SVGGElement;
+    // g.setAttribute("transform", "scale(1, -1)");
+    g.setAttribute("stroke", "gray");
+    g.setAttribute("fill", "none");
+    g.setAttribute("stroke-width", "0.001");
+    svg.append(g);
+
+    // Diagonal top left to bottom right
+    // let path = makeSVGPath([[this.bbox.minLon, this.bbox.maxLat], [this.bbox.maxLon, this.bbox.minLat]]);
+    let path = makeSVGPath([[this.bbox.minLon, this.bbox.minLat], [this.bbox.maxLon, this.bbox.maxLat]]);
+    g.append(path);
+
+    document.body.append(svg);
   }
 }
 
@@ -112,21 +217,7 @@ class svgMap {
 // MAIN LOOP
 
 document.addEventListener("DOMContentLoaded", () => {
-  const WIDTH = "300";
-  const HEIGHT = "300";
 
-  const svg = makeSVGElement("svg");
-  svg.setAttribute("width", WIDTH);
-  svg.setAttribute("height", HEIGHT);
-  svg.setAttribute("viewBox", `0 0 ${WIDTH} ${HEIGHT}`);
-
-  const rect = makeSVGElement("rect");
-  rect.setAttribute("x", "0");
-  rect.setAttribute("y", "0");
-  rect.setAttribute("width", WIDTH);
-  rect.setAttribute("height", HEIGHT);
-  rect.setAttribute("fill", "red");
-  svg.append(rect)
-
-  document.body.append(svg);
+  const app = new MapApp();
+  app.init();
 })
