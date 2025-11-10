@@ -176,6 +176,8 @@ class BBox implements unknownBbox {
     )
   }
 
+
+
   // TODO: NOT WORKING, DO NOT USE
   // Positive numbers are required for width and height
   // "Values for width or height lower or equal to 0 disable rendering of the element."
@@ -318,9 +320,48 @@ class MapApp {
     } else {
       throw new Error("uh oh")
     }
+    
+    g = makeSVGElement("g") as SVGGElement;
+    // g.setAttribute("transform", "scale(1, -1)");
+    g.setAttribute("stroke", "white");
+    g.setAttribute("fill", "none");
+    g.setAttribute("stroke-width", "3");
+    svg.append(g);
 
+    debugger;
+    for (let ele of elements) {
+      const shape = makeSVGElement("path");
+      if (ele.type !== "way") continue;
+
+      const firstMovement = `M ${this.mapPoint([
+        ele.geometry[0]['lat'],
+        ele.geometry[1]['lat']
+      ]).join(",")}`;
+
+      const movements = [firstMovement];
+
+      // for each geometry point
+      for (let i=1; i < ele.geometry.length; i++) {
+        movements.push(`L ${this.mapPoint([
+        ele.geometry[i]['lat'],
+        ele.geometry[i]['lat']
+      ]).join(",")}`);
+      }
+
+      shape.setAttribute("d", movements.join(" "))
+      g.append(shape);
+    }
 
     document.body.append(svg);
+  }
+
+
+  mapPoint(pt: Point) {
+  if (!this.bbox.isValid()) throw new Error("Only works with valid bbox")
+  return [
+    U.map(pt[0], this.bbox.left, this.bbox.right, 0, this.svgWidth),
+    U.map(pt[1], this.bbox.top, this.bbox.bottom, 0, this.svgHeight)
+  ];
   }
 }
 
