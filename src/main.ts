@@ -207,7 +207,11 @@ function makeSVGElement(type: "svg" | "rect" | "circle" | "polygon" | "path" | "
   return document.createElementNS("http://www.w3.org/2000/svg", type);
 }
 
-function makeSVGPath(points: Point[]): SVGPathElement {
+function makeSVGPath(points: Point[], maxOpen=0.01): SVGPathElement {
+  /*
+  maxOpen = if start and end points are separated by a minimum of this distance
+    the shape will not be filled
+  */
   const path = makeSVGElement("path") as SVGPathElement;
 
   if (points.length < 2) {
@@ -221,6 +225,12 @@ function makeSVGPath(points: Point[]): SVGPathElement {
   }
   // console.log(commands)
   path.setAttribute("d", commands.join(" "));
+
+  const lastPoint = points[points.length - 1]
+
+  if (U.dist(points[0][0], points[0][1], lastPoint[0], lastPoint[1])) {
+    path.setAttribute("fill", "none");
+  }
   
   return path;
 }
@@ -348,11 +358,11 @@ class MapApp {
     document.body.append(svg);
   }
 
-  mapOSMPoint(pt: OSMPoint): OSMPoint {
+  mapOSMPoint(pt: OSMPoint, precision=3): OSMPoint {
     if (!this.bbox.isValid()) throw new Error("Only works with valid bbox");
     return {
-      lat: U.map(pt.lat, this.bbox.top, this.bbox.bottom, 0, this.svgHeight),
-      lon: U.map(pt.lon, this.bbox.left, this.bbox.right, 0, this.svgWidth)
+      lat: Number(U.map(pt.lat, this.bbox.top, this.bbox.bottom, 0, this.svgHeight).toFixed(precision)),
+      lon: Number(U.map(pt.lon, this.bbox.left, this.bbox.right, 0, this.svgWidth).toFixed(precision))
     }
 
   }
