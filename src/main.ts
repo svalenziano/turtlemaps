@@ -219,7 +219,7 @@ function makeSVGPath(points: Point[]): SVGPathElement {
   for (let i = 1; i < points.length; i++) {
     commands.push(`L ${points[i][0]},${points[i][1]}`);
   }
-  console.log(commands)
+  // console.log(commands)
   path.setAttribute("d", commands.join(" "));
   
   return path;
@@ -254,8 +254,8 @@ class MapApp {
   bbox: BBox;
   query: string | null;
   centroid: [number, number] | null;
-  svgWidth: number = 300;
-  svgHeight: number = 300;
+  svgWidth: number = 450;
+  svgHeight: number = 450;
 
   constructor() {
     this.data = {};
@@ -284,7 +284,7 @@ class MapApp {
     svg.setAttribute("height", String(this.svgHeight));
     svg.setAttribute("viewBox", `0 0 ${this.svgWidth} ${this.svgHeight}`);
   
-    this.bbox.crop(this.svgWidth, this.svgHeight);
+    // this.bbox.crop(this.svgWidth, this.svgHeight);
 
     let rect = makeSVGElement("rect");
     rect.setAttribute("x", String(0));
@@ -325,38 +325,36 @@ class MapApp {
     // g.setAttribute("transform", "scale(1, -1)");
     g.setAttribute("stroke", "white");
     g.setAttribute("fill", "none");
-    g.setAttribute("stroke-width", "3");
+    g.setAttribute("stroke-width", "0.5");
     svg.append(g);
 
-    debugger;
+    // debugger;
     for (let ele of elements) {
-      const shape = makeSVGElement("path");
       if (ele.type !== "way") continue;
 
-      const firstMovement = `M ${this.mapPoint([
-        ele.geometry[0]['lat'],
-        ele.geometry[1]['lat']
-      ]).join(",")}`;
+      const mappedPoints: Point[] = ele.geometry.map((point) => {
+        return this.mapOSMPoint(point);
+      }).map(OSMPoint => [OSMPoint.lon, OSMPoint.lat]);
 
-      const movements = [firstMovement];
+      const shape = makeSVGPath(mappedPoints)
 
-      // for each geometry point
-      for (let i=1; i < ele.geometry.length; i++) {
-        movements.push(`L ${this.mapPoint([
-        ele.geometry[i]['lat'],
-        ele.geometry[i]['lat']
-      ]).join(",")}`);
-      }
-
-      shape.setAttribute("d", movements.join(" "))
       g.append(shape);
     }
 
     document.body.append(svg);
   }
 
+  mapOSMPoint(pt: OSMPoint): OSMPoint {
+    if (!this.bbox.isValid()) throw new Error("Only works with valid bbox");
+    return {
+      lat: U.map(pt.lat, this.bbox.bottom, this.bbox.top, 0, this.svgHeight),
+      lon: U.map(pt.lon, this.bbox.left, this.bbox.right, 0, this.svgWidth)
+    }
 
-  mapPoint(pt: Point) {
+  }
+
+
+  mapPoint(pt: Point): Point {
   if (!this.bbox.isValid()) throw new Error("Only works with valid bbox")
   return [
     U.map(pt[0], this.bbox.left, this.bbox.right, 0, this.svgWidth),
