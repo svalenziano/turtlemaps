@@ -1,28 +1,12 @@
+import type * as T from "./types.ts"
+
 /////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////
 // TYPES
 
-// For disambuigating coordinates
-type minLat = number;
-type minLon = number;
-type maxLat = number;
-type maxLon = number;
 
-type bboxArray = [number, number, number, number];
 
-type Point = [number, number];
 
-type GenericObject = {[key: string]: string};
-
-type DefaultLayer = {
-  name: string;
-  colorFill: string | null;
-  colorLine: string | null;
-  strokeWeight: number;
-  tags: {
-    [key: string]: string[] | null;
-  }
-}
 
 /////////////////////////////////////////////////////////////////////////////
 // OSM Types
@@ -52,7 +36,7 @@ interface OSMElementCommon {
   id: number;
   bounds: OSMBbox;
   nodes?: number[];
-  tags: GenericObject;
+  tags: T.GenericObject;
 }
 
 interface OSMNode extends OSMElementCommon {
@@ -84,8 +68,8 @@ interface OSMResponse {
     copyright: string;
   };
   elements: OSMElement[];
-  bbox?: bboxArray;
-  centroid: Point;
+  bbox?: T.bboxArray;
+  centroid: T.Point;
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -137,7 +121,7 @@ class BBox implements unknownBbox {
 
   constructor() {}
 
-  parseLatitudeFirst(bbox: [minLat, minLon, maxLat, maxLon]): void {
+  parseLatitudeFirst(bbox: [T.minLat, T.minLon, T.maxLat, T.maxLon]): void {
     // Example for Durham, NC: [35.9857, -78.9154, 36.0076, -78.8882]
     [this.bottom, this.left, this.top, this.right] = bbox;
     [this.oBottom, this.oLeft, this.oTop, this.oRight] = bbox;
@@ -217,7 +201,7 @@ function makeSVGElement(type: "svg" | "rect" | "circle" | "polygon" | "path" | "
   return document.createElementNS("http://www.w3.org/2000/svg", type);
 }
 
-function makeSVGPath(points: Point[], maxOpen=0.01): SVGPathElement {
+function makeSVGPath(points: T.Point[], maxOpen=0.01): SVGPathElement {
   /*
   maxOpen = if start and end points are separated by a minimum of this distance
     the shape will not be filled
@@ -322,7 +306,7 @@ class Layer {
     }
 
   // Top layers are drawn last
-  static defaultLayers: DefaultLayer[] = [
+  static defaultLayers: T.DefaultLayer[] = [
     { 
       name: "Buildings - Residential",
       colorFill: Colors.default.bright,
@@ -525,7 +509,7 @@ class MapApp {
     for (let ele of elements) {
       if (ele.type !== "way") continue;
 
-      const mappedPoints: Point[] = ele.geometry.map((point) => {
+      const mappedPoints: T.Point[] = ele.geometry.map((point) => {
         return this.mapOSMPoint(point);
       }).map(OSMPoint => [OSMPoint.lon, OSMPoint.lat]);
 
@@ -550,7 +534,7 @@ class MapApp {
   }
 
 
-  mapPoint(pt: Point): Point {
+  mapPoint(pt: T.Point): T.Point {
   if (!this.bbox.isValid()) throw new Error("Only works with valid bbox")
   return [
     U.map(pt[0], this.bbox.left, this.bbox.right, 0, this.svgWidth),
