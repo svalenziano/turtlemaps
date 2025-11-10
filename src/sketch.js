@@ -276,7 +276,7 @@ class Nominatum {
   }
 }
 
-class Layer {
+class oldLayer {
 
   constructor({name, tags, color_line, color_fill}) {
     /*
@@ -364,7 +364,7 @@ class Layer {
       try {
 
         // SET FILL COLOR
-        if (Layer.isClosed(ele) && this.color_fill) {
+        if (oldLayer.isClosed(ele) && this.color_fill) {
           fill(this.color_fill);
         } else {
           noFill();
@@ -376,11 +376,11 @@ class Layer {
         if (ele.type === "way") {
           beginShape();
           for (const pt of ele.geometry) {
-            Layer.addVertex({coords, pt});
+            oldLayer.addVertex({coords, pt});
           }
           endShape();
         } else if (ele.type === "relation") {
-          if (Layer.relationHasCutouts(ele)) {
+          if (oldLayer.relationHasCutouts(ele)) {
             beginShape();
             // DRAW OUTER CONTOURS
             // ele.members.filter((member) => member.role === "outer")
@@ -389,14 +389,14 @@ class Layer {
             for (const member of ele.members.filter((m) => m.role === "outer")) {
               const geo = member.geometry;
               for (let pt of geo) {
-                Layer.addVertex({coords, pt, bounds:ele.bounds});
+                oldLayer.addVertex({coords, pt, bounds:ele.bounds});
               }
             }
 
             for (const member of ele.members.filter((m) => m.role === "inner")) {
               const geo = member.geometry;
               if (geo) {
-                Layer.createCutout({coords, memberGeometry: geo, bounds:ele.bounds});
+                oldLayer.createCutout({coords, memberGeometry: geo, bounds:ele.bounds});
               }
             }
               
@@ -408,7 +408,7 @@ class Layer {
               beginShape();
               
               for (const pt of member.geometry) {
-                Layer.addVertex({coords, pt});
+                oldLayer.addVertex({coords, pt});
               }
               endShape();
             }
@@ -438,7 +438,7 @@ class Layer {
     memberGeometry
       .toReversed()  // per p5 docs, inner countours (lines) must be drawn in opposite direction as shape (outer line)
       .forEach((pt) => {
-        Layer.addVertex({coords, pt, bounds});
+        oldLayer.addVertex({coords, pt, bounds});
       })
     endContour();
   }
@@ -762,7 +762,7 @@ class StreetMap {
 
   populateDefaultLayers() {
     for (const l of StreetMap.defaultLayers) {
-      this.layers.push(new Layer(l));
+      this.layers.push(new oldLayer(l));
     }
   }
 

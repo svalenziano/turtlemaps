@@ -310,103 +310,9 @@ class Colors {
   }
 }
 
-class MapApp {
-  bbox: BBox;
-  query: string | null;
-  centroid: [number, number] | null;
-  $svg: SVGElement;
-  svgWidth: number = window.innerWidth;
-  svgHeight: number = window.innerWidth;
+class Layer {
 
-  constructor(public container: HTMLElement) {
-    this.bbox = new BBox();
-    this.query = null;
-    this.centroid = null;
-
-    this.$svg = makeSVGElement("svg");
-    this.container.append(this.$svg);
-  }
-
-  async init() {
-    const response = await fetch("./data/durham_nc.json");
-    const json = await response.json() as OSMResponse;
-
-    if (json.bbox) {
-      this.bbox.parseLatitudeFirst(json.bbox);
-    } else {
-      throw new Error("no bbox was found");
-    }
-
-    this.centroid = json.centroid;
-
-    const elements: OSMElement[] = json.elements;
-
-    // Example for Durham, NC: [35.9857, -78.9154, 36.0076, -78.8882]
-    const svg = this.$svg;
-    svg.setAttribute("width", String(this.svgWidth));
-    svg.setAttribute("height", String(this.svgHeight));
-    svg.setAttribute("viewBox", `0 0 ${this.svgWidth} ${this.svgHeight}`);
   
-    // this.bbox.crop(this.svgWidth, this.svgHeight);
-
-    let rect = makeSVGElement("rect");
-    rect.setAttribute("x", String(0));
-    rect.setAttribute("y", String(0));
-    rect.setAttribute("width", String(this.svgWidth));
-    rect.setAttribute("height", String(this.svgHeight));
-    rect.setAttribute("fill", "rgba(153, 6, 167, 1)");
-    svg.append(rect)
-
-    let g = makeSVGElement("g") as SVGGElement;
-    // g.setAttribute("transform", "scale(1, -1)");
-    g.setAttribute("stroke", "white");
-    g.setAttribute("fill", "none");
-    g.setAttribute("stroke-width", "3");
-    svg.append(g);
-
-    // Diagonal top left to bottom right
-    // let path = makeSVGPath([[this.bbox.minLon, this.bbox.maxLat], [this.bbox.maxLon, this.bbox.minLat]]);
-    // let path = makeSVGPath([[0, 0], [this.svgWidth, this.svgHeight]]);
-    // g.append(path);
-
-    // test the cropBox
-    // if (this.bbox.isValid()) {
-    //   rect = makeSVGElement("rect");
-    //   rect.setAttribute("x", String(U.map(this.bbox.left, this.bbox.left, this.bbox.right, 0, this.svgWidth)));
-    //   rect.setAttribute("y", String(U.map(this.bbox.top, this.bbox.top, this.bbox.bottom, 0, this.svgHeight)));
-    //   rect.setAttribute("width", String(this.svgWidth));
-    //   rect.setAttribute("height", String(this.svgHeight));
-    //   rect.setAttribute("stroke", "blue");
-    //   rect.setAttribute("fill", "none");
-    //   rect.setAttribute("stroke-width", "6");
-    //   svg.append(rect);
-    // } else {
-    //   throw new Error("uh oh")
-    // }
-    
-    g = makeSVGElement("g") as SVGGElement;
-    // g.setAttribute("transform", "scale(1, -1)");
-    g.setAttribute("stroke", "rgba(80, 0, 0, 1)");
-    g.setAttribute("fill", "rgba(255, 82, 241, 0.27)");
-    g.setAttribute("stroke-width", "0.5");
-    svg.append(g);
-
-    // debugger;
-    for (let ele of elements) {
-      if (ele.type !== "way") continue;
-
-      const mappedPoints: Point[] = ele.geometry.map((point) => {
-        return this.mapOSMPoint(point);
-      }).map(OSMPoint => [OSMPoint.lon, OSMPoint.lat]);
-
-      const shape = makeSVGPath(mappedPoints)
-
-      g.append(shape);
-    }
-
-    document.body.append(svg);
-  }
-
   static strokesWeights = {
       faint: 0.3,
       light: 0.5,
@@ -415,7 +321,7 @@ class MapApp {
       super: 4,
     }
 
-// Top layers are drawn last
+  // Top layers are drawn last
   static defaultLayers: DefaultLayer[] = [
     { 
       name: "Buildings - Residential",
@@ -532,6 +438,107 @@ class MapApp {
       },
     },
   ];
+}
+
+class MapApp {
+  bbox: BBox;
+  query: string | null;
+  centroid: [number, number] | null;
+  $svg: SVGElement;
+  svgWidth: number = window.innerWidth;
+  svgHeight: number = window.innerWidth;
+
+  constructor(public container: HTMLElement) {
+    this.bbox = new BBox();
+    this.query = null;
+    this.centroid = null;
+
+    this.$svg = makeSVGElement("svg");
+    this.container.append(this.$svg);
+  }
+
+  async init() {
+    const response = await fetch("./data/durham_nc.json");
+    const json = await response.json() as OSMResponse;
+
+    if (json.bbox) {
+      this.bbox.parseLatitudeFirst(json.bbox);
+    } else {
+      throw new Error("no bbox was found");
+    }
+
+    this.centroid = json.centroid;
+
+    const elements: OSMElement[] = json.elements;
+
+    // Example for Durham, NC: [35.9857, -78.9154, 36.0076, -78.8882]
+    const svg = this.$svg;
+    svg.setAttribute("width", String(this.svgWidth));
+    svg.setAttribute("height", String(this.svgHeight));
+    svg.setAttribute("viewBox", `0 0 ${this.svgWidth} ${this.svgHeight}`);
+  
+    // this.bbox.crop(this.svgWidth, this.svgHeight);
+
+    let rect = makeSVGElement("rect");
+    rect.setAttribute("x", String(0));
+    rect.setAttribute("y", String(0));
+    rect.setAttribute("width", String(this.svgWidth));
+    rect.setAttribute("height", String(this.svgHeight));
+    rect.setAttribute("fill", "rgba(153, 6, 167, 1)");
+    svg.append(rect)
+
+    let g = makeSVGElement("g") as SVGGElement;
+    // g.setAttribute("transform", "scale(1, -1)");
+    g.setAttribute("stroke", "white");
+    g.setAttribute("fill", "none");
+    g.setAttribute("stroke-width", "3");
+    svg.append(g);
+
+    // Diagonal top left to bottom right
+    // let path = makeSVGPath([[this.bbox.minLon, this.bbox.maxLat], [this.bbox.maxLon, this.bbox.minLat]]);
+    // let path = makeSVGPath([[0, 0], [this.svgWidth, this.svgHeight]]);
+    // g.append(path);
+
+    // test the cropBox
+    // if (this.bbox.isValid()) {
+    //   rect = makeSVGElement("rect");
+    //   rect.setAttribute("x", String(U.map(this.bbox.left, this.bbox.left, this.bbox.right, 0, this.svgWidth)));
+    //   rect.setAttribute("y", String(U.map(this.bbox.top, this.bbox.top, this.bbox.bottom, 0, this.svgHeight)));
+    //   rect.setAttribute("width", String(this.svgWidth));
+    //   rect.setAttribute("height", String(this.svgHeight));
+    //   rect.setAttribute("stroke", "blue");
+    //   rect.setAttribute("fill", "none");
+    //   rect.setAttribute("stroke-width", "6");
+    //   svg.append(rect);
+    // } else {
+    //   throw new Error("uh oh")
+    // }
+    
+    g = makeSVGElement("g") as SVGGElement;
+    // g.setAttribute("transform", "scale(1, -1)");
+    g.setAttribute("stroke", "rgba(80, 0, 0, 1)");
+    g.setAttribute("fill", "rgba(255, 82, 241, 0.27)");
+    g.setAttribute("stroke-width", "0.5");
+    svg.append(g);
+
+    // debugger;
+    for (let ele of elements) {
+      if (ele.type !== "way") continue;
+
+      const mappedPoints: Point[] = ele.geometry.map((point) => {
+        return this.mapOSMPoint(point);
+      }).map(OSMPoint => [OSMPoint.lon, OSMPoint.lat]);
+
+      const shape = makeSVGPath(mappedPoints)
+
+      g.append(shape);
+    }
+
+    document.body.append(svg);
+  }
+
+
+
 
   mapOSMPoint(pt: OSMPoint, precision=3): OSMPoint {
     if (!this.bbox.isValid()) throw new Error("Only works with valid bbox");
