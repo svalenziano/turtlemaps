@@ -16,9 +16,9 @@ type GenericObject = {[key: string]: string};
 
 type DefaultLayer = {
   name: string;
-  color_fill: string | null;
-  color_line: string | null;
-  stroke_weight: number;
+  colorFill: string | null;
+  colorLine: string | null;
+  strokeWeight: number;
   tags: {
     [key: string]: string[] | null;
   }
@@ -325,72 +325,72 @@ class Layer {
   static defaultLayers: DefaultLayer[] = [
     { 
       name: "Buildings - Residential",
-      color_fill: Colors.default.bright,
-      color_line: Colors.default.dark,
-      stroke_weight: this.strokesWeights.faint,
+      colorFill: Colors.default.bright,
+      colorLine: Colors.default.dark,
+      strokeWeight: this.strokesWeights.faint,
       tags: {
         building: ["house", "residential", "detached", "apartments", "semidetached_house", "bungalow", "dormitory"],
       },
     },
     { 
       name: "Buildings - All",
-      color_fill: Colors.default.dark,
-      color_line: Colors.default.bright,
-      stroke_weight: this.strokesWeights.faint,
+      colorFill: Colors.default.dark,
+      colorLine: Colors.default.bright,
+      strokeWeight: this.strokesWeights.faint,
       tags: {
         building: null,
       },
     },
     {
       name: "Paths",
-      color_fill: Colors.default.bg,
-      color_line: Colors.default.dark, 
-      stroke_weight: this.strokesWeights.faint,
+      colorFill: Colors.default.bg,
+      colorLine: Colors.default.dark, 
+      strokeWeight: this.strokesWeights.faint,
       tags: {
         highway: ["footway", "service", "driveway", "path", "pedestrian"],
       },
     },
     {
       name: "Primary Roads",
-      color_fill: null,
-      color_line: Colors.default.dark,
-      stroke_weight: this.strokesWeights.super,
+      colorFill: null,
+      colorLine: Colors.default.dark,
+      strokeWeight: this.strokesWeights.super,
       tags: {
         highway: ["motorway", "motorway_link", "trunk", "trunk_link", "primary", "primary_link", ]
       },
     },
     {
       name: "Secondary Roads",
-      color_fill: null,
-      color_line: Colors.default.dark,
-      stroke_weight: this.strokesWeights.heavy,
+      colorFill: null,
+      colorLine: Colors.default.dark,
+      strokeWeight: this.strokesWeights.heavy,
       tags: {
         highway: ["secondary", "secondary_link", "tertiary", "tertiary_link",]
       },
     },
     {
       name: "Tertiary Roads",
-      color_fill: null,
-      color_line: Colors.default.dark,
-      stroke_weight: this.strokesWeights.medium,
+      colorFill: null,
+      colorLine: Colors.default.dark,
+      strokeWeight: this.strokesWeights.medium,
       tags: {
         highway: ["residential", "service"]
       },
     },
     {
       name: "Paths",
-      color_fill: null,
-      color_line: Colors.default.dark,
-      stroke_weight: this.strokesWeights.light,
+      colorFill: null,
+      colorLine: Colors.default.dark,
+      strokeWeight: this.strokesWeights.light,
       tags: {
         highway: ["footway", "service", "driveway"]
       },
     },
     {
       name: "Water",
-      color_fill: Colors.default.blue,
-      color_line: Colors.default.dark,
-      stroke_weight: this.strokesWeights.faint,
+      colorFill: Colors.default.blue,
+      colorLine: Colors.default.dark,
+      strokeWeight: this.strokesWeights.faint,
       tags: {
         waterway: null,
         natural: ["water"],
@@ -398,9 +398,9 @@ class Layer {
     },
     {
       name: "Green Space",
-      color_fill: Colors.default.green,
-      color_line: Colors.default.dark,
-      stroke_weight: this.strokesWeights.faint,
+      colorFill: Colors.default.green,
+      colorLine: Colors.default.dark,
+      strokeWeight: this.strokesWeights.faint,
       tags: {
         leisure: ["park", "garden"],
         landuse: ["grass"],
@@ -408,9 +408,9 @@ class Layer {
     },
     {
       name: "Public Space",
-      color_fill: Colors.default.green,
-      color_line: Colors.default.dark,
-      stroke_weight: this.strokesWeights.faint,
+      colorFill: Colors.default.green,
+      colorLine: Colors.default.dark,
+      strokeWeight: this.strokesWeights.faint,
       tags: {
         leisure: ["village_green", "track", "dog_park"],
         amenity: ["school"],
@@ -418,9 +418,9 @@ class Layer {
     },
     {
       name: "Parking",
-      color_fill: Colors.default.ick,
-      color_line: Colors.default.bg,
-      stroke_weight: this.strokesWeights.faint,
+      colorFill: Colors.default.ick,
+      colorLine: Colors.default.bg,
+      strokeWeight: this.strokesWeights.faint,
       tags: {
         parking: null,
         parking_space: null,
@@ -430,9 +430,9 @@ class Layer {
     },
     {
       name: "No Tresspassing",
-      color_fill: Colors.default.bright,
-      color_line: null,
-      stroke_weight: this.strokesWeights.faint,
+      colorFill: Colors.default.bright,
+      colorLine: null,
+      strokeWeight: this.strokesWeights.faint,
       tags: {
         access: ["private"],
       },
