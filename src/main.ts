@@ -193,7 +193,7 @@ class BBox implements unknownBbox {
   }
 
   get height() {
-    if (this.isValid()) {
+    if (this.top !== null && this.bottom !== null) {
       return Math.abs(this.top - this.bottom)
     } else {
       throw new Error("Not initialized")
@@ -284,7 +284,7 @@ class MapApp {
   
     this.bbox.crop(this.svgWidth, this.svgHeight);
 
-    const rect = makeSVGElement("rect");
+    let rect = makeSVGElement("rect");
     rect.setAttribute("x", String(0));
     rect.setAttribute("y", String(0));
     rect.setAttribute("width", String(this.svgWidth));
@@ -305,6 +305,20 @@ class MapApp {
     g.append(path);
 
     // test the cropBox
+    if (this.bbox.isValid()) {
+      rect = makeSVGElement("rect");
+      rect.setAttribute("x", String(U.map(this.bbox.left, this.bbox.left, this.bbox.right, 0, this.svgWidth)));
+      rect.setAttribute("y", String(U.map(this.bbox.top, this.bbox.top, this.bbox.bottom, 0, this.svgHeight)));
+      rect.setAttribute("width", String(this.svgWidth));
+      rect.setAttribute("height", String(this.svgHeight));
+      rect.setAttribute("stroke", "blue");
+      rect.setAttribute("fill", "none");
+      rect.setAttribute("stroke-width", "6");
+      svg.append(rect);
+    } else {
+      throw new Error("uh oh")
+    }
+
 
     document.body.append(svg);
   }
