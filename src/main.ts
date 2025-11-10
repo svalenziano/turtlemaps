@@ -347,7 +347,7 @@ class MapApp {
   mapOSMPoint(pt: OSMPoint): OSMPoint {
     if (!this.bbox.isValid()) throw new Error("Only works with valid bbox");
     return {
-      lat: U.map(pt.lat, this.bbox.bottom, this.bbox.top, 0, this.svgHeight),
+      lat: U.map(pt.lat, this.bbox.top, this.bbox.bottom, 0, this.svgHeight),
       lon: U.map(pt.lon, this.bbox.left, this.bbox.right, 0, this.svgWidth)
     }
 
