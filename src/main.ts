@@ -268,8 +268,8 @@ class MapApp {
   bbox: BBox;
   query: string | null;
   centroid: [number, number] | null;
-  svgWidth: number = 450;
-  svgHeight: number = 450;
+  svgWidth: number = 400;
+  svgHeight: number = 400;
 
   constructor() {
     this.data = {};
@@ -305,7 +305,7 @@ class MapApp {
     rect.setAttribute("y", String(0));
     rect.setAttribute("width", String(this.svgWidth));
     rect.setAttribute("height", String(this.svgHeight));
-    rect.setAttribute("fill", "red");
+    rect.setAttribute("fill", "rgba(153, 6, 167, 1)");
     svg.append(rect)
 
     let g = makeSVGElement("g") as SVGGElement;
@@ -317,28 +317,28 @@ class MapApp {
 
     // Diagonal top left to bottom right
     // let path = makeSVGPath([[this.bbox.minLon, this.bbox.maxLat], [this.bbox.maxLon, this.bbox.minLat]]);
-    let path = makeSVGPath([[0, 0], [this.svgWidth, this.svgHeight]]);
-    g.append(path);
+    // let path = makeSVGPath([[0, 0], [this.svgWidth, this.svgHeight]]);
+    // g.append(path);
 
     // test the cropBox
-    if (this.bbox.isValid()) {
-      rect = makeSVGElement("rect");
-      rect.setAttribute("x", String(U.map(this.bbox.left, this.bbox.left, this.bbox.right, 0, this.svgWidth)));
-      rect.setAttribute("y", String(U.map(this.bbox.top, this.bbox.top, this.bbox.bottom, 0, this.svgHeight)));
-      rect.setAttribute("width", String(this.svgWidth));
-      rect.setAttribute("height", String(this.svgHeight));
-      rect.setAttribute("stroke", "blue");
-      rect.setAttribute("fill", "none");
-      rect.setAttribute("stroke-width", "6");
-      svg.append(rect);
-    } else {
-      throw new Error("uh oh")
-    }
+    // if (this.bbox.isValid()) {
+    //   rect = makeSVGElement("rect");
+    //   rect.setAttribute("x", String(U.map(this.bbox.left, this.bbox.left, this.bbox.right, 0, this.svgWidth)));
+    //   rect.setAttribute("y", String(U.map(this.bbox.top, this.bbox.top, this.bbox.bottom, 0, this.svgHeight)));
+    //   rect.setAttribute("width", String(this.svgWidth));
+    //   rect.setAttribute("height", String(this.svgHeight));
+    //   rect.setAttribute("stroke", "blue");
+    //   rect.setAttribute("fill", "none");
+    //   rect.setAttribute("stroke-width", "6");
+    //   svg.append(rect);
+    // } else {
+    //   throw new Error("uh oh")
+    // }
     
     g = makeSVGElement("g") as SVGGElement;
     // g.setAttribute("transform", "scale(1, -1)");
-    g.setAttribute("stroke", "white");
-    g.setAttribute("fill", "rgba(0, 0, 0, 0.55)");
+    g.setAttribute("stroke", "rgba(80, 0, 0, 1)");
+    g.setAttribute("fill", "rgba(255, 82, 241, 0.27)");
     g.setAttribute("stroke-width", "0.5");
     svg.append(g);
 
