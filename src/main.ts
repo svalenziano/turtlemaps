@@ -1,97 +1,8 @@
 import type * as T from "./types.ts"
 
-/////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////
-// TYPES
-
-
-
-
-
-/////////////////////////////////////////////////////////////////////////////
-// OSM Types
-
-enum OSMElementType {
-  Node = "node",
-  Way = "way",
-  Relation = "relation"
-}
-
-interface OSMBbox {
-  minlat: number;
-  minlon: number;
-  maxlat: number;
-  maxlon: number;
-}
-
-interface OSMPoint {
-  lat: number;
-  lon: number;
-}
-
-///////////////////////////////////////////////////////////
-// OSM Elements
-interface OSMElementCommon {
-  type: OSMElementType;
-  id: number;
-  bounds: OSMBbox;
-  nodes?: number[];
-  tags: T.GenericObject;
-}
-
-interface OSMNode extends OSMElementCommon {
-  type: OSMElementType.Node;
-};         
-
-interface OSMRelation extends OSMElementCommon {
-  type: OSMElementType.Relation;
-  members: OSMElement;
-};        
-
-interface OSMWay extends OSMElementCommon {
-  type: OSMElementType.Way;
-  geometry: OSMPoint[];
-  role?: "outer" | "inner";
-  ref?: number;
-}
-
-type OSMElement = OSMWay | OSMNode | OSMRelation;
-
-///////////////////////////////////////////////////////////
-// Other OSM
-
-interface OSMResponse {
-  version: number;
-  generator: string;
-  osm3s: {
-    timestamp_osm_base: string;
-    copyright: string;
-  };
-  elements: OSMElement[];
-  bbox?: T.bboxArray;
-  centroid: T.Point;
-}
-
-/////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////
-
-type validBbox = {
-  bottom: number;
-  left: number;
-  top: number;
-  right: number;
-  oBottom: number;
-  oLeft: number;
-  oTop: number;
-  oRight: number;
-  oWidth: number;
-  oHeight: number;
-}
-
-type unknownBbox = Record<keyof validBbox, number | null>
 
 // CLASSES
-class BBox implements unknownBbox {
+class BBox implements T.unknownBbox {
   /*
   Cordinates and bounding boxes are confusing because they are formatted
   differently by different organizations.  For example, OSM Overpass and 
@@ -155,7 +66,7 @@ class BBox implements unknownBbox {
     }
   }
 
-  isValid(): this is validBbox {
+  isValid(): this is T.validBbox {
     return (
       typeof this.bottom === "number" &&
       typeof this.left === "number" &&
@@ -443,7 +354,7 @@ class MapApp {
 
   async init() {
     const response = await fetch("./data/durham_nc.json");
-    const json = await response.json() as OSMResponse;
+    const json = await response.json() as T.OSMResponse;
 
     if (json.bbox) {
       this.bbox.parseLatitudeFirst(json.bbox);
@@ -453,7 +364,7 @@ class MapApp {
 
     this.centroid = json.centroid;
 
-    const elements: OSMElement[] = json.elements;
+    const elements: T.OSMElement[] = json.elements;
 
     // Example for Durham, NC: [35.9857, -78.9154, 36.0076, -78.8882]
     const svg = this.$svg;
@@ -524,7 +435,7 @@ class MapApp {
 
 
 
-  mapOSMPoint(pt: OSMPoint, precision=3): OSMPoint {
+  mapOSMPoint(pt: T.OSMPoint, precision=3): T.OSMPoint {
     if (!this.bbox.isValid()) throw new Error("Only works with valid bbox");
     return {
       lat: Number(U.map(pt.lat, this.bbox.top, this.bbox.bottom, 0, this.svgHeight).toFixed(precision)),
