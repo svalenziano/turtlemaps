@@ -14,6 +14,16 @@ type Point = [number, number];
 
 type GenericObject = {[key: string]: string};
 
+type DefaultLayer = {
+  name: string;
+  color_fill: string | null;
+  color_line: string | null;
+  stroke_weight: number;
+  tags: {
+    [key: string]: string[] | null;
+  }
+}
+
 /////////////////////////////////////////////////////////////////////////////
 // OSM Types
 
@@ -288,19 +298,33 @@ class U {
   }
 }
 
+class Colors {
+  static default = {
+    bg: "rgb(241, 244, 203)",
+    light: "rgba(255, 255, 255, 1)",
+    dark: "rgb(65, 54, 51)",
+    bright: "rgba(238, 86, 66, 1)",
+    green: "rgba(153, 197, 114, 1)",
+    blue: "rgba(138, 181, 204, 1)",
+    ick: "rgba(115, 28, 122, 1)",
+  }
+}
+
 class MapApp {
-  data: object;  // TODO - import OSM types
   bbox: BBox;
   query: string | null;
   centroid: [number, number] | null;
+  $svg: SVGElement;
   svgWidth: number = window.innerWidth;
   svgHeight: number = window.innerWidth;
 
-  constructor() {
-    this.data = {};
+  constructor(public container: HTMLElement) {
     this.bbox = new BBox();
     this.query = null;
     this.centroid = null;
+
+    this.$svg = makeSVGElement("svg");
+    this.container.append(this.$svg);
   }
 
   async init() {
@@ -318,7 +342,7 @@ class MapApp {
     const elements: OSMElement[] = json.elements;
 
     // Example for Durham, NC: [35.9857, -78.9154, 36.0076, -78.8882]
-    const svg = makeSVGElement("svg");
+    const svg = this.$svg;
     svg.setAttribute("width", String(this.svgWidth));
     svg.setAttribute("height", String(this.svgHeight));
     svg.setAttribute("viewBox", `0 0 ${this.svgWidth} ${this.svgHeight}`);
@@ -383,6 +407,132 @@ class MapApp {
     document.body.append(svg);
   }
 
+  static strokesWeights = {
+      faint: 0.3,
+      light: 0.5,
+      medium: 1.3,
+      heavy: 2.5,
+      super: 4,
+    }
+
+// Top layers are drawn last
+  static defaultLayers: DefaultLayer[] = [
+    { 
+      name: "Buildings - Residential",
+      color_fill: Colors.default.bright,
+      color_line: Colors.default.dark,
+      stroke_weight: this.strokesWeights.faint,
+      tags: {
+        building: ["house", "residential", "detached", "apartments", "semidetached_house", "bungalow", "dormitory"],
+      },
+    },
+    { 
+      name: "Buildings - All",
+      color_fill: Colors.default.dark,
+      color_line: Colors.default.bright,
+      stroke_weight: this.strokesWeights.faint,
+      tags: {
+        building: null,
+      },
+    },
+    {
+      name: "Paths",
+      color_fill: Colors.default.bg,
+      color_line: Colors.default.dark, 
+      stroke_weight: this.strokesWeights.faint,
+      tags: {
+        highway: ["footway", "service", "driveway", "path", "pedestrian"],
+      },
+    },
+    {
+      name: "Primary Roads",
+      color_fill: null,
+      color_line: Colors.default.dark,
+      stroke_weight: this.strokesWeights.super,
+      tags: {
+        highway: ["motorway", "motorway_link", "trunk", "trunk_link", "primary", "primary_link", ]
+      },
+    },
+    {
+      name: "Secondary Roads",
+      color_fill: null,
+      color_line: Colors.default.dark,
+      stroke_weight: this.strokesWeights.heavy,
+      tags: {
+        highway: ["secondary", "secondary_link", "tertiary", "tertiary_link",]
+      },
+    },
+    {
+      name: "Tertiary Roads",
+      color_fill: null,
+      color_line: Colors.default.dark,
+      stroke_weight: this.strokesWeights.medium,
+      tags: {
+        highway: ["residential", "service"]
+      },
+    },
+    {
+      name: "Paths",
+      color_fill: null,
+      color_line: Colors.default.dark,
+      stroke_weight: this.strokesWeights.light,
+      tags: {
+        highway: ["footway", "service", "driveway"]
+      },
+    },
+    {
+      name: "Water",
+      color_fill: Colors.default.blue,
+      color_line: Colors.default.dark,
+      stroke_weight: this.strokesWeights.faint,
+      tags: {
+        waterway: null,
+        natural: ["water"],
+      },
+    },
+    {
+      name: "Green Space",
+      color_fill: Colors.default.green,
+      color_line: Colors.default.dark,
+      stroke_weight: this.strokesWeights.faint,
+      tags: {
+        leisure: ["park", "garden"],
+        landuse: ["grass"],
+      },
+    },
+    {
+      name: "Public Space",
+      color_fill: Colors.default.green,
+      color_line: Colors.default.dark,
+      stroke_weight: this.strokesWeights.faint,
+      tags: {
+        leisure: ["village_green", "track", "dog_park"],
+        amenity: ["school"],
+      }
+    },
+    {
+      name: "Parking",
+      color_fill: Colors.default.ick,
+      color_line: Colors.default.bg,
+      stroke_weight: this.strokesWeights.faint,
+      tags: {
+        parking: null,
+        parking_space: null,
+        amenity: ["parking"],
+        building: ["parking", "parking_garage", "parking_shelter", "car_park", "parkingbuilding", "parking_deck"]
+      }
+    },
+    {
+      name: "No Tresspassing",
+      color_fill: Colors.default.bright,
+      color_line: null,
+      stroke_weight: this.strokesWeights.faint,
+      tags: {
+        access: ["private"],
+      },
+    },
+  ];
+
   mapOSMPoint(pt: OSMPoint, precision=3): OSMPoint {
     if (!this.bbox.isValid()) throw new Error("Only works with valid bbox");
     return {
@@ -411,7 +561,9 @@ class svgMap {
 // MAIN LOOP
 
 document.addEventListener("DOMContentLoaded", () => {
+  const $container = document.querySelector("section.app") as HTMLElement;
+  if (!$container) throw new Error("Container not found")
 
-  const app = new MapApp();
+  const app = new MapApp($container);
   app.init();
 })
