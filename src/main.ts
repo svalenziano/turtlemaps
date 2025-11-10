@@ -149,6 +149,30 @@ function makeSVGPath(points: Point[]): SVGPathElement {
   return path;
 }
 
+// Utility functions
+class U {
+
+  // Based on p5js implementation https://github.com/processing/p5.js/blob/44341795ec65d956b9efe3290da478519dcf01bd/src/math/calculation.js#L605
+  static map(val: number, start1:number, stop1:number, start2:number, stop2:number, withinBounds:boolean) {
+    const newval = (val - start1) / (stop1 - start1) * (stop2 - start2) + start2;
+    if (!withinBounds) {
+      return newval;
+    }
+    if (start2 < stop2) {
+      return this.constrain(newval, start2, stop2);
+    } else {
+      return this.constrain(newval, stop2, start2);
+    }
+  };
+
+  static constrain(val:number, min:number, max:number) {
+    if (min >= max) throw new Error("Min should be less than max");
+    if (val <= min) return min;
+    if (val >= max) return max;
+    else return val;
+  }
+}
+
 class MapApp {
   data: object;  // TODO - import OSM types
   bbox: BBox;
