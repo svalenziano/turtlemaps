@@ -206,26 +206,26 @@ class MapApp {
     const svg = makeSVGElement("svg");
     svg.setAttribute("width", String(this.svgWidth));
     svg.setAttribute("height", String(this.svgHeight));
-    svg.setAttribute("viewBox", this.bbox.svgViewBox);
+    svg.setAttribute("viewBox", `0 0 ${this.svgWidth} ${this.svgHeight}`);
   
     const rect = makeSVGElement("rect");
-    rect.setAttribute("x", String(this.bbox.minLon));
-    rect.setAttribute("y", String(this.bbox.minLat));
-    rect.setAttribute("width", String(this.bbox.width));
-    rect.setAttribute("height", String(this.bbox.height));
+    rect.setAttribute("x", String(0));
+    rect.setAttribute("y", String(0));
+    rect.setAttribute("width", String(this.svgWidth));
+    rect.setAttribute("height", String(this.svgHeight));
     rect.setAttribute("fill", "red");
     svg.append(rect)
 
     let g = makeSVGElement("g") as SVGGElement;
     // g.setAttribute("transform", "scale(1, -1)");
-    g.setAttribute("stroke", "gray");
+    g.setAttribute("stroke", "white");
     g.setAttribute("fill", "none");
-    g.setAttribute("stroke-width", "0.001");
+    g.setAttribute("stroke-width", "3");
     svg.append(g);
 
     // Diagonal top left to bottom right
     // let path = makeSVGPath([[this.bbox.minLon, this.bbox.maxLat], [this.bbox.maxLon, this.bbox.minLat]]);
-    let path = makeSVGPath([[this.bbox.minLon, this.bbox.minLat], [this.bbox.maxLon, this.bbox.maxLat]]);
+    let path = makeSVGPath([[0, 0], [this.svgWidth, this.svgHeight]]);
     g.append(path);
 
     document.body.append(svg);
