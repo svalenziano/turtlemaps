@@ -247,6 +247,10 @@ class U {
     if (val >= max) return max;
     else return val;
   }
+
+  static dist(x1: number, y1: number, x2: number, y2: number): number {
+    return Math.hypot(x1 - x2, y1 - y2);
+  }
 }
 
 class MapApp {
@@ -324,7 +328,7 @@ class MapApp {
     g = makeSVGElement("g") as SVGGElement;
     // g.setAttribute("transform", "scale(1, -1)");
     g.setAttribute("stroke", "white");
-    g.setAttribute("fill", "none");
+    g.setAttribute("fill", "rgba(0, 0, 0, 0.55)");
     g.setAttribute("stroke-width", "0.5");
     svg.append(g);
 
