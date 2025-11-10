@@ -261,6 +261,31 @@ class U {
   static dist(x1: number, y1: number, x2: number, y2: number): number {
     return Math.hypot(x1 - x2, y1 - y2);
   }
+
+  static saveSVG(svg: SVGElement): void {
+    if (!svg) {
+      const s = document.querySelector("svg");
+      if (!s) throw new Error("SVG was not provided");
+      svg = s;
+    }
+    
+    let data = (new XMLSerializer()).serializeToString(svg);
+    let svgBlob = new Blob([data], {type: "image/svg+xml;charset=utf-8"});
+    let url = URL.createObjectURL(svgBlob);
+    triggerDownload(url)
+
+    
+    function triggerDownload(imgURI: string, filename="image.svg") {
+    let a = document.createElement('a');
+
+    a.setAttribute('download', filename);
+    a.setAttribute('href', imgURI);
+    a.setAttribute('target', '_blank');
+
+    a.click();
+}
+
+  }
 }
 
 class MapApp {
@@ -268,8 +293,8 @@ class MapApp {
   bbox: BBox;
   query: string | null;
   centroid: [number, number] | null;
-  svgWidth: number = 400;
-  svgHeight: number = 400;
+  svgWidth: number = window.innerWidth;
+  svgHeight: number = window.innerWidth;
 
   constructor() {
     this.data = {};
