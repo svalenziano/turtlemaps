@@ -212,9 +212,10 @@ class Layer implements T.DefaultLayer {
 
 
   */
+  $g: SVGElement;
   name: string;
   colorFill: string | null;
-  colorLine: string | null;
+  colorStroke: string | null;
   strokeWeight: number;
   tags: {
     [key: string]: string[] | null;
@@ -223,17 +224,28 @@ class Layer implements T.DefaultLayer {
   constructor(options: T.DefaultLayer) {
     this.name = options.name;
     this.colorFill = options.colorFill;
-    this.colorLine = options.colorLine;
+    this.colorStroke = options.colorStroke;
     this.strokeWeight = options.strokeWeight;
     this.tags = options.tags;
-
+    this.$g = makeSVGElement("g");
+    this.updateStyles();
   }
 
   /**
-   * @returns An array of layers created with the `defaultLayers`
+   * Create and return an array of layers created with `this.defaultLayers`
    */
   static makeDefaultLayers(): Layer[] {
     return Layer.defaultLayers.map((options) => new Layer(options));
+  }
+
+  /**
+   * Apply / re-apply styles to this.$g
+   */
+  updateStyles(): void {
+    this.$g.setAttribute("fill", this.colorFill ?? "none");
+    this.$g.setAttribute("stroke", this.colorStroke ?? "none");
+    this.$g.setAttribute("stroke-width", 
+      this.strokeWeight ? String(this.strokeWeight) : "0");
   }
 
   static strokesWeights = {
@@ -244,12 +256,14 @@ class Layer implements T.DefaultLayer {
       super: 4,
     }
 
-  // Top layers are drawn last
+/**
+  *  
+  */
   static defaultLayers: T.DefaultLayer[] = [
     { 
       name: "Buildings - Residential",
       colorFill: Colors.default.bright,
-      colorLine: Colors.default.dark,
+      colorStroke: Colors.default.dark,
       strokeWeight: this.strokesWeights.faint,
       tags: {
         building: ["house", "residential", "detached", "apartments", "semidetached_house", "bungalow", "dormitory"],
@@ -258,7 +272,7 @@ class Layer implements T.DefaultLayer {
     { 
       name: "Buildings - All",
       colorFill: Colors.default.dark,
-      colorLine: Colors.default.bright,
+      colorStroke: Colors.default.bright,
       strokeWeight: this.strokesWeights.faint,
       tags: {
         building: null,
@@ -267,7 +281,7 @@ class Layer implements T.DefaultLayer {
     {
       name: "Paths",
       colorFill: Colors.default.bg,
-      colorLine: Colors.default.dark, 
+      colorStroke: Colors.default.dark, 
       strokeWeight: this.strokesWeights.faint,
       tags: {
         highway: ["footway", "service", "driveway", "path", "pedestrian"],
@@ -276,7 +290,7 @@ class Layer implements T.DefaultLayer {
     {
       name: "Primary Roads",
       colorFill: null,
-      colorLine: Colors.default.dark,
+      colorStroke: Colors.default.dark,
       strokeWeight: this.strokesWeights.super,
       tags: {
         highway: ["motorway", "motorway_link", "trunk", "trunk_link", "primary", "primary_link", ]
@@ -285,7 +299,7 @@ class Layer implements T.DefaultLayer {
     {
       name: "Secondary Roads",
       colorFill: null,
-      colorLine: Colors.default.dark,
+      colorStroke: Colors.default.dark,
       strokeWeight: this.strokesWeights.heavy,
       tags: {
         highway: ["secondary", "secondary_link", "tertiary", "tertiary_link",]
@@ -294,7 +308,7 @@ class Layer implements T.DefaultLayer {
     {
       name: "Tertiary Roads",
       colorFill: null,
-      colorLine: Colors.default.dark,
+      colorStroke: Colors.default.dark,
       strokeWeight: this.strokesWeights.medium,
       tags: {
         highway: ["residential", "service"]
@@ -303,7 +317,7 @@ class Layer implements T.DefaultLayer {
     {
       name: "Paths",
       colorFill: null,
-      colorLine: Colors.default.dark,
+      colorStroke: Colors.default.dark,
       strokeWeight: this.strokesWeights.light,
       tags: {
         highway: ["footway", "service", "driveway"]
@@ -312,7 +326,7 @@ class Layer implements T.DefaultLayer {
     {
       name: "Water",
       colorFill: Colors.default.blue,
-      colorLine: Colors.default.dark,
+      colorStroke: Colors.default.dark,
       strokeWeight: this.strokesWeights.faint,
       tags: {
         waterway: null,
@@ -322,7 +336,7 @@ class Layer implements T.DefaultLayer {
     {
       name: "Green Space",
       colorFill: Colors.default.green,
-      colorLine: Colors.default.dark,
+      colorStroke: Colors.default.dark,
       strokeWeight: this.strokesWeights.faint,
       tags: {
         leisure: ["park", "garden"],
@@ -332,7 +346,7 @@ class Layer implements T.DefaultLayer {
     {
       name: "Public Space",
       colorFill: Colors.default.green,
-      colorLine: Colors.default.dark,
+      colorStroke: Colors.default.dark,
       strokeWeight: this.strokesWeights.faint,
       tags: {
         leisure: ["village_green", "track", "dog_park"],
@@ -342,7 +356,7 @@ class Layer implements T.DefaultLayer {
     {
       name: "Parking",
       colorFill: Colors.default.ick,
-      colorLine: Colors.default.bg,
+      colorStroke: Colors.default.bg,
       strokeWeight: this.strokesWeights.faint,
       tags: {
         parking: null,
@@ -354,7 +368,7 @@ class Layer implements T.DefaultLayer {
     {
       name: "No Tresspassing",
       colorFill: Colors.default.bright,
-      colorLine: null,
+      colorStroke: null,
       strokeWeight: this.strokesWeights.faint,
       tags: {
         access: ["private"],
@@ -370,17 +384,37 @@ class MapApp {
   $svg: SVGElement;
   svgWidth: number = window.innerWidth;
   svgHeight: number = window.innerWidth;
+  layers: Layer[];
 
   constructor(public container: HTMLElement) {
     this.bbox = new BBox();
     this.query = null;
     this.centroid = null;
+    this.layers = Layer.makeDefaultLayers();
 
     this.$svg = makeSVGElement("svg");
     this.container.append(this.$svg);
   }
 
-  async init() {
+  async fetchOSM(query: string): T.OSMResponse {
+
+  }
+
+/**
+  * Side Effects: updates $svg and layers using data from OSM
+  */
+  async drawOSM(data: T.OSMResponse): void {
+    // Parse response
+
+    // Decide which layer each element belongs to
+
+    // 
+  }
+
+/**
+ * A simple testing function.  Do not use in production.
+ */
+  async test() {
     const response = await fetch("./data/durham_nc.json");
     const json = await response.json() as T.OSMResponse;
 
@@ -492,7 +526,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!$container) throw new Error("Container not found")
 
   const app = new MapApp($container);
-  app.init();
+  app.test();
 
   const layers = Layer.makeDefaultLayers();
   console.log(layers);

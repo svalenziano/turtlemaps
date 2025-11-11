@@ -15,7 +15,7 @@ export type GenericObject = {[key: string]: string};
 export type DefaultLayer = {
   name: string;
   colorFill: string | null;
-  colorLine: string | null;
+  colorStroke: string | null;
   strokeWeight: number;
   tags: {
     [key: string]: string[] | null;
