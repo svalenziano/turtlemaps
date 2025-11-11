@@ -515,23 +515,30 @@ class MapApp {
     const elements: T.OSMElement[] = json.elements;
     // Decide which layer each element belongs to
     for (let ele of elements) {
-      if (ele.type === "way") {
-        // Get layer
-          /*
-          getLayer(tags) HELPER
-            - For each layer in `layers`
-              - For each layerTag in `layer.tags`
-                - If layerTag matches `ele.tags`
-                  - return layer
-          addGeometry(element) HELPER
-            - if element is a "way"
-              - geom = element.geometry
-            - if element is a "relation"
-              - geom = extractRelationGeom(element)
-            - path = SVG.makeSVGPath(geom points)
-          */
-        // Add geometry to layer
-      }
+      /*
+      layer = this.getLayer(ele)
+      layer.addGeometry(ele)
+
+
+      HELPERS
+      this.getLayer(tags) HELPER
+        - For each layer in `layers`
+          - For each layerTag in `layer.tags`
+            - If layerTag matches `ele.tags`
+              - return layer
+    
+      layer.addGeometry(element) HELPER
+        - if element is a "way"
+          - geom = element.geometry
+        - if element is a "relation"
+          - geom = extractRelationGeom(element)
+        - path = SVG.makeSVGPath(geom)
+
+      this.extractRelationGeom(element) HELPER
+        - extract geometry into a nested list where first array is outer boundary 
+            and subsequent arrays are inner boundaries
+      */
+      
     }
     // 
   }
