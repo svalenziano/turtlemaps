@@ -157,6 +157,26 @@ class OSM {
     static convertPoint(pt) {
         return [pt.lon, pt.lat];
     }
+    static extractRelationGeom(ele, filter = null) {
+        const result = [];
+        for (let member of ele.members) {
+            const memberPoints = [];
+            if (!(member.type === "way"))
+                continue;
+            for (let pt of member.geometry) {
+                let mappedPoint;
+                if (filter) {
+                    mappedPoint = filter([pt.lon, pt.lat]);
+                }
+                else {
+                    mappedPoint = [pt.lon, pt.lat];
+                }
+                memberPoints.push(mappedPoint);
+            }
+            result.push(memberPoints);
+        }
+        return result;
+    }
 }
 /**
  * SVG utility functions
@@ -213,7 +233,7 @@ class SVG {
      * @param points Points that form the boundary to be tested
      * @param maxOpen The threshold at which the path is considered "open"
      */
-    static pathIsOpen(points, maxOpen = 0.01) {
+    static pathIsOpen(points, maxOpen = 0.05) {
         const first = points[0];
         const last = points[points.length - 1];
         if (U.dist(first[0], first[1], last[0], last[1]) > maxOpen) {
@@ -245,14 +265,26 @@ class SVG {
 }
 class Colors {
 }
+// static default = {
+//   bg: "rgba(86, 78, 105, 1)",
+//   // bg: "rgb(241, 244, 203)",
+//   light: "rgba(255, 255, 255, 1)",
+//   dark: "rgb(65, 54, 51)",
+//   bright: "rgba(238, 86, 66, 1)",
+//   green: "rgba(153, 197, 114, 1)",
+//   blue: "rgba(138, 181, 204, 1)",
+//   ick: "rgba(115, 28, 122, 1)",
+// }
 Colors.default = {
-    bg: "rgb(241, 244, 203)",
-    light: "rgba(255, 255, 255, 1)",
+    bg: "rgba(86, 78, 105, 1)",
+    // bg: "rgb(241, 244, 203)",
+    light: "rgba(192, 192, 192, 1)",
     dark: "rgb(65, 54, 51)",
-    bright: "rgba(238, 86, 66, 1)",
-    green: "rgba(153, 197, 114, 1)",
-    blue: "rgba(138, 181, 204, 1)",
+    bright: "rgba(160, 81, 71, 1)",
+    green: "rgba(75, 90, 62, 1)",
+    blue: "rgba(98, 125, 139, 1)",
     ick: "rgba(115, 28, 122, 1)",
+    hilite: "rgba(255, 217, 0, 1)",
 };
 /**
  * Intent: use when data from an API is not formed as you expect
@@ -503,6 +535,7 @@ class MapApp {
       * @todo see TODO below
       */
     drawOSM(json) {
+        const pointTransformer = this.mapPointToSVG.bind(this);
         // Parse response
         const elements = json.elements;
         // Decide which layer each element belongs to
@@ -512,23 +545,13 @@ class MapApp {
             layer.addGeometry(ele)
       
             HELPERS
-            this.getLayer(tags: Tag[]): Layer   (HELPER in this class)
-              (Returns FIRST matching layer)
-              - For each layer in `layers`
-                - For each layerTag in `layer.tags`
-                  - If layerTag matches `ele.tags`
-                    - return layer
-          
-            layer.matches(tag: Tag): boolean
-              (Return true as soon as a match is detected)
-              - if layer.tag value is null
       
             this.extractRelationGeom(element) (HELPER in this class)
               - extract geometry into a nested list where first array is outer boundary
                   and subsequent arrays are inner boundaries
             */
-            if (!(ele.type === "way"))
-                continue; // TODO - handle relations
+            if ((ele.type === "node"))
+                continue;
             /*
               - if element is a "way"
                 - geom = element.geometry
@@ -539,13 +562,22 @@ class MapApp {
             const layer = this.getLayer(ele);
             if (!(layer instanceof Layer)) {
                 console.warn("Layer not found for", ele);
+                continue;
             }
-            else {
-                const points = ele.geometry
+            if (ele.type === "way") {
+                const geom = ele.geometry
                     .map(p => OSM.convertPoint(p))
                     .map(this.mapPointToSVG, this);
-                const path = SVG.makePath(points);
+                layer.addGeometry(SVG.makePath(geom));
+            }
+            else if (ele.type === "relation") {
+                const geom = OSM.extractRelationGeom(ele, pointTransformer);
+                const path = SVG.makePath(geom);
+                path.setAttribute("stroke", Colors.default.hilite);
                 layer.addGeometry(path);
+            }
+            else {
+                const x = ele;
             }
         }
         // 

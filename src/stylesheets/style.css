@@ -1,5 +1,6 @@
 :root {
   --smoke: whitesmoke;
+  --bg: rgba(49, 49, 45, 1)
 }
 
 html, body {
@@ -11,6 +12,7 @@ html, body {
 body {
   padding: 1rem;
   display: relative;
+  background-color: var(--bg);
 }
 
 canvas {

@@ -22,9 +22,7 @@ export type DefaultLayer = {
   }
 }
 
-
-
-
+export type PointTransformer = (p: Point) => Point;
 
 
 /////////////////////////////////////////////////////////////////////////////
@@ -66,7 +64,7 @@ export interface OSMNode extends OSMElementCommon {
 
 export interface OSMRelation extends OSMElementCommon {
   type: OSMElementType.Relation;
-  members: OSMElement;
+  members: OSMElement[];
 };        
 
 export interface OSMWay extends OSMElementCommon {
