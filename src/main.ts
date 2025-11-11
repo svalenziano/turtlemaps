@@ -108,37 +108,7 @@ class BBox implements T.unknownBbox {
   }
 }
 
-function makeSVGElement(type: "svg" | "rect" | "circle" | "polygon" | "path" | "g"): SVGElement {
-  return document.createElementNS("http://www.w3.org/2000/svg", type);
-}
 
-function makeSVGPath(points: T.Point[], maxOpen=0.01): SVGPathElement {
-  /*
-  maxOpen = if start and end points are separated by a minimum of this distance
-    the shape will not be filled
-  */
-  const path = makeSVGElement("path") as SVGPathElement;
-
-  if (points.length < 2) {
-    throw new Error("At least 2 points are required")
-  }
-
-  let commands: string[] = [`M ${points[0][0]},${points[0][1]}`];
-
-  for (let i = 1; i < points.length; i++) {
-    commands.push(`L ${points[i][0]},${points[i][1]}`);
-  }
-  // console.log(commands)
-  path.setAttribute("d", commands.join(" "));
-
-  const lastPoint = points[points.length - 1]
-
-  if (U.dist(points[0][0], points[0][1], lastPoint[0], lastPoint[1])) {
-    path.setAttribute("fill", "none");
-  }
-  
-  return path;
-}
 
 /**
  * Misc. utility functions
@@ -199,7 +169,37 @@ class U {
  * SVG utility functions
  */
 class SVG {
+  static makeSVGElement(type: "svg" | "rect" | "circle" | "polygon" | "path" | "g"): SVGElement {
+    return document.createElementNS("http://www.w3.org/2000/svg", type);
+  }
 
+  static makeSVGPath(points: T.Point[], maxOpen=0.01): SVGPathElement {
+    /*
+    maxOpen = if start and end points are separated by a minimum of this distance
+      the shape will not be filled
+    */
+    const path = SVG.makeSVGElement("path") as SVGPathElement;
+
+    if (points.length < 2) {
+      throw new Error("At least 2 points are required")
+    }
+
+    let commands: string[] = [`M ${points[0][0]},${points[0][1]}`];
+
+    for (let i = 1; i < points.length; i++) {
+      commands.push(`L ${points[i][0]},${points[i][1]}`);
+    }
+    // console.log(commands)
+    path.setAttribute("d", commands.join(" "));
+
+    const lastPoint = points[points.length - 1]
+
+    if (U.dist(points[0][0], points[0][1], lastPoint[0], lastPoint[1])) {
+      path.setAttribute("fill", "none");
+    }
+    
+    return path;
+  }
 }
 
 class Colors {
@@ -253,7 +253,7 @@ class Layer implements T.DefaultLayer {
     this.colorStroke = options.colorStroke;
     this.strokeWeight = options.strokeWeight;
     this.tags = options.tags;
-    this.$g = makeSVGElement("g");
+    this.$g = SVG.makeSVGElement("g");
     this.updateStyles();
   }
 
@@ -419,7 +419,7 @@ class MapApp {
     this.centroid = null;
     this.layers = Layer.makeDefaultLayers();
 
-    this.$svg = makeSVGElement("svg");
+    this.$svg = SVG.makeSVGElement("svg");
     this.container.append(this.$svg);
   }
 
@@ -469,7 +469,7 @@ class MapApp {
               - geom = element.geometry
             - if element is a "relation"
               - geom = extractRelationGeom(element)
-            - path = makeSVGPath(geom points)
+            - path = SVG.makeSVGPath(geom points)
           */
         // Add geometry to layer
       }
@@ -502,7 +502,7 @@ class MapApp {
   
     // this.bbox.crop(this.svgWidth, this.svgHeight);
 
-    let rect = makeSVGElement("rect");
+    let rect = SVG.makeSVGElement("rect");
     rect.setAttribute("x", String(0));
     rect.setAttribute("y", String(0));
     rect.setAttribute("width", String(this.svgWidth));
@@ -510,7 +510,7 @@ class MapApp {
     rect.setAttribute("fill", "rgba(153, 6, 167, 1)");
     svg.append(rect)
 
-    let g = makeSVGElement("g") as SVGGElement;
+    let g = SVG.makeSVGElement("g") as SVGGElement;
     // g.setAttribute("transform", "scale(1, -1)");
     g.setAttribute("stroke", "white");
     g.setAttribute("fill", "none");
@@ -518,13 +518,13 @@ class MapApp {
     svg.append(g);
 
     // Diagonal top left to bottom right
-    // let path = makeSVGPath([[this.bbox.minLon, this.bbox.maxLat], [this.bbox.maxLon, this.bbox.minLat]]);
-    // let path = makeSVGPath([[0, 0], [this.svgWidth, this.svgHeight]]);
+    // let path = SVG.makeSVGPath([[this.bbox.minLon, this.bbox.maxLat], [this.bbox.maxLon, this.bbox.minLat]]);
+    // let path = SVG.makeSVGPath([[0, 0], [this.svgWidth, this.svgHeight]]);
     // g.append(path);
 
     // test the cropBox
     // if (this.bbox.isValid()) {
-    //   rect = makeSVGElement("rect");
+    //   rect = SVG.makeSVGElement("rect");
     //   rect.setAttribute("x", String(U.map(this.bbox.left, this.bbox.left, this.bbox.right, 0, this.svgWidth)));
     //   rect.setAttribute("y", String(U.map(this.bbox.top, this.bbox.top, this.bbox.bottom, 0, this.svgHeight)));
     //   rect.setAttribute("width", String(this.svgWidth));
@@ -537,7 +537,7 @@ class MapApp {
     //   throw new Error("uh oh")
     // }
     
-    g = makeSVGElement("g") as SVGGElement;
+    g = SVG.makeSVGElement("g") as SVGGElement;
     // g.setAttribute("transform", "scale(1, -1)");
     g.setAttribute("stroke", "rgba(80, 0, 0, 1)");
     g.setAttribute("fill", "rgba(255, 82, 241, 0.27)");
@@ -552,7 +552,7 @@ class MapApp {
         return this.mapOSMPoint(point);
       }).map(OSMPoint => [OSMPoint.lon, OSMPoint.lat]);
 
-      const shape = makeSVGPath(mappedPoints)
+      const shape = SVG.makeSVGPath(mappedPoints)
 
       g.append(shape);
     }
