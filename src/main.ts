@@ -169,33 +169,70 @@ class U {
  * SVG utility functions
  */
 class SVG {
-  static makeSVGElement(type: "svg" | "rect" | "circle" | "polygon" | "path" | "g"): SVGElement {
+  static makeElement(type: "svg" | "rect" | "circle" | "polygon" | "path" | "g"): SVGElement {
     return document.createElementNS("http://www.w3.org/2000/svg", type);
   }
 
 /**
- * Draw a simple path.  TODO: INNER BOUNDARIES ARE NOT SUPPORTED??
- * @param points List of points
- * @param maxOpen If distance between start and end points (of outer boundary) is greater than this distance, shape will not be filled
+ * Draw a path with or without inner boundaries
+ * @param points List of points or nested list of points
  *
  * @todo
  */
-  static makeSVGPath(points: T.Point[], maxOpen=0.01): SVGPathElement {
+  static makePath(points: T.Point[] | T.Point[][], ): SVGPathElement {
     /*
-
+    - If `points` is an array of points, (typeof points[0][0] is a number)
+      - push command using makeSVGPathCommand
+    - Else (`points` is an nested array of points):
+      - for each array of points:
+        - push to commands (same as above)
+    - add commands to path
+    - return path
     */
-    const path = SVG.makeSVGElement("path") as SVGPathElement;
-    
-    const commands = SVG.makeSVGPathCommand(points);
+    const path = SVG.makeElement("path") as SVGPathElement;
+    let commands: string = "";
+
+    // Handle simple list of points
+    if (SVG.isListOfPoints(points)) {
+      commands = SVG.PathCommand(points);
+      path.setAttribute("d", commands);
+      if (SVG.pathIsOpen(points)) {
+        path.setAttribute("fill", "none");
+      }
+      return path;
+    }
+
+    // Otherwise, handle nested list of points
+    for (let listOfPoints of points) {
+      commands += SVG.PathCommand(listOfPoints);
+    }
     path.setAttribute("d", commands);
-
-    const lastPoint = points[points.length - 1]
-
-    if (U.dist(points[0][0], points[0][1], lastPoint[0], lastPoint[1])) {
+    if (SVG.pathIsOpen(points[0])) {
       path.setAttribute("fill", "none");
     }
-    
     return path;
+    
+  }
+
+  static isListOfPoints(arr: T.Point[] | T.Point[][]): arr is T.Point[] {
+    if (Array.isArray(arr[0][0])) {  // eg [[[0,1], [0,1]], [[3,4]]]
+      return false;
+    }
+    return true;
+  }
+
+/**
+ * @param points Points that form the boundary to be tested
+ * @param maxOpen The threshold at which the path is considered "open"
+ */
+  static pathIsOpen(points: T.Point[], maxOpen=0.01): boolean {
+    const first = points[0];
+    const last = points[points.length - 1];
+
+    if (U.dist(first[0], first[1], last[0], last[1]) > maxOpen) {
+      return true;
+    }
+    return false;
   }
 
 /**
@@ -207,7 +244,7 @@ class SVG {
  * - First command is always a "M"
  * - Relative coordinates are NOT supported
  */
-  static makeSVGPathCommand(points: T.Point[], close=false): string {
+  static PathCommand(points: T.Point[], close=false): string {
     if (points.length < 2) {
       throw new DataError("At least 2 points are required")
     }
@@ -275,7 +312,7 @@ class Layer implements T.DefaultLayer {
     this.colorStroke = options.colorStroke;
     this.strokeWeight = options.strokeWeight;
     this.tags = options.tags;
-    this.$g = SVG.makeSVGElement("g");
+    this.$g = SVG.makeElement("g");
     this.updateStyles();
   }
 
@@ -441,7 +478,7 @@ class MapApp {
     this.centroid = null;
     this.layers = Layer.makeDefaultLayers();
 
-    this.$svg = SVG.makeSVGElement("svg");
+    this.$svg = SVG.makeElement("svg");
     this.container.append(this.$svg);
   }
 
@@ -524,7 +561,7 @@ class MapApp {
   
     // this.bbox.crop(this.svgWidth, this.svgHeight);
 
-    let rect = SVG.makeSVGElement("rect");
+    let rect = SVG.makeElement("rect");
     rect.setAttribute("x", String(0));
     rect.setAttribute("y", String(0));
     rect.setAttribute("width", String(this.svgWidth));
@@ -532,7 +569,7 @@ class MapApp {
     rect.setAttribute("fill", "rgba(153, 6, 167, 1)");
     svg.append(rect)
 
-    let g = SVG.makeSVGElement("g") as SVGGElement;
+    let g = SVG.makeElement("g") as SVGGElement;
     // g.setAttribute("transform", "scale(1, -1)");
     g.setAttribute("stroke", "white");
     g.setAttribute("fill", "none");
@@ -559,7 +596,7 @@ class MapApp {
     //   throw new Error("uh oh")
     // }
     
-    g = SVG.makeSVGElement("g") as SVGGElement;
+    g = SVG.makeElement("g") as SVGGElement;
     // g.setAttribute("transform", "scale(1, -1)");
     g.setAttribute("stroke", "rgba(80, 0, 0, 1)");
     g.setAttribute("fill", "rgba(255, 82, 241, 0.27)");
@@ -574,7 +611,7 @@ class MapApp {
         return this.mapOSMPoint(point);
       }).map(OSMPoint => [OSMPoint.lon, OSMPoint.lat]);
 
-      const shape = SVG.makeSVGPath(mappedPoints)
+      const shape = SVG.makePath(mappedPoints)
 
       g.append(shape);
     }
