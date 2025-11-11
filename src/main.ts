@@ -140,7 +140,9 @@ function makeSVGPath(points: T.Point[], maxOpen=0.01): SVGPathElement {
   return path;
 }
 
-// Utility functions
+/**
+ * Misc. utility functions
+ */
 class U {
 
   // Based on p5js implementation https://github.com/processing/p5.js/blob/44341795ec65d956b9efe3290da478519dcf01bd/src/math/calculation.js#L605
@@ -193,6 +195,13 @@ class U {
   }
 }
 
+/**
+ * SVG utility functions
+ */
+class SVG {
+
+}
+
 class Colors {
   static default = {
     bg: "rgb(241, 244, 203)",
@@ -202,6 +211,23 @@ class Colors {
     green: "rgba(153, 197, 114, 1)",
     blue: "rgba(138, 181, 204, 1)",
     ick: "rgba(115, 28, 122, 1)",
+  }
+}
+
+/**
+ * Intent: use when data from an API is not formed as you expect
+ */
+class DataError extends Error {
+  date: Date;
+
+  constructor(msg: string) {
+    super(msg);
+
+    Object.setPrototypeOf(this, DataError.prototype);
+
+    this.name = "DataError";
+    this.date = new Date();
+
   }
 }
 
@@ -257,7 +283,8 @@ class Layer implements T.DefaultLayer {
     }
 
 /**
-  *  
+  *  Parse order: as listed (first elements in the array are processed first)
+  *  Draw order: reverse order (first elements in the array are drawn last)
   */
   static defaultLayers: T.DefaultLayer[] = [
     { 
@@ -396,18 +423,57 @@ class MapApp {
     this.container.append(this.$svg);
   }
 
-  async fetchOSM(query: string): T.OSMResponse {
+/**
+ * Side effects: updates app state based on response
+ *
+ * @returns response JSON
+ */
+  async fetchOSM(query: string): Promise<T.OSMResponse> {
+    try {
+      const response = await fetch("./data/durham_nc.json");
+      const json = await response.json() as T.OSMResponse;
 
-  }
+      if (json.bbox) {
+        this.bbox.parseLatitudeFirst(json.bbox);
+      } else {
+        throw new DataError("no bbox was found");
+      }
+
+      this.centroid = json.centroid;
+      return json;
+
+    } catch (er) {
+      if (er instanceof DataError) throw (er);
+      else throw new Error(`Fetch for "${query}" failed.`);
+      }
+    }
 
 /**
   * Side Effects: updates $svg and layers using data from OSM
   */
-  async drawOSM(data: T.OSMResponse): void {
+  async drawOSM(json: T.OSMResponse): Promise<void> {
     // Parse response
-
+    const elements: T.OSMElement[] = json.elements;
     // Decide which layer each element belongs to
-
+    for (let ele of elements) {
+      if (ele.type === "way") {
+        // Get layer
+          /*
+          getLayer(tags) HELPER
+            - For each layer in `layers`
+              - For each layerTag in `layer.tags`
+                - If layerTag matches `ele.tags`
+                  - return layer
+          addGeometry(element) HELPER
+            - if element is a "way"
+              - geom = element.geometry
+            - if element is a "relation"
+              - geom = extractRelationGeom(element)
+            - path = makeSVGPath(geom points)
+          */
+        // Add geometry to layer
+      }
+    }
     // 
   }
 
