@@ -541,7 +541,7 @@ class MapApp {
     rect.setAttribute("y", "0");
     rect.setAttribute("width", String(this.svgWidth));
     rect.setAttribute("height", String(this.svgHeight));
-    rect.setAttribute("fill", "rgba(153, 6, 167, 1)");
+    rect.setAttribute("fill", Colors.default.bg);
     svg.append(rect);
 
     return svg;
@@ -618,7 +618,6 @@ class MapApp {
         const points: T.Point[] = ele.geometry
           .map(p => OSM.convertPoint(p))
           .map(this.mapPointToSVG, this)
-        console.log(points)
         const path = SVG.makePath(points);
         layer.addGeometry(path);
       }
