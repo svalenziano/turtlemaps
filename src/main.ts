@@ -1,5 +1,5 @@
 import type * as T from "./types.ts"
-
+export {};  // ensure this file is treated as a module
 
 // CLASSES
 class BBox implements T.unknownBbox {
@@ -205,9 +205,35 @@ class Colors {
   }
 }
 
-class Layer {
+class Layer implements T.DefaultLayer {
+  /**
+  
+
+
 
   
+  */
+  name: string;
+  colorFill: string | null;
+  colorLine: string | null;
+  strokeWeight: number;
+  tags: {
+    [key: string]: string[] | null;
+  }
+
+  constructor(options: T.DefaultLayer) {
+    this.name = options.name;
+    this.colorFill = options.colorFill;
+    this.colorLine = options.colorLine;
+    this.strokeWeight = options.strokeWeight;
+    this.tags = options.tags;
+
+  }
+
+  static makeDefaultLayers(): Layer[] {
+    return Layer.defaultLayers.map((options) => new Layer(options));
+  }
+
   static strokesWeights = {
       faint: 0.3,
       light: 0.5,
@@ -468,4 +494,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const app = new MapApp($container);
   app.init();
+
+  const layers = Layer.makeDefaultLayers();
+  console.log(layers);
+  console.log("Setup is done")
 })
