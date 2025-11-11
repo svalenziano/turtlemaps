@@ -166,6 +166,19 @@ class U {
 }
 
 /**
+ * OSM Utility functions
+ */
+class OSM {
+
+/**
+ * Convert `{lat: 1.23, lon: 3.45}` to `[3.45, 1.23]`
+ */
+  static convertPoint(pt: T.OSMPoint): T.Point {
+    return [pt.lon, pt.lat];
+  }
+}
+
+/**
  * SVG utility functions
  */
 class SVG {
@@ -238,7 +251,7 @@ class SVG {
   }
 
 /**
- * From a list of points, form and return a "Command string" as described by 
+ * From a list of points `[x, y]`, form and return a "Command string" as described by 
  * [MDN](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorials/SVG_from_scratch/Paths#curve_commands)
  *
  * @remarks
@@ -333,6 +346,36 @@ class Layer implements T.DefaultLayer {
     this.$g.setAttribute("stroke", this.colorStroke ?? "none");
     this.$g.setAttribute("stroke-width", 
       this.strokeWeight ? String(this.strokeWeight) : "0");
+  }
+
+  /**
+   * Does this layer match the provided tags?
+   * @param tags eg `{
+      "destination:street":"Chapel Hill Street",
+      "highway":"motorway_link",
+      "lanes":"1",
+      "oneway":"yes",
+      "surface":"concrete"
+      }`
+   */
+  matchesTags(tags: T.GenericObject): boolean {
+    /*
+    input = 
+      - tags = tags object from OSM response, eg: {"destination:street":"Chapel Hill Street","highway":"motorway_link","lanes":"1","oneway":"yes","surface":"concrete"}
+      - this.tags = eg {"leisure":["park","garden"],"landuse":["grass"]}
+    return = boolean
+    */
+    for (let [eleKey, eleTag] of Object.entries(tags)) {
+      if (Object.keys(this.tags).includes(eleKey) && (
+          this.tags[eleKey] === null || this.tags[eleKey].includes(eleTag))) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  addGeometry(ele: SVGElement):void {
+      this.$g.append(ele);
   }
 
   static strokesWeights = {
@@ -478,10 +521,30 @@ class MapApp {
     this.bbox = new BBox();
     this.query = null;
     this.centroid = null;
-    this.layers = Layer.makeDefaultLayers();
+    this.$svg = this.makeSVG();
 
-    this.$svg = SVG.makeElement("svg");
+    this.layers = Layer.makeDefaultLayers();
+    this.layers.forEach((l) => this.$svg.append(l.$g));
     this.container.append(this.$svg);
+  }
+
+  makeSVG() {
+    let svg = SVG.makeElement("svg");
+    svg.setAttribute("width", String(this.svgWidth));
+    svg.setAttribute("height", String(this.svgHeight));
+    svg.setAttribute("viewBox", `0 0 ${this.svgWidth} ${this.svgHeight}`);
+
+
+
+    let rect = SVG.makeElement("rect");
+    rect.setAttribute("x", "0");
+    rect.setAttribute("y", "0");
+    rect.setAttribute("width", String(this.svgWidth));
+    rect.setAttribute("height", String(this.svgHeight));
+    rect.setAttribute("fill", "rgba(153, 6, 167, 1)");
+    svg.append(rect);
+
+    return svg;
   }
 
 /**
@@ -491,7 +554,7 @@ class MapApp {
  */
   async fetchOSM(query: string): Promise<T.OSMResponse> {
     try {
-      const response = await fetch("./data/durham_nc.json");
+      const response = await fetch(query);
       const json = await response.json() as T.OSMResponse;
 
       if (json.bbox) {
@@ -511,8 +574,9 @@ class MapApp {
 
 /**
   * Side Effects: updates $svg and layers using data from OSM
+  * @todo see TODO below
   */
-  async drawOSM(json: T.OSMResponse): Promise<void> {
+  drawOSM(json: T.OSMResponse): void {
     // Parse response
     const elements: T.OSMElement[] = json.elements;
     // Decide which layer each element belongs to
@@ -520,7 +584,6 @@ class MapApp {
       /*
       layer = this.getLayer(ele)
       layer.addGeometry(ele)
-
 
       HELPERS
       this.getLayer(tags: Tag[]): Layer   (HELPER in this class)
@@ -534,20 +597,44 @@ class MapApp {
         (Return true as soon as a match is detected)
         - if layer.tag value is null
 
-      layer.addGeometry(element): void (HELPER in Layer class)
+      this.extractRelationGeom(element) (HELPER in this class)
+        - extract geometry into a nested list where first array is outer boundary 
+            and subsequent arrays are inner boundaries
+      */
+      if (!(ele.type === "way")) continue;  // TODO - handle relations
+      /*
         - if element is a "way"
           - geom = element.geometry
         - if element is a "relation"
           - geom = extractRelationGeom(element)
         - path = SVG.makeSVGPath(geom)
-
-      this.extractRelationGeom(element) (HELPER in this class)
-        - extract geometry into a nested list where first array is outer boundary 
-            and subsequent arrays are inner boundaries
       */
+
+
+      const layer = this.getLayer(ele);
+      if (!(layer instanceof Layer)) {
+        console.warn("Layer not found for", ele);
+      } else {
+        const points: T.Point[] = ele.geometry
+          .map(p => OSM.convertPoint(p))
+          .map(this.mapPointToSVG, this)
+        console.log(points)
+        const path = SVG.makePath(points);
+        layer.addGeometry(path);
+      }
       
     }
     // 
+  }
+
+  getLayer(ele: T.OSMElement) {
+    const tags = ele.tags;
+    for (let layer of this.layers) {
+      if (layer.matchesTags(tags)) {
+        return layer;
+      }
+    }
+    return ele;
   }
 
 /**
@@ -622,7 +709,7 @@ class MapApp {
       if (ele.type !== "way") continue;
 
       const mappedPoints: T.Point[] = ele.geometry.map((point) => {
-        return this.mapOSMPoint(point);
+        return this.mapOSMPointToSVG(point);
       }).map(OSMPoint => [OSMPoint.lon, OSMPoint.lat]);
 
       const shape = SVG.makePath(mappedPoints)
@@ -635,8 +722,10 @@ class MapApp {
 
 
 
-
-  mapOSMPoint(pt: T.OSMPoint, precision=3): T.OSMPoint {
+/**
+ * Re-map OSM point coordinates from `bbox` coordinate system to svg coord. sys.
+ */
+  mapOSMPointToSVG(pt: T.OSMPoint, precision=3): T.OSMPoint {
     if (!this.bbox.isValid()) throw new Error("Only works with valid bbox");
     return {
       lat: Number(U.map(pt.lat, this.bbox.top, this.bbox.bottom, 0, this.svgHeight).toFixed(precision)),
@@ -645,8 +734,10 @@ class MapApp {
 
   }
 
-
-  mapPoint(pt: T.Point): T.Point {
+/**
+ * Remap a standard point `[x, y]` to SVG coord. sys.
+ */
+  mapPointToSVG(pt: T.Point): T.Point {
   if (!this.bbox.isValid()) throw new Error("Only works with valid bbox")
   return [
     U.map(pt[0], this.bbox.left, this.bbox.right, 0, this.svgWidth),
@@ -660,12 +751,16 @@ class MapApp {
 /////////////////////////////////////////////////////////////////////////////
 // MAIN LOOP
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   const $container = document.querySelector("section.app") as HTMLElement;
   if (!$container) throw new Error("Container not found")
 
   const app = new MapApp($container);
-  app.test();
+  const json = await app.fetchOSM("./data/durham_nc.json");
+  console.log(json);
+  console.log(app.bbox);
+  app.drawOSM(json);
+  // app.test();
 
   const layers = Layer.makeDefaultLayers();
   console.log(layers);

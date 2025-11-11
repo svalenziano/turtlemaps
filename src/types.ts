@@ -48,6 +48,8 @@ export interface OSMPoint {
   lon: number;
 }
 
+export type UnknownOSMPointArray = OSMPoint[] | OSMPoint[][];
+
 ///////////////////////////////////////////////////////////
 // OSM Elements
 export interface OSMElementCommon {
