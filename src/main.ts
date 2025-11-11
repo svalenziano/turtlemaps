@@ -207,6 +207,8 @@ class SVG {
       commands += SVG.PathCommand(listOfPoints);
     }
     path.setAttribute("d", commands);
+    path.setAttribute("fill-rule", "evenodd");
+
     if (SVG.pathIsOpen(points[0])) {
       path.setAttribute("fill", "none");
     }
@@ -521,20 +523,25 @@ class MapApp {
 
 
       HELPERS
-      this.getLayer(tags) HELPER
+      this.getLayer(tags: Tag[]): Layer   (HELPER in this class)
+        (Returns FIRST matching layer)
         - For each layer in `layers`
           - For each layerTag in `layer.tags`
             - If layerTag matches `ele.tags`
               - return layer
     
-      layer.addGeometry(element) HELPER
+      layer.matches(tag: Tag): boolean
+        (Return true as soon as a match is detected)
+        - if layer.tag value is null
+
+      layer.addGeometry(element): void (HELPER in Layer class)
         - if element is a "way"
           - geom = element.geometry
         - if element is a "relation"
           - geom = extractRelationGeom(element)
         - path = SVG.makeSVGPath(geom)
 
-      this.extractRelationGeom(element) HELPER
+      this.extractRelationGeom(element) (HELPER in this class)
         - extract geometry into a nested list where first array is outer boundary 
             and subsequent arrays are inner boundaries
       */
