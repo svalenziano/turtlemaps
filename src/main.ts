@@ -173,24 +173,21 @@ class SVG {
     return document.createElementNS("http://www.w3.org/2000/svg", type);
   }
 
+/**
+ * Draw a simple path.  TODO: INNER BOUNDARIES ARE NOT SUPPORTED??
+ * @param points List of points
+ * @param maxOpen If distance between start and end points (of outer boundary) is greater than this distance, shape will not be filled
+ *
+ * @todo
+ */
   static makeSVGPath(points: T.Point[], maxOpen=0.01): SVGPathElement {
     /*
-    maxOpen = if start and end points are separated by a minimum of this distance
-      the shape will not be filled
+
     */
     const path = SVG.makeSVGElement("path") as SVGPathElement;
-
-    if (points.length < 2) {
-      throw new Error("At least 2 points are required")
-    }
-
-    let commands: string[] = [`M ${points[0][0]},${points[0][1]}`];
-
-    for (let i = 1; i < points.length; i++) {
-      commands.push(`L ${points[i][0]},${points[i][1]}`);
-    }
-    // console.log(commands)
-    path.setAttribute("d", commands.join(" "));
+    
+    const commands = SVG.makeSVGPathCommand(points);
+    path.setAttribute("d", commands);
 
     const lastPoint = points[points.length - 1]
 
@@ -199,6 +196,31 @@ class SVG {
     }
     
     return path;
+  }
+
+/**
+ * From a list of points, form and return a "Command string" as described by 
+ * [MDN](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorials/SVG_from_scratch/Paths#curve_commands)
+ *
+ * @remarks
+ * - Command strings may be joined by a space to form shapes with inner boundaries.
+ * - First command is always a "M"
+ * - Relative coordinates are NOT supported
+ */
+  static makeSVGPathCommand(points: T.Point[], close=false): string {
+    if (points.length < 2) {
+      throw new DataError("At least 2 points are required")
+    }
+
+    // First command is always "M" (move to)
+    let commands: string[] = [`M ${points[0][0]},${points[0][1]}`];
+
+    // Subsequent commands are always "L" (line to)
+    for (let i = 1; i < points.length; i++) {
+      commands.push(`L ${points[i][0]},${points[i][1]}`);
+    }
+    
+    return commands.join(" ");
   }
 }
 
