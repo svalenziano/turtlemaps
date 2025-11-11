@@ -205,13 +205,12 @@ class Colors {
   }
 }
 
+
 class Layer implements T.DefaultLayer {
   /**
-  
+  Provides a direct interface to an SVG layer
 
 
-
-  
   */
   name: string;
   colorFill: string | null;
@@ -230,6 +229,9 @@ class Layer implements T.DefaultLayer {
 
   }
 
+  /**
+   * @returns An array of layers created with the `defaultLayers`
+   */
   static makeDefaultLayers(): Layer[] {
     return Layer.defaultLayers.map((options) => new Layer(options));
   }
@@ -480,9 +482,6 @@ class MapApp {
   }
 }
 
-class svgMap {
-
-}
 
 /////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////
