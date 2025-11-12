@@ -35,7 +35,7 @@ export class Nominatum {
   // Choose your API provider
   static BASE_PATH = Nominatum.PATHS["osmfoundation"];
   
-  static async freeForm(queryString: string): GeoJSON {
+  static async freeForm(queryString: string): Promise<GeoJSON> {
     const params = ["q=" + encodeURIComponent(queryString)];
     params.push("format=geojson");  // required to obtain centroid
 

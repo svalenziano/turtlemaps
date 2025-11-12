@@ -263,7 +263,7 @@ class SVG {
     let rect = SVG.makeElement("rect");
     rect.setAttribute("x", "0");
     rect.setAttribute("y", "0");
-    rect.setAttribute("width", String(this.wdith));
+    rect.setAttribute("width", String(this.width));
     rect.setAttribute("height", String(this.height));
     rect.setAttribute("fill", Colors.default.bg);
     svg.append(rect);
@@ -616,9 +616,6 @@ class MapApp {
   query: string | null;
   centroid: [number, number] | null;
   svg: SVG;
-  $svg: SVGElement;
-  svgWidth: number = window.innerWidth;
-  svgHeight: number = window.innerWidth;
   layers: Layer[];
 
   constructor(public container: HTMLElement) {
@@ -626,13 +623,11 @@ class MapApp {
     this.query = null;
     this.centroid = null;
     this.svg = new SVG(document.body, window.innerWidth, window.innerWidth);
-    this.$svg = this.svg.$svg;
-    // this.$svg = this.makeSVG();
 
     this.layers = Layer.makeDefaultLayers();
-    this.layers.forEach((l) => this.$svg.append(l.$g));
-    this.container.append(this.$svg);
+    this.layers.forEach((l) => this.svg.$svg.append(l.$g));
   }
+
 
 /**
  * Side effects: updates app state based on response
@@ -689,7 +684,7 @@ class MapApp {
         path.setAttribute("stroke", Colors.default.hilite)
         layer.addGeometry(path);
       } else {
-        const x: never = ele;
+        const x: never = ele;  // TS exhaustiveness check
       }
       
     }
@@ -705,7 +700,6 @@ class MapApp {
     }
     return ele;
   }
-
 
 /**
  * Re-map OSM point coordinates from `bbox` coordinate system to svg coord. sys.
