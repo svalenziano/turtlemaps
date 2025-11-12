@@ -1,3 +1,7 @@
+// import { BBox } from "./bbox";
+import * as T from "./types.js"
+
+
 /**
  * A Nominatum GEOJson "feature".  WARNING: WIP! 🔴
  */
@@ -18,7 +22,8 @@ export type GeoJSON = {
 }
 
 export type BboxAndCentroid = {
-  
+  bbox: T.OSMBbox;
+  centroid: T.OSMPoint;
 }
 
 /**
@@ -40,7 +45,7 @@ export class Nominatum {
     "geocoding.ai": "https://nominatim.geocoding.ai/search?",  // geocoding.ai (defunct as of late 2025?)
   }
   
-  async resolveCoordinates(query: string) {
+  async resolveCoordinates(query: string): BboxAndCentroid {
 
   }
 
