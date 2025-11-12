@@ -133,10 +133,12 @@ class Util {
     return [minLat, minLon, maxLat, maxLon];
   }
 
+  // 🟢
   static isLatLon(string) {
     return /(-?\d+\.\d+),\s*(-?\d+\.\d+)/.test(string.trim());
   }
 
+  // 🟢
   static parseLatLon(string) {
     const [lat, lon] = string.split(",")
       .map(str => str.trim())
@@ -149,7 +151,7 @@ class Util {
       return [lat, lon];
     }
   }
-
+  // 🟢
   static slugify(str) {
     // Credit: https://byby.dev/js-slugify-string
     return String(str)

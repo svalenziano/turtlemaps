@@ -12,6 +12,18 @@ export {};  // ensure this file is treated as a module
  * Misc. utility functions
  */
 class U {
+  
+  static slugify(str: string) {
+    // Credit: https://byby.dev/js-slugify-string
+    return String(str)
+      .normalize('NFKD') // split accented characters into their base characters and diacritical marks
+      .replace(/[\u0300-\u036f]/g, '') // remove all the accents, which happen to be all in the \u03xx UNICODE block.
+      .trim() // trim leading or trailing whitespace
+      .toLowerCase() // convert to lowercase
+      .replace(/[^a-z0-9 -]/g, '') // remove non-alphanumeric characters
+      .replace(/\s+/g, '-') // replace spaces with hyphens
+      .replace(/-+/g, '-'); // remove consecutive hyphens
+  }
 
   // Based on p5js implementation https://github.com/processing/p5.js/blob/44341795ec65d956b9efe3290da478519dcf01bd/src/math/calculation.js#L605
   static map(val: number, start1:number, stop1:number, start2:number, stop2:number, withinBounds:boolean=false) {
@@ -99,44 +111,7 @@ class OSM {
     return result;
   }
 
-/**
- * Convert `[lat, lon]` point and `zoom` value to bounding box.
- *
- * @remarks
- * Zoom levels: https://wiki.openstreetmap.org/wiki/Zoom_levels
- * 
- * @param zoom Number between 0 (whole world) and 20 (mid-sized building)
- */
-  static toBbox([latitude, longitude]: T.Point, zoom: number): T.bboxArray {
-    /*
-    Zoom levels: https://wiki.openstreetmap.org/wiki/Zoom_levels
-    tktk: https://wiki.openstreetmap.org/wiki/Slippy_map_tilenames#Implementations
-    */
-    const earthRadius = 6378137; // meters
-    const earthCircumference = 2 * Math.PI * earthRadius;
-    
-    // Calculate the pixel size at the given zoom level
-    const pixelsPerTile = 256;
-    const metersPerPixel = earthCircumference / (pixelsPerTile * (2 ** zoom));
-    
-    // Convert meters to degrees (approximate)
-    const metersPerDegreeLat = 111320; // meters per degree of latitude
-    const metersPerDegreeLon = Math.abs(
-        Math.cos(latitude * Math.PI / 180) * metersPerDegreeLat
-    );
-    
-    // Calculate half-width and half-height of the bounding box
-    const halfWidth = (pixelsPerTile / 2) * metersPerPixel / metersPerDegreeLon;
-    const halfHeight = (pixelsPerTile / 2) * metersPerPixel / metersPerDegreeLat;
-    
-    // Calculate bounding box coordinates
-    const minLon = Util.round(longitude - halfWidth, 4);
-    const maxLon = Util.round(longitude + halfWidth, 4);
-    const minLat = Util.round(latitude - halfHeight, 4);
-    const maxLat = Util.round(latitude + halfHeight, 4);
-    
-    return [minLat, minLon, maxLat, maxLon];
-  }
+
 }
 
 /**
