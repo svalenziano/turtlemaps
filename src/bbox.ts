@@ -29,14 +29,42 @@ export class BBox implements T.unknownBbox {
   oWidth: number | null = null;
   oHeight: number | null = null;
 
-  constructor() {}
+  constructor(bbox?: T.OSMBbox) {
+    if (bbox) {
+      this.parseOSMBbox(bbox);
+    }
+  }
 
+/**
+ * "Original" values (those prefixed with `o`) are overwritten with current
+ */
+  overwriteOriginal() {
+    [this.oBottom, this.oLeft, this.oTop, this.oRight] = [this.bottom, this.left, this.top, this.right];
+    this.oWidth = this.width;
+    this.oHeight = this.height;
+  }
+
+/**
+ * 
+ * Parse values and overwrite 'original' values
+ */
+  parseOSMBbox(bbox: T.OSMBbox): void {
+    this.bottom = bbox.minlat;
+    this.left = bbox.minlon;
+    this.top = bbox.maxlat;
+    this.right = bbox.maxlon;
+    this.overwriteOriginal();
+  }
+
+/**
+ * 
+ * Parse values and overwrite 'original' values
+ */
   parseLatitudeFirst(bbox: [T.minLat, T.minLon, T.maxLat, T.maxLon]): void {
     // Example for Durham, NC: [35.9857, -78.9154, 36.0076, -78.8882]
     [this.bottom, this.left, this.top, this.right] = bbox;
-    [this.oBottom, this.oLeft, this.oTop, this.oRight] = bbox;
-    this.oWidth = this.width;
-    this.oHeight = this.height;
+    this.overwriteOriginal();
+
   }
 
   /*

@@ -122,6 +122,18 @@ class MapApp {
     this.layers.forEach((l) => this.svg.$svg.append(l.$g));
   }
 
+  static DEFAULT_ZOOM = 17; // https://wiki.openstreetmap.org/wiki/Zoom_levels
+
+/**
+ * Side effects: reassigns this.bbox to a new bbox
+ */
+  async jump(query: string, zoom: number = MapApp.DEFAULT_ZOOM) {
+    const loc = await this.nom.resolveCoordinates(query, zoom);
+    this.bbox = new BBox(loc.bbox);
+    const overpassQuery = this.osm.formQueryFromLayers(this.layers);
+    const json = await this.osm.query(overpassQuery, this.bbox);
+    this.drawOSM(json);
+  }
 
 /**
  * Fetch locally cached OSM data which has been appended with a bbox and centroid.
@@ -129,7 +141,6 @@ class MapApp {
  *
  * @returns response JSON
  */
- 
   async fetchLocalOSM(query: string): Promise<T.LocalOverpassAPI> {
     try {
       const response = await fetch(query);
