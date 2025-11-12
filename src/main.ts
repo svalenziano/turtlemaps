@@ -1,4 +1,5 @@
 import * as T from "./types.js"
+import { SlowFetcher } from "./slow-fetcher.js"
 export {};  // ensure this file is treated as a module
 
 // CLASSES

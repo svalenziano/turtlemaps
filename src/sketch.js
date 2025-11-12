@@ -21,7 +21,7 @@ TODO / KNOWN LIMITATIONS:
 // CLASSES AND HELPER FUNCTIONS
 
 // There are more robust methods of throttling, but this does the trick for now
-class SlowFetcher {
+class oldSlowFetcher {
   constructor(milliseconds) {
     this.queue = [];
     this.milliseconds = milliseconds;  // Minimum interval between requests.  unit = milliseconds
@@ -890,7 +890,7 @@ const myQueries = {
 ///////////////////////////////////////////////////////////
 // APP LOGIC
 
-const osmFetcher = new SlowFetcher(REQUEST_DELAY);
+const osmFetcher = new oldSlowFetcher(REQUEST_DELAY);
 let app;
 
 
