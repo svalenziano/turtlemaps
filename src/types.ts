@@ -1,14 +1,23 @@
+///////////////////////////////////////////////////////////
+// Misc
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+// Geometric Types
+
 // For disambuigating coordinates
 export type minLat = number;
 export type minLon = number;
 export type maxLat = number;
 export type maxLon = number;
 
+export type x = number;
+export type y = number;
 
+export type bboxArray = [minLat, minLon, maxLat, maxLon];
 
-export type bboxArray = [number, number, number, number];
-
-export type Point = [number, number];
+export type Point = [x, y];
 
 export type GenericObject = {[key: string]: string};
 

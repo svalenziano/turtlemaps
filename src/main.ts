@@ -655,7 +655,7 @@ class MapApp {
     }
 
 /**
-  * Side Effects: updates $svg and layers using data from OSM
+  * Side Effects: updates layers using data from OSM response
   * @todo see TODO below
   */
   drawOSM(json: T.OSMResponse): void {

@@ -25,11 +25,17 @@ export type GeoJSON = {
  * API providers: https://wiki.openstreetmap.org/wiki/Nominatim#Alternatives_.2F_Third-party_providers
  * Check the provider's usage policy before using their service!
  */
-
 export class Nominatum {
   static PATHS = {
     'osmfoundation': "https://nominatim.openstreetmap.org/search?",  // Very limited throughput.  Do not use unless absolutely necessary
     "geocoding.ai": "https://nominatim.geocoding.ai/search?",  // geocoding.ai (defunct as of late 2025?)
+  }
+
+  constructor(
+    public fetcher: typeof fetch, 
+    public api=Nominatum.PATHS.osmfoundation
+    ) {
+
   }
 
   // Choose your API provider
