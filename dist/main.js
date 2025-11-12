@@ -564,25 +564,20 @@ class MapApp {
                 console.warn("Layer not found for", ele);
                 continue;
             }
-            try {
-                if (ele.type === "way") {
-                    const geom = ele.geometry
-                        .map(p => OSM.convertPoint(p))
-                        .map(this.mapPointToSVG, this);
-                    layer.addGeometry(SVG.makePath(geom));
-                }
-                else if (ele.type === "relation") {
-                    const geom = OSM.extractRelationGeom(ele, pointTransformer);
-                    const path = SVG.makePath(geom);
-                    path.setAttribute("stroke", Colors.default.hilite);
-                    layer.addGeometry(path);
-                }
-                else {
-                    const x = ele;
-                }
+            if (ele.type === "way") {
+                const geom = ele.geometry
+                    .map(p => OSM.convertPoint(p))
+                    .map(this.mapPointToSVG, this);
+                layer.addGeometry(SVG.makePath(geom));
             }
-            catch (er) {
-                console.error(er);
+            else if (ele.type === "relation") {
+                const geom = OSM.extractRelationGeom(ele, pointTransformer);
+                const path = SVG.makePath(geom);
+                path.setAttribute("stroke", Colors.default.hilite);
+                layer.addGeometry(path);
+            }
+            else {
+                const x = ele;
             }
         }
         // 
@@ -679,12 +674,12 @@ class MapApp {
     /**
      * Remap a standard point `[x, y]` to SVG coord. sys.
      */
-    mapPointToSVG(pt, precision = 3) {
+    mapPointToSVG(pt) {
         if (!this.bbox.isValid())
             throw new Error("Only works with valid bbox");
         return [
-            Number(U.map(pt[0], this.bbox.left, this.bbox.right, 0, this.svgWidth).toFixed(precision)),
-            Number(U.map(pt[1], this.bbox.top, this.bbox.bottom, 0, this.svgHeight).toFixed(precision))
+            U.map(pt[0], this.bbox.left, this.bbox.right, 0, this.svgWidth),
+            U.map(pt[1], this.bbox.top, this.bbox.bottom, 0, this.svgHeight)
         ];
     }
 }
