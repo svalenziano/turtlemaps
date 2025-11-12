@@ -17,6 +17,9 @@ export type GeoJSON = {
   features: NominatumFeature[];
 }
 
+export type BboxAndCentroid = {
+  
+}
 
 /**
  * A simple interface for the Nominatum API
@@ -26,26 +29,26 @@ export type GeoJSON = {
  * Check the provider's usage policy before using their service!
  */
 export class Nominatum {
-  static PATHS = {
-    'osmfoundation': "https://nominatim.openstreetmap.org/search?",  // Very limited throughput.  Do not use unless absolutely necessary
-    "geocoding.ai": "https://nominatim.geocoding.ai/search?",  // geocoding.ai (defunct as of late 2025?)
-  }
 
   constructor(
     public fetcher: typeof fetch, 
     public api=Nominatum.PATHS.osmfoundation
-    ) {
+    ) {}
+
+  static PATHS = {
+    'osmfoundation': "https://nominatim.openstreetmap.org/search?",  // Very limited throughput.  Do not use unless absolutely necessary
+    "geocoding.ai": "https://nominatim.geocoding.ai/search?",  // geocoding.ai (defunct as of late 2025?)
+  }
+  
+  async resolveCoordinates(query: string) {
 
   }
 
-  // Choose your API provider
-  static BASE_PATH = Nominatum.PATHS["osmfoundation"];
-  
-  static async freeForm(queryString: string): Promise<GeoJSON> {
+  async freeForm(queryString: string): Promise<GeoJSON> {
     const params = ["q=" + encodeURIComponent(queryString)];
     params.push("format=geojson");  // required to obtain centroid
 
-    const response = await fetch(Nominatum.BASE_PATH + params.join("&"), {
+    const response = await this.fetcher(this.api + params.join("&"), {
       headers: {
         "Referer": "https://www.stvn.us/pages/contact",
       }

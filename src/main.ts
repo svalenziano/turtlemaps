@@ -617,12 +617,16 @@ class MapApp {
   centroid: [number, number] | null;
   svg: SVG;
   layers: Layer[];
+  nom: Nominatum;
 
   constructor(public container: HTMLElement) {
     this.bbox = new BBox();
     this.query = null;
     this.centroid = null;
     this.svg = new SVG(document.body, window.innerWidth, window.innerWidth);
+    
+    const slow = new SlowFetcher(1000);
+    this.nom = new Nominatum(slow.fetch);
 
     this.layers = Layer.makeDefaultLayers();
     this.layers.forEach((l) => this.svg.$svg.append(l.$g));

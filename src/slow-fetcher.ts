@@ -1,10 +1,10 @@
 export type SlowFetchOptions = {
-  url: string;
+  input: RequestInfo | URL;
   options: RequestInit;
   resolve: Function;
   reject: Function;
 }
-
+fetch;
 /**
  * This class implements a `fetch` method that has an identical interface to
  * the native `fetch` and adds 'throttling' functionality.
@@ -24,12 +24,13 @@ export class SlowFetcher {
     this.milliseconds = milliseconds;  // 
     this.timer = null;
   }
+// function fetch(input: RequestInfo | URL, init?: RequestInit): Promise<Response>
 
-  async fetch(url: string, options: RequestInit) {
+  async fetch(input: RequestInfo | URL, options: RequestInit = {}): ReturnType<typeof fetch> {
     let resolve: Function | null = null;
     let reject: Function | null = null;
 
-    const futureFetch = await new Promise((res, rej) => {
+    const futureFetch: Response = await new Promise((res, rej) => {
       resolve = res;
       reject = rej;
     });
@@ -38,7 +39,7 @@ export class SlowFetcher {
     if (this.timer !== null) {
       if (!resolve || !reject) throw new Error("Functions don't exist");
 
-      this.queue.push({url, options, resolve, reject});
+      this.queue.push({input, options, resolve, reject});
       console.log("SlowFetcher: Pushing new fetch to queue");
       console.log(this.queue);
       return futureFetch;
@@ -53,7 +54,7 @@ export class SlowFetcher {
 
           if (!next) throw new Error("Queue was empty");
 
-          const {url, options, resolve, reject} = next;
+          const {input: url, options, resolve, reject} = next;
           const response = await fetch(url, options);
 
           if (response.ok) {
@@ -73,7 +74,7 @@ export class SlowFetcher {
       
       // PROCESS IMMEDIATELY and return Promise
       // no `await`, since we want this method to act exactly like the native `fetch`
-      return fetch(url, options);  
+      return fetch(input, options);  
     }
   }
 }
