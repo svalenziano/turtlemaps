@@ -101,7 +101,7 @@ class Util {
     return Number(num.toFixed(places));
   }
 
-  static toBbox([latitude, longitude], zoom) {
+  static old_toBbox([latitude, longitude], zoom) {
     /*
     Credit: LLM
     Zoom levels: https://wiki.openstreetmap.org/wiki/Zoom_levels
@@ -236,22 +236,22 @@ class App {
   }
 }
 
-class Nominatum {
+class oldNominatum {
   // API providers: https://wiki.openstreetmap.org/wiki/Nominatim#Alternatives_.2F_Third-party_providers
-  // Check the usage policy before modifying!
+  // Check the provider's usage policy before modifying!
   static PATHS = {
     'osmfoundation': "https://nominatim.openstreetmap.org/search?",  // Very limited throughput.  Do not use unless absolutely necessary
     "geocoding.ai": "https://nominatim.geocoding.ai/search?",  // geocoding.ai
   }
 
-  static BASE_PATH = Nominatum.PATHS["geocoding.ai"];
+  static BASE_PATH = oldNominatum.PATHS["geocoding.ai"];
   
 
   static async freeForm(queryString) {
     const params = ["q=" + encodeURIComponent(queryString)];
     params.push("format=geojson");  // required to obtain centroid
 
-    const response = await fetch(Nominatum.BASE_PATH + params.join("&"), {
+    const response = await fetch(oldNominatum.BASE_PATH + params.join("&"), {
       headers: {
         "Referer": "https://www.stvn.us/pages/contact",
       }
@@ -554,10 +554,10 @@ class StreetMap {
       if (Util.isLatLon(query)) {
         this.centroid = Util.parseLatLon(query);
       } else {
-        const results = await Nominatum.freeForm(query);
-        this.centroid = Nominatum.getCentroid(results);
+        const results = await oldNominatum.freeForm(query);
+        this.centroid = oldNominatum.getCentroid(results);
       }
-      this.bbox = Util.toBbox(this.centroid, zoom);
+      this.bbox = Util.old_toBbox(this.centroid, zoom);
       // fetch data
       this.data = await this.fetchlayers();
       console.info("Successful fetch of map data:")
@@ -862,7 +862,7 @@ class TestCoordinates {
     Durham: [35.985577, -78.913336, 36.004673, -78.888788],
     Chicago: [41.876032,-87.625859,41.884707,-87.614164],
     Amsterdam: [52.357112,4.865248,52.365027,4.878166],
-    Amsterdam2: Util.toBbox([52.64648, 4.80682], 15),
+    Amsterdam2: Util.old_toBbox([52.64648, 4.80682], 15),
 
   }
 }

@@ -1,5 +1,6 @@
 import * as T from "./types.js"
 import { SlowFetcher } from "./slow-fetcher.js"
+import { Nominatum } from "./nominatum.js";
 export {};  // ensure this file is treated as a module
 
 // CLASSES
@@ -200,6 +201,45 @@ class OSM {
       result.push(memberPoints);
     }
     return result;
+  }
+
+/**
+ * Convert `[lat, lon]` point and `zoom` value to bounding box.
+ *
+ * @remarks
+ * Zoom levels: https://wiki.openstreetmap.org/wiki/Zoom_levels
+ * 
+ * @param zoom Number between 0 (whole world) and 20 (mid-sized building)
+ */
+  static toBbox([latitude, longitude]: T.Point, zoom: number): T.bboxArray {
+    /*
+    Zoom levels: https://wiki.openstreetmap.org/wiki/Zoom_levels
+    tktk: https://wiki.openstreetmap.org/wiki/Slippy_map_tilenames#Implementations
+    */
+    const earthRadius = 6378137; // meters
+    const earthCircumference = 2 * Math.PI * earthRadius;
+    
+    // Calculate the pixel size at the given zoom level
+    const pixelsPerTile = 256;
+    const metersPerPixel = earthCircumference / (pixelsPerTile * (2 ** zoom));
+    
+    // Convert meters to degrees (approximate)
+    const metersPerDegreeLat = 111320; // meters per degree of latitude
+    const metersPerDegreeLon = Math.abs(
+        Math.cos(latitude * Math.PI / 180) * metersPerDegreeLat
+    );
+    
+    // Calculate half-width and half-height of the bounding box
+    const halfWidth = (pixelsPerTile / 2) * metersPerPixel / metersPerDegreeLon;
+    const halfHeight = (pixelsPerTile / 2) * metersPerPixel / metersPerDegreeLat;
+    
+    // Calculate bounding box coordinates
+    const minLon = Util.round(longitude - halfWidth, 4);
+    const maxLon = Util.round(longitude + halfWidth, 4);
+    const minLat = Util.round(latitude - halfHeight, 4);
+    const maxLat = Util.round(latitude + halfHeight, 4);
+    
+    return [minLat, minLon, maxLat, maxLon];
   }
 }
 
@@ -801,4 +841,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   const layers = Layer.makeDefaultLayers();
   console.log(layers);
   console.log("Setup is done")
+
+  // NOM TESTING
+  // const response = await Nominatum.freeForm("Durham, NC");
+  // console.log(response);
+  // console.log(Nominatum.getCentroid(response))
 })
