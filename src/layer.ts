@@ -74,6 +74,21 @@ export class Layer implements T.DefaultLayer {
       this.$g.append(ele);
   }
 
+  get queryString(): string {
+    let string = "";
+    for (const key in this.tags) {
+      const tags = this.tags[key];
+      if (tags === null) {
+        string += `wr["${key}"];`;
+      } else if (tags.length > 1) {
+        string += `wr["${key}"~"${tags.join("|")}"];`;
+      } else {
+        string += `wr["${key}"="${tags[0]}"];`;
+      }
+    }
+    return string;
+  }
+
   static strokesWeights = {
       faint: 0.3,
       light: 0.5,

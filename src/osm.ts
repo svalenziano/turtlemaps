@@ -1,6 +1,7 @@
 import * as T from "./types.js"
 import { BBox } from "./bbox.js";
 import { REFERER } from "./config.js";
+import { Layer } from "./layer.js";
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
@@ -48,10 +49,21 @@ export class Overpass {
       return json;
   }
 
-  formQueryFromLayers() {
-    /*
-    Input = layers
-    */
+/**
+ A sample query:
+ ```txt
+  [bbox: ${DURHAM_COORDS}][out:json][timeout: 10];
+  wr["building"];
+  out geom;
+ ```
+ More info: https://wiki.openstreetmap.org/wiki/Overpass_API/Overpass_QL
+ */
+  formQueryFromLayers(layers: Layer[]): string {
+    let query = "";
+    for (let l of layers) {
+      query += l.queryString;
+    }
+    return query;
   }
 
 /**
