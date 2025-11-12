@@ -247,6 +247,31 @@ class OSM {
  * SVG utility functions
  */
 class SVG {
+  $svg: SVGElement;
+
+  constructor(
+    public $container: HTMLElement, 
+    public width: number, 
+    public height: number
+    ) {
+    let svg = SVG.makeElement("svg");
+    svg.setAttribute("width", String(this.width));
+    svg.setAttribute("height", String(this.height));
+    svg.setAttribute("viewBox", `0 0 ${this.width} ${this.height}`);
+
+    // Background shape
+    let rect = SVG.makeElement("rect");
+    rect.setAttribute("x", "0");
+    rect.setAttribute("y", "0");
+    rect.setAttribute("width", String(this.wdith));
+    rect.setAttribute("height", String(this.height));
+    rect.setAttribute("fill", Colors.default.bg);
+    svg.append(rect);
+
+    this.$svg = svg;
+    this.$container.append(svg);
+  }
+
   static makeElement(type: "svg" | "rect" | "circle" | "polygon" | "path" | "g"): SVGElement {
     return document.createElementNS("http://www.w3.org/2000/svg", type);
   }
@@ -590,6 +615,7 @@ class MapApp {
   bbox: BBox;
   query: string | null;
   centroid: [number, number] | null;
+  svg: SVG;
   $svg: SVGElement;
   svgWidth: number = window.innerWidth;
   svgHeight: number = window.innerWidth;
@@ -599,30 +625,13 @@ class MapApp {
     this.bbox = new BBox();
     this.query = null;
     this.centroid = null;
-    this.$svg = this.makeSVG();
+    this.svg = new SVG(document.body, window.innerWidth, window.innerWidth);
+    this.$svg = this.svg.$svg;
+    // this.$svg = this.makeSVG();
 
     this.layers = Layer.makeDefaultLayers();
     this.layers.forEach((l) => this.$svg.append(l.$g));
     this.container.append(this.$svg);
-  }
-
-  makeSVG() {
-    let svg = SVG.makeElement("svg");
-    svg.setAttribute("width", String(this.svgWidth));
-    svg.setAttribute("height", String(this.svgHeight));
-    svg.setAttribute("viewBox", `0 0 ${this.svgWidth} ${this.svgHeight}`);
-
-
-
-    let rect = SVG.makeElement("rect");
-    rect.setAttribute("x", "0");
-    rect.setAttribute("y", "0");
-    rect.setAttribute("width", String(this.svgWidth));
-    rect.setAttribute("height", String(this.svgHeight));
-    rect.setAttribute("fill", Colors.default.bg);
-    svg.append(rect);
-
-    return svg;
   }
 
 /**
@@ -660,24 +669,8 @@ class MapApp {
     const elements: T.OSMElement[] = json.elements;
     // Decide which layer each element belongs to
     for (let ele of elements) {
-      /*
-      layer = this.getLayer(ele)
-      layer.addGeometry(ele)
 
-      HELPERS
-
-      this.extractRelationGeom(element) (HELPER in this class)
-        - extract geometry into a nested list where first array is outer boundary 
-            and subsequent arrays are inner boundaries
-      */
       if ((ele.type === "node")) continue;  
-      /*
-        - if element is a "way"
-          - geom = element.geometry
-        - if element is a "relation"
-          - geom = extractRelationGeom(element)
-        - path = SVG.makeSVGPath(geom)
-      */
 
       const layer = this.getLayer(ele);
       if (!(layer instanceof Layer)) {
@@ -713,90 +706,6 @@ class MapApp {
     return ele;
   }
 
-/**
- * A simple testing function.  Do not use in production.
- */
-  async test() {
-    const response = await fetch("./data/durham_nc.json");
-    const json = await response.json() as T.OSMResponse;
-
-    if (json.bbox) {
-      this.bbox.parseLatitudeFirst(json.bbox);
-    } else {
-      throw new Error("no bbox was found");
-    }
-
-    this.centroid = json.centroid;
-
-    const elements: T.OSMElement[] = json.elements;
-
-    // Example for Durham, NC: [35.9857, -78.9154, 36.0076, -78.8882]
-    const svg = this.$svg;
-    svg.setAttribute("width", String(this.svgWidth));
-    svg.setAttribute("height", String(this.svgHeight));
-    svg.setAttribute("viewBox", `0 0 ${this.svgWidth} ${this.svgHeight}`);
-  
-    // this.bbox.crop(this.svgWidth, this.svgHeight);
-
-    let rect = SVG.makeElement("rect");
-    rect.setAttribute("x", String(0));
-    rect.setAttribute("y", String(0));
-    rect.setAttribute("width", String(this.svgWidth));
-    rect.setAttribute("height", String(this.svgHeight));
-    rect.setAttribute("fill", "rgba(153, 6, 167, 1)");
-    svg.append(rect)
-
-    let g = SVG.makeElement("g") as SVGGElement;
-    // g.setAttribute("transform", "scale(1, -1)");
-    g.setAttribute("stroke", "white");
-    g.setAttribute("fill", "none");
-    g.setAttribute("stroke-width", "3");
-    svg.append(g);
-
-    // Diagonal top left to bottom right
-    // let path = SVG.makeSVGPath([[this.bbox.minLon, this.bbox.maxLat], [this.bbox.maxLon, this.bbox.minLat]]);
-    // let path = SVG.makeSVGPath([[0, 0], [this.svgWidth, this.svgHeight]]);
-    // g.append(path);
-
-    // test the cropBox
-    // if (this.bbox.isValid()) {
-    //   rect = SVG.makeSVGElement("rect");
-    //   rect.setAttribute("x", String(U.map(this.bbox.left, this.bbox.left, this.bbox.right, 0, this.svgWidth)));
-    //   rect.setAttribute("y", String(U.map(this.bbox.top, this.bbox.top, this.bbox.bottom, 0, this.svgHeight)));
-    //   rect.setAttribute("width", String(this.svgWidth));
-    //   rect.setAttribute("height", String(this.svgHeight));
-    //   rect.setAttribute("stroke", "blue");
-    //   rect.setAttribute("fill", "none");
-    //   rect.setAttribute("stroke-width", "6");
-    //   svg.append(rect);
-    // } else {
-    //   throw new Error("uh oh")
-    // }
-    
-    g = SVG.makeElement("g") as SVGGElement;
-    // g.setAttribute("transform", "scale(1, -1)");
-    g.setAttribute("stroke", "rgba(80, 0, 0, 1)");
-    g.setAttribute("fill", "rgba(255, 82, 241, 0.27)");
-    g.setAttribute("stroke-width", "0.5");
-    svg.append(g);
-
-    // debugger;
-    for (let ele of elements) {
-      if (ele.type !== "way") continue;
-
-      const mappedPoints: T.Point[] = ele.geometry.map((point) => {
-        return this.mapOSMPointToSVG(point);
-      }).map(OSMPoint => [OSMPoint.lon, OSMPoint.lat]);
-
-      const shape = SVG.makePath(mappedPoints)
-
-      g.append(shape);
-    }
-
-    document.body.append(svg);
-  }
-
-
 
 /**
  * Re-map OSM point coordinates from `bbox` coordinate system to svg coord. sys.
@@ -804,8 +713,8 @@ class MapApp {
   mapOSMPointToSVG(pt: T.OSMPoint, precision=3): T.OSMPoint {
     if (!this.bbox.isValid()) throw new Error("Only works with valid bbox");
     return {
-      lat: Number(U.map(pt.lat, this.bbox.top, this.bbox.bottom, 0, this.svgHeight).toFixed(precision)),
-      lon: Number(U.map(pt.lon, this.bbox.left, this.bbox.right, 0, this.svgWidth).toFixed(precision))
+      lat: Number(U.map(pt.lat, this.bbox.top, this.bbox.bottom, 0, this.svg.height).toFixed(precision)),
+      lon: Number(U.map(pt.lon, this.bbox.left, this.bbox.right, 0, this.svg.width).toFixed(precision))
     }
 
   }
@@ -816,8 +725,8 @@ class MapApp {
   mapPointToSVG(pt: T.Point): T.Point {
   if (!this.bbox.isValid()) throw new Error("Only works with valid bbox")
   return [
-    U.map(pt[0], this.bbox.left, this.bbox.right, 0, this.svgWidth),
-    U.map(pt[1], this.bbox.top, this.bbox.bottom, 0, this.svgHeight)
+    U.map(pt[0], this.bbox.left, this.bbox.right, 0, this.svg.width),
+    U.map(pt[1], this.bbox.top, this.bbox.bottom, 0, this.svg.height)
   ];
   }
 }
