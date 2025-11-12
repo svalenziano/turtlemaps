@@ -33,7 +33,8 @@ export type BboxAndCentroid = {
 
 
 /**
- * A simple interface for the Nominatum API
+ * A simple interface for the Nominatum API: 
+ * https://nominatim.org/release-docs/latest/api/Overview/
  * 
  * @remarks
  * API providers: https://wiki.openstreetmap.org/wiki/Nominatim#Alternatives_.2F_Third-party_providers

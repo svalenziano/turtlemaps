@@ -88,7 +88,8 @@ export type OSMElement = OSMWay | OSMNode | OSMRelation;
 ///////////////////////////////////////////////////////////
 // Other OSM
 
-export interface OSMResponse {
+// https://wiki.openstreetmap.org/wiki/OSM_JSON
+export interface OverpassAPI {
   version: number;
   generator: string;
   osm3s: {
@@ -96,7 +97,10 @@ export interface OSMResponse {
     copyright: string;
   };
   elements: OSMElement[];
-  bbox?: bboxArray;
+}
+
+export interface LocalOverpassAPI extends OverpassAPI {
+  bbox: bboxArray;
   centroid: Point;
 }
 

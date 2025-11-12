@@ -468,14 +468,16 @@ class MapApp {
 
 
 /**
+ * Fetch locally cached OSM data which has been appended with a bbox and centroid.
  * Side effects: updates app state based on response
  *
  * @returns response JSON
  */
-  async fetchOSM(query: string): Promise<T.OSMResponse> {
+ 
+  async fetchLocalOSM(query: string): Promise<T.LocalOverpassAPI> {
     try {
       const response = await fetch(query);
-      const json = await response.json() as T.OSMResponse;
+      const json = await response.json() as T.LocalOverpassAPI;
 
       if (json.bbox) {
         this.bbox.parseLatitudeFirst(json.bbox);
@@ -496,7 +498,7 @@ class MapApp {
   * Side Effects: updates layers using data from OSM response
   * @todo see TODO below
   */
-  drawOSM(json: T.OSMResponse): void {
+  drawOSM(json: T.OverpassAPI): void {
     const pointTransformer = this.mapPointToSVG.bind(this);
     // Parse response
     const elements: T.OSMElement[] = json.elements;
@@ -573,7 +575,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (!$container) throw new Error("Container not found")
 
   const app = new MapApp($container);
-  const json = await app.fetchOSM("./data/durham_nc.json");
+  const json = await app.fetchLocalOSM("./data/durham_nc.json");
   console.log(json);
   console.log(app.bbox);
   app.drawOSM(json);
