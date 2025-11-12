@@ -2,7 +2,10 @@ import * as T from "./types.js"
 import { SlowFetcher } from "./slow-fetcher.js"
 import { Nominatum } from "./nominatum.js";
 import { BBox } from "./bbox.js";
-import { Overpass } from "./osm.js"
+import { Overpass } from "./osm.js";
+import { Layer } from "./layer.js";
+import { Color } from "./color.js";
+import { SVG } from "./SVG.js";
 
 export {};  // ensure this file is treated as a module
 
@@ -13,7 +16,7 @@ export {};  // ensure this file is treated as a module
 /**
  * Misc. utility functions
  */
-class U {
+export class U {
   
   static slugify(str: string) {
     // Credit: https://byby.dev/js-slugify-string
@@ -78,157 +81,9 @@ class U {
 }
 
 /**
- * SVG utility functions
- */
-class SVG {
-  $svg: SVGElement;
-
-  constructor(
-    public $container: HTMLElement, 
-    public width: number, 
-    public height: number
-    ) {
-    let svg = SVG.makeElement("svg");
-    svg.setAttribute("width", String(this.width));
-    svg.setAttribute("height", String(this.height));
-    svg.setAttribute("viewBox", `0 0 ${this.width} ${this.height}`);
-
-    // Background shape
-    let rect = SVG.makeElement("rect");
-    rect.setAttribute("x", "0");
-    rect.setAttribute("y", "0");
-    rect.setAttribute("width", String(this.width));
-    rect.setAttribute("height", String(this.height));
-    rect.setAttribute("fill", Colors.default.bg);
-    svg.append(rect);
-
-    this.$svg = svg;
-    this.$container.append(svg);
-  }
-
-  static makeElement(type: "svg" | "rect" | "circle" | "polygon" | "path" | "g"): SVGElement {
-    return document.createElementNS("http://www.w3.org/2000/svg", type);
-  }
-
-/**
- * Draw a path with or without inner boundaries
- * @param points List of points or nested list of points
- *
- * @todo
- */
-  static makePath(points: T.Point[] | T.Point[][], ): SVGPathElement {
-    /*
-    - If `points` is an array of points, (typeof points[0][0] is a number)
-      - push command using makeSVGPathCommand
-    - Else (`points` is an nested array of points):
-      - for each array of points:
-        - push to commands (same as above)
-    - add commands to path
-    - return path
-    */
-    const path = SVG.makeElement("path") as SVGPathElement;
-    let commands: string = "";
-
-    // Handle simple list of points
-    if (SVG.isListOfPoints(points)) {
-      commands = SVG.PathCommand(points);
-      path.setAttribute("d", commands);
-      if (SVG.pathIsOpen(points)) {
-        path.setAttribute("fill", "none");
-      }
-      return path;
-    }
-
-    // Otherwise, handle nested list of points
-    for (let listOfPoints of points) {
-      commands += SVG.PathCommand(listOfPoints);
-    }
-    path.setAttribute("d", commands);
-    path.setAttribute("fill-rule", "evenodd");
-
-    if (SVG.pathIsOpen(points[0])) {
-      path.setAttribute("fill", "none");
-    }
-    return path;
-    
-  }
-
-  static isListOfPoints(arr: T.Point[] | T.Point[][]): arr is T.Point[] {
-    if (Array.isArray(arr[0][0])) {  // eg [[[0,1], [0,1]], [[3,4]]]
-      return false;
-    }
-    return true;
-  }
-
-/**
- * @param points Points that form the boundary to be tested
- * @param maxOpen The threshold at which the path is considered "open"
- */
-  static pathIsOpen(points: T.Point[], maxOpen=0.05): boolean {
-    const first = points[0];
-    const last = points[points.length - 1];
-
-    if (U.dist(first[0], first[1], last[0], last[1]) > maxOpen) {
-      return true;
-    }
-    return false;
-  }
-
-/**
- * From a list of points `[x, y]`, form and return a "Command string" as described by 
- * [MDN](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorials/SVG_from_scratch/Paths#curve_commands)
- *
- * @remarks
- * - Command strings may be joined by a space to form shapes with inner boundaries.
- * - First command is always a "M"
- * - Relative coordinates are NOT supported
- */
-  static PathCommand(points: T.Point[], close=false): string {
-    if (points.length < 2) {
-      throw new DataError("At least 2 points are required")
-    }
-
-    // First command is always "M" (move to)
-    let commands: string[] = [`M ${points[0][0]},${points[0][1]}`];
-
-    // Subsequent commands are always "L" (line to)
-    for (let i = 1; i < points.length; i++) {
-      commands.push(`L ${points[i][0]},${points[i][1]}`);
-    }
-    
-    return commands.join(" ");
-  }
-}
-
-class Colors {
-  // static default = {
-  //   bg: "rgba(86, 78, 105, 1)",
-  //   // bg: "rgb(241, 244, 203)",
-  //   light: "rgba(255, 255, 255, 1)",
-  //   dark: "rgb(65, 54, 51)",
-  //   bright: "rgba(238, 86, 66, 1)",
-  //   green: "rgba(153, 197, 114, 1)",
-  //   blue: "rgba(138, 181, 204, 1)",
-  //   ick: "rgba(115, 28, 122, 1)",
-  // }
-    static default = {
-    bg: "rgba(86, 78, 105, 1)",
-    // bg: "rgb(241, 244, 203)",
-    light: "rgba(192, 192, 192, 1)",
-    dark: "rgb(65, 54, 51)",
-    bright: "rgba(160, 81, 71, 1)",
-    green: "rgba(75, 90, 62, 1)",
-    blue: "rgba(98, 125, 139, 1)",
-    ick: "rgba(115, 28, 122, 1)",
-    hilite: "rgba(255, 217, 0, 1)",
-  }
-
-}
-
-/**
  * Intent: use when data from an API is not formed as you expect
  */
-class DataError extends Error {
+export class DataError extends Error {
   date: Date;
 
   constructor(msg: string) {
@@ -240,209 +95,6 @@ class DataError extends Error {
     this.date = new Date();
 
   }
-}
-
-
-class Layer implements T.DefaultLayer {
-  /**
-  Provides a direct interface to an SVG layer
-
-
-  */
-  $g: SVGElement;
-  name: string;
-  colorFill: string | null;
-  colorStroke: string | null;
-  strokeWeight: number;
-  tags: {
-    [key: string]: string[] | null;
-  }
-
-  constructor(options: T.DefaultLayer) {
-    this.name = options.name;
-    this.colorFill = options.colorFill;
-    this.colorStroke = options.colorStroke;
-    this.strokeWeight = options.strokeWeight;
-    this.tags = options.tags;
-    this.$g = SVG.makeElement("g");
-    this.updateStyles();
-  }
-
-  /**
-   * Create and return an array of layers created with `this.defaultLayers`
-   */
-  static makeDefaultLayers(): Layer[] {
-    return Layer.defaultLayers.map((options) => new Layer(options));
-  }
-
-  /**
-   * Apply / re-apply styles to this.$g
-   */
-  updateStyles(): void {
-    this.$g.setAttribute("fill", this.colorFill ?? "none");
-    this.$g.setAttribute("stroke", this.colorStroke ?? "none");
-    this.$g.setAttribute("stroke-width", 
-      this.strokeWeight ? String(this.strokeWeight) : "0");
-  }
-
-  /**
-   * Does this layer match the provided tags?
-   * @param tags eg `{
-      "destination:street":"Chapel Hill Street",
-      "highway":"motorway_link",
-      "lanes":"1",
-      "oneway":"yes",
-      "surface":"concrete"
-      }`
-   */
-  matchesTags(tags: T.GenericObject): boolean {
-    /*
-    input = 
-      - tags = tags object from OSM response, eg: {"destination:street":"Chapel Hill Street","highway":"motorway_link","lanes":"1","oneway":"yes","surface":"concrete"}
-      - this.tags = eg {"leisure":["park","garden"],"landuse":["grass"]}
-    return = boolean
-    */
-    for (let [eleKey, eleTag] of Object.entries(tags)) {
-      if (Object.keys(this.tags).includes(eleKey) && (
-          this.tags[eleKey] === null || this.tags[eleKey].includes(eleTag))) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  addGeometry(ele: SVGElement):void {
-      this.$g.append(ele);
-  }
-
-  static strokesWeights = {
-      faint: 0.3,
-      light: 0.5,
-      medium: 1.3,
-      heavy: 2.5,
-      super: 4,
-    }
-
-/**
-  *  Parse order: as listed (first elements in the array are processed first)
-  *  Draw order: reverse order (first elements in the array are drawn last)
-  */
-  static defaultLayers: T.DefaultLayer[] = [
-    { 
-      name: "Buildings - Residential",
-      colorFill: Colors.default.bright,
-      colorStroke: Colors.default.dark,
-      strokeWeight: this.strokesWeights.faint,
-      tags: {
-        building: ["house", "residential", "detached", "apartments", "semidetached_house", "bungalow", "dormitory"],
-      },
-    },
-    { 
-      name: "Buildings - All",
-      colorFill: Colors.default.dark,
-      colorStroke: Colors.default.bright,
-      strokeWeight: this.strokesWeights.faint,
-      tags: {
-        building: null,
-      },
-    },
-    {
-      name: "Paths",
-      colorFill: Colors.default.bg,
-      colorStroke: Colors.default.dark, 
-      strokeWeight: this.strokesWeights.faint,
-      tags: {
-        highway: ["footway", "service", "driveway", "path", "pedestrian"],
-      },
-    },
-    {
-      name: "Primary Roads",
-      colorFill: null,
-      colorStroke: Colors.default.dark,
-      strokeWeight: this.strokesWeights.super,
-      tags: {
-        highway: ["motorway", "motorway_link", "trunk", "trunk_link", "primary", "primary_link", ]
-      },
-    },
-    {
-      name: "Secondary Roads",
-      colorFill: null,
-      colorStroke: Colors.default.dark,
-      strokeWeight: this.strokesWeights.heavy,
-      tags: {
-        highway: ["secondary", "secondary_link", "tertiary", "tertiary_link",]
-      },
-    },
-    {
-      name: "Tertiary Roads",
-      colorFill: null,
-      colorStroke: Colors.default.dark,
-      strokeWeight: this.strokesWeights.medium,
-      tags: {
-        highway: ["residential", "service"]
-      },
-    },
-    {
-      name: "Paths",
-      colorFill: null,
-      colorStroke: Colors.default.dark,
-      strokeWeight: this.strokesWeights.light,
-      tags: {
-        highway: ["footway", "service", "driveway"]
-      },
-    },
-    {
-      name: "Water",
-      colorFill: Colors.default.blue,
-      colorStroke: Colors.default.dark,
-      strokeWeight: this.strokesWeights.faint,
-      tags: {
-        waterway: null,
-        natural: ["water"],
-      },
-    },
-    {
-      name: "Green Space",
-      colorFill: Colors.default.green,
-      colorStroke: Colors.default.dark,
-      strokeWeight: this.strokesWeights.faint,
-      tags: {
-        leisure: ["park", "garden"],
-        landuse: ["grass"],
-      },
-    },
-    {
-      name: "Public Space",
-      colorFill: Colors.default.green,
-      colorStroke: Colors.default.dark,
-      strokeWeight: this.strokesWeights.faint,
-      tags: {
-        leisure: ["village_green", "track", "dog_park"],
-        amenity: ["school"],
-      }
-    },
-    {
-      name: "Parking",
-      colorFill: Colors.default.ick,
-      colorStroke: Colors.default.bg,
-      strokeWeight: this.strokesWeights.faint,
-      tags: {
-        parking: null,
-        parking_space: null,
-        amenity: ["parking"],
-        building: ["parking", "parking_garage", "parking_shelter", "car_park", "parkingbuilding", "parking_deck"]
-      }
-    },
-    {
-      name: "No Tresspassing",
-      colorFill: Colors.default.bright,
-      colorStroke: null,
-      strokeWeight: this.strokesWeights.faint,
-      tags: {
-        access: ["private"],
-      },
-    },
-  ];
 }
 
 class MapApp {
@@ -525,7 +177,7 @@ class MapApp {
       } else if (ele.type === "relation") {
         const geom: T.Point[][] = Overpass.extractRelationGeom(ele, pointTransformer)
         const path = SVG.makePath(geom);
-        path.setAttribute("stroke", Colors.default.hilite)
+        path.setAttribute("stroke", Color.default.hilite)
         layer.addGeometry(path);
       } else {
         const x: never = ele;  // TS exhaustiveness check

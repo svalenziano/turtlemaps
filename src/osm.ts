@@ -46,7 +46,12 @@ export class Overpass {
       const json: T.OverpassResponse = await response.json();
       console.info(`Fetched ${json.elements.length} elements`)
       return json;
+  }
 
+  formQueryFromLayers() {
+    /*
+    Input = layers
+    */
   }
 
 /**
