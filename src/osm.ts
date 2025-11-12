@@ -1,56 +1,52 @@
 import * as T from "./types.js"
-
+import { BBox } from "./bbox.js";
+import { REFERER } from "./config.js";
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
 /**
- * A simple interface for working with the OSM Overpass API
+ * A simple interface for working with the 
+ * [OSM Overpass API](https://wiki.openstreetmap.org/wiki/Overpass_API)
  */
-export class OSM {
+export class Overpass {
+  timeout: number;
 
+/**
+ * 
+ * @param fetcher the native `fetch` function or a drop-in alternative
+ */
   constructor(
     public fetcher: typeof fetch, 
-    public api=OSM.PATHS["overpass.de"]
-    ) {}
+    public api=Overpass.PATHS["overpass.de"]
+    ) {
+      this.timeout = 7000;
+    }
 
 
   static PATHS = {
     "overpass.de": "https://overpass-api.de/api/interpreter"
   }
 
-  async fetchlayers(layerNames=[]) {
-    /*
-    Input: (optional) layers to fetch data for.  
-      If none are provided, this.layers will be used
-    Return: JSON response
-    parse response and populate each layer with elements
-    */
-
-    
-    let query = "";
-    if (layerNames.length === 0) {
-      for (const layer of this.layers) {
-        query += layer.queryString;
-      }
+  async query(query: string, bbox: BBox): Promise<T.OverpassResponse> {
 
       const osmQuery = "data=" + encodeURIComponent(`
-          [bbox:${this.coordString}][out:json][timeout:${TIMEOUT}];
+          [bbox:${bbox.overpassBbox}][out:json][timeout:${this.timeout}];
           (${query});
           out geom;`);
 
-      const response = await osmFetcher.fetch("https://overpass-api.de/api/interpreter", {
+      const response = await this.fetcher(this.api, {
         method: "POST",
         body: osmQuery,
+        headers: {
+          "Referer": REFERER,
+        }
       });
 
-      const json = await response.json();
-      console.log(`Fetched ${json.elements.length} elements`)
+      const json: T.OverpassResponse = await response.json();
+      console.info(`Fetched ${json.elements.length} elements`)
       return json;
 
-    } else {
-      throw new Error("NOT YET IMPLEMENTED")
-    }
   }
 
 /**

@@ -2,7 +2,7 @@ import * as T from "./types.js"
 import { SlowFetcher } from "./slow-fetcher.js"
 import { Nominatum } from "./nominatum.js";
 import { BBox } from "./bbox.js";
-import { OSM } from "./osm.js"
+import { Overpass } from "./osm.js"
 
 export {};  // ensure this file is treated as a module
 
@@ -452,6 +452,7 @@ class MapApp {
   svg: SVG;
   layers: Layer[];
   nom: Nominatum;
+  osm: Overpass;
 
   constructor(public container: HTMLElement) {
     this.bbox = new BBox();
@@ -459,8 +460,11 @@ class MapApp {
     this.centroid = null;
     this.svg = new SVG(document.body, window.innerWidth, window.innerWidth);
     
-    const slow = new SlowFetcher(1000);
-    this.nom = new Nominatum(slow.fetch);
+    const osmFetcher = new SlowFetcher(1000);
+    this.osm = new Overpass(osmFetcher.fetch);
+    
+    const nominatimFetcher = new SlowFetcher(1000);
+    this.nom = new Nominatum(nominatimFetcher.fetch);
 
     this.layers = Layer.makeDefaultLayers();
     this.layers.forEach((l) => this.svg.$svg.append(l.$g));
@@ -498,7 +502,7 @@ class MapApp {
   * Side Effects: updates layers using data from OSM response
   * @todo see TODO below
   */
-  drawOSM(json: T.OverpassAPI): void {
+  drawOSM(json: T.OverpassResponse): void {
     const pointTransformer = this.mapPointToSVG.bind(this);
     // Parse response
     const elements: T.OSMElement[] = json.elements;
@@ -515,11 +519,11 @@ class MapApp {
 
       if (ele.type === "way") {
         const geom: T.Point[] = ele.geometry
-          .map(p => OSM.convertPoint(p))
+          .map(p => Overpass.convertPoint(p))
           .map(this.mapPointToSVG, this)
         layer.addGeometry(SVG.makePath(geom));
       } else if (ele.type === "relation") {
-        const geom: T.Point[][] = OSM.extractRelationGeom(ele, pointTransformer)
+        const geom: T.Point[][] = Overpass.extractRelationGeom(ele, pointTransformer)
         const path = SVG.makePath(geom);
         path.setAttribute("stroke", Colors.default.hilite)
         layer.addGeometry(path);

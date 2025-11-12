@@ -105,4 +105,14 @@ export class BBox implements T.unknownBbox {
       throw new Error("Not initialized")
     }
   }
+
+/**
+ * Per the [Overpass Language Guide wiki](https://wiki.openstreetmap.org/wiki/Overpass_API/Language_Guide)
+ * "Bounding box clauses always start with the lowest latitude (southernmost) 
+ * followed by lowest longitude (westernmost), then highest latitude 
+ * (northernmost) then highest longitude (easternmost)."
+ */
+  get overpassBbox() {
+    return [this.bottom, this.left, this.top, this.right].join(",")
+  }
 }

@@ -1,4 +1,5 @@
 import * as T from "./types.js";
+import { REFERER } from "./config.js";
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
@@ -109,7 +110,7 @@ export class Nominatum {
 
     const response = await this.fetcher(this.api + params.join("&"), {
       headers: {
-        "Referer": "https://www.stvn.us/pages/contact",
+        "Referer": REFERER,
       }
     });
 
