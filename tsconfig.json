@@ -10,7 +10,6 @@
     "allowJs": true,
     "isolatedModules": true,
     "moduleResolution": "Node",
-    "noEmit": true,
   },
   "include": ["./src/**/*"],
   "$schema": "https://json.schemastore.org/tsconfig",

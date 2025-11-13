@@ -2,12 +2,12 @@
   "name": "turtlemaps",
   "version": "0.0.1",
   "description": "",
-  "main": "sketch.js",
+  "main": ".dist/main.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "vite", 
-    "build": "vite build", 
-    "preview": "vite preview" 
+    "test": "vitest",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "repository": {
     "type": "git",
@@ -29,6 +29,7 @@
     "jiti": "^2.6.1",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.46.4",
-    "vite": "^7.2.2"
+    "vite": "^7.2.2",
+    "vitest": "^4.0.8"
   }
 }

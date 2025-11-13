@@ -250,7 +250,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const layers = Layer.makeDefaultLayers();
   console.log(layers);
-  console.log("Setup is done")
+  console.log("Setup is done");
+  console.log("Hello world!!!!");
 
   // NOM TESTING
   // const response = await Nominatum.freeForm("Durham, NC");
