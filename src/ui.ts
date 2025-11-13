@@ -1,3 +1,11 @@
+export class UI {
+  constructor() {
+    fetch("./public/ui.html")
+      .then(r => r.text())
+      .then(console.log)
+  }
+}
+
 export class SearchBox {
   constructor(public $container: HTMLElement) {
     const wrapper = document.createElement("DIV");

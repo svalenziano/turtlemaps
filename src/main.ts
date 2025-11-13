@@ -7,7 +7,7 @@ import { Layer } from "./layer.js";
 import { Color } from "./color.js";
 import { SVG } from "./SVG.js";
 import { DZ } from "./config.js";
-import { SearchBox } from "./search-box.js";
+import { UI } from "./ui.js";
 
 export {};  // ensure this file is treated as a module
 
@@ -131,14 +131,7 @@ class MapApp {
     // }
   }
 
-/**
- * Used to initialize components and attach them to UI elements
- *
- * Format: `{id: class constructor}`
- */
-  static elements = {
-    "search-box": SearchBox,
-  }
+
 
 /**
  * Side effects: reassigns this.bbox to a new bbox
@@ -290,6 +283,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   console.log(app.bbox);
   app.drawOSM(json);
 
+  new UI();
   // const layers = Layer.makeDefaultLayers();
   // console.log(layers);
   // console.log("Setup is done")
