@@ -113,10 +113,10 @@ class MapApp {
     this.svg = new SVG(document.body, window.innerWidth, window.innerWidth);
     
     const osmFetcher = new SlowFetcher(1000);
-    this.osm = new Overpass(osmFetcher.fetch.bind(osmFetcher));
+    this.osm = new Overpass(fetch);
     
     const nominatimFetcher = new SlowFetcher(1000);
-    this.nom = new Nominatum(nominatimFetcher.fetch.bind(nominatimFetcher));
+    this.nom = new Nominatum(fetch);
 
     this.layers = Layer.makeDefaultLayers();
     this.layers.forEach((l) => this.svg.$svg.append(l.$g));
@@ -242,6 +242,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const $container = document.querySelector("section.app") as HTMLElement;
   if (!$container) throw new Error("Container not found")
 
+  debugger;
   const app = new MapApp($container);
   await app.jump("Durham, NC, USA");
   // const json = await app.fetchLocalOSM("./data/durham_nc.json");

@@ -58,7 +58,7 @@ export class Nominatum {
     if (Nominatum.isLatLon(query)) {
       centroid = Nominatum.parseLatLon(query);
     } else {
-      const json = await this.freeForm(query);
+      const json = await this.freeFormQuery(query);
       centroid = Nominatum.extractCentroid(json);
     }
     const bbox = Nominatum.toBbox(centroid, zoom);
@@ -104,7 +104,7 @@ export class Nominatum {
     return {minlat, minlon, maxlat, maxlon};
   }
 
-  async freeForm(queryString: string): Promise<GeoJSON> {
+  async freeFormQuery(queryString: string): Promise<GeoJSON> {
     const params = ["q=" + encodeURIComponent(queryString)];
     params.push("format=geojson");  // required to obtain centroid
 
