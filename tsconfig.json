@@ -1,15 +1,21 @@
 {
   "compilerOptions": {
-  "target": "esnext",
-  "module": "esnext",
+    "target": "ESNext",
+    "module": "ESNext",
     "strict": true,
     "outDir": "./dist",
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "allowJs": true,
+    "isolatedModules": true,
+    "moduleResolution": "Node",
+    "noEmit": true,
   },
   "include": ["./src/**/*"],
   "$schema": "https://json.schemastore.org/tsconfig",
-  "display": "Recommended"
+  "display": "Recommended",
+  "ts-node": {
+    "esm": true,
+  }
 }
