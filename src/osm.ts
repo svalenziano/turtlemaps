@@ -21,7 +21,7 @@ export class Overpass {
     public fetcher: typeof fetch, 
     public api=Overpass.PATHS["overpass.de"]
     ) {
-      this.timeout = 7000;
+      this.timeout = 7;  // unit = seconds
     }
 
 
@@ -29,29 +29,41 @@ export class Overpass {
     "overpass.de": "https://overpass-api.de/api/interpreter"
   }
 
-  async query(query: string): Promise<T.OverpassResponse> {
+/**
+ * 
+ * @param query expects valid OSM Overpass QL string eg `"[bbox:35.9953,-78.9035,35.998,-78.9001][out:json][timeout:7]; (wr["building"];); out geom;""`
+ * @returns 
+ */
+  async query(query: string): Promise<T.OverpassJSONResponse> {
 
       const response = await fetch(this.api, {
         method: "POST",
-        body: query,
+        body: "data=" + encodeURIComponent(query),
         headers: {
+          "Content-Type": "text/plain; charset=UTF-8",
           "Referer": REFERER,
         }
       });
 
-      const json: T.OverpassResponse = await response.json();
+      const json: T.OverpassJSONResponse = await response.json();
       console.info(`Fetched ${json.elements.length} elements`)
       return json;
   }
 
 /**
- A sample query:
- ```txt
-  [bbox: ${DURHAM_COORDS}][out:json][timeout: 10];
-  wr["building"];
-  out geom;
- ```
- More info: https://wiki.openstreetmap.org/wiki/Overpass_API/Overpass_QL
+ * **Warning** output from this function is human readable and may need to be
+ * encoded prior to sending to OSM
+ *
+ *
+ * Sample return value:
+ * ```txt
+ *  [bbox: ${DURHAM_COORDS}][out:json][timeout: 10];
+ *  wr["building"];
+ *  out geom;
+ * ```
+ * More info: https://wiki.openstreetmap.org/wiki/Overpass_API/Overpass_QL
+ *
+ * @returns Human-readable query string
  */
   formQueryFromLayers(layers: Layer[], bbox: BBox): string {
     
@@ -60,10 +72,10 @@ export class Overpass {
       layerQuery += l.queryString;
     }
     
-    const skeleton = "data=" + encodeURIComponent(`
+    const skeleton = `\
       [bbox:${bbox.overpassBbox}][out:json][timeout:${this.timeout}];
       (${layerQuery});
-      out geom;`);
+      out geom;`;
     
     return skeleton;
     

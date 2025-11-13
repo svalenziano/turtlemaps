@@ -128,11 +128,12 @@ class MapApp {
  * Side effects: reassigns this.bbox to a new bbox
  */
   async jump(query: string, zoom: T.OSMZoomLevels = MapApp.DEFAULT_ZOOM) {
-    debugger;
     const loc = await this.nom.resolveCoordinates(query, zoom);
     this.bbox = new BBox(loc.bbox);
     const overpassQuery = this.osm.formQueryFromLayers(this.layers, this.bbox);
     const json = await this.osm.query(overpassQuery);
+    console.log(overpassQuery)
+    // const json = await this.osm.query(overpassQuery);
     this.drawOSM(json);
   }
 
@@ -142,10 +143,10 @@ class MapApp {
  *
  * @returns response JSON
  */
-  async fetchLocalOSM(query: string): Promise<T.LocalOverpassAPI> {
+  async fetchLocalOSM(query: string): Promise<T.LocalOPJSONResponse> {
     try {
       const response = await fetch(query);
-      const json = await response.json() as T.LocalOverpassAPI;
+      const json = await response.json() as T.LocalOPJSONResponse;
 
       if (json.bbox) {
         this.bbox.parseLatitudeFirst(json.bbox);
@@ -166,7 +167,7 @@ class MapApp {
   * Side Effects: updates layers using data from OSM response
   * @todo see TODO below
   */
-  drawOSM(json: T.OverpassResponse): void {
+  drawOSM(json: T.OverpassJSONResponse): void {
     const pointTransformer = this.mapPointToSVG.bind(this);
     // Parse response
     const elements: T.OSMElement[] = json.elements;
@@ -244,17 +245,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // debugger;
   const app = new MapApp($container);
-  const loc = await app.nom.resolveCoordinates("35.996653, -78.9018053");
-  console.log(loc)
-  const overpassQuery = app.osm.formQueryFromLayers(app.layers, app.bbox);
-  console.log(overpassQuery);
-  const json = await app.osm.query(overpassQuery);
+  app.jump("35.996653, -78.9018053");
+  // const loc = await app.nom.resolveCoordinates("35.996653, -78.9018053");
+  // console.log(loc)
+  // const overpassQuery = app.osm.formQueryFromLayers(app.layers, app.bbox);
+  // console.log(overpassQuery);
+  // const json = await app.osm.query(overpassQuery);
 
   // await app.jump("Durham, NC, USA");
   // const json = await app.fetchLocalOSM("./data/durham_nc.json");
   // console.log(json);
   // console.log(app.bbox);
-  app.drawOSM(json);
+  // app.drawOSM(json);
   // app.test();
 
   // const layers = Layer.makeDefaultLayers();
