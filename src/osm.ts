@@ -1,6 +1,6 @@
 import * as T from "./types.js"
 import { BBox } from "./bbox.js";
-import { REFERER } from "./config.js";
+import { REFERER, MAP_TIMEOUT_MILLIS } from "./config.js";
 import { Layer } from "./layer.js";
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -21,7 +21,7 @@ export class Overpass {
     public fetcher: typeof fetch, 
     public api=Overpass.PATHS["overpass.de"]
     ) {
-      this.timeout = 10;  // unit = seconds
+      this.timeout = MAP_TIMEOUT_MILLIS / 1000;  // unit = seconds
     }
 
 

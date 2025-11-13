@@ -6,6 +6,7 @@ import { Overpass } from "./osm.js";
 import { Layer } from "./layer.js";
 import { Color } from "./color.js";
 import { SVG } from "./SVG.js";
+import { DZ } from "./config.js";
 
 export {};  // ensure this file is treated as a module
 
@@ -122,12 +123,10 @@ class MapApp {
     this.layers.forEach((l) => this.svg.$svg.append(l.$g));
   }
 
-  static DEFAULT_ZOOM = 17 as const; // https://wiki.openstreetmap.org/wiki/Zoom_levels
-
 /**
  * Side effects: reassigns this.bbox to a new bbox
  */
-  async jump(query: string, zoom: T.OSMZoomLevels = MapApp.DEFAULT_ZOOM) {
+  async jump(query: string, zoom: T.OSMZoomLevels = DZ) {
     let loc: BboxAndCentroid | null = null;
     let overpassQuery: string | null = null;
     let json: T.OverpassJSONResponse | null = null;
@@ -247,6 +246,11 @@ class MapApp {
   ];
   }
 }
+
+/////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////
+// DEBUGGING
+(window as any).U = U;
 
 
 /////////////////////////////////////////////////////////////////////////////
