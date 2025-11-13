@@ -1,6 +1,6 @@
 import * as T from "./types.js"
 import { SlowFetcher } from "./slow-fetcher.js"
-import { Nominatum } from "./nominatum.js";
+import { BboxAndCentroid, Nominatum } from "./nominatum.js";
 import { BBox } from "./bbox.js";
 import { Overpass } from "./osm.js";
 import { Layer } from "./layer.js";
@@ -128,13 +128,27 @@ class MapApp {
  * Side effects: reassigns this.bbox to a new bbox
  */
   async jump(query: string, zoom: T.OSMZoomLevels = MapApp.DEFAULT_ZOOM) {
-    const loc = await this.nom.resolveCoordinates(query, zoom);
-    this.bbox = new BBox(loc.bbox);
-    const overpassQuery = this.osm.formQueryFromLayers(this.layers, this.bbox);
-    const json = await this.osm.query(overpassQuery);
-    console.log(overpassQuery)
-    // const json = await this.osm.query(overpassQuery);
-    this.drawOSM(json);
+    let loc: BboxAndCentroid | null = null;
+    let overpassQuery: string | null = null;
+    let json: T.OverpassJSONResponse | null = null;
+    try {
+      loc = await this.nom.resolveCoordinates(query, zoom);
+      this.bbox = new BBox(loc.bbox);
+      overpassQuery = this.osm.formQueryFromLayers(this.layers, this.bbox);
+      json = await this.osm.queryGeneric(overpassQuery);
+      this.drawOSM(json);
+
+    } catch (er) {
+      if (er instanceof Error) {
+        console.error("`jump` failed.  Dumping data and re-throwing error");
+        if (loc) console.error(loc);
+        if (overpassQuery) console.error(overpassQuery);
+        if (json) console.error(json);
+        throw er;
+      } else {
+        throw er;
+      }
+    }
   }
 
 /**

@@ -21,7 +21,7 @@ export class Overpass {
     public fetcher: typeof fetch, 
     public api=Overpass.PATHS["overpass.de"]
     ) {
-      this.timeout = 7;  // unit = seconds
+      this.timeout = 10;  // unit = seconds
     }
 
 
@@ -30,11 +30,21 @@ export class Overpass {
   }
 
 /**
- * 
- * @param query expects valid OSM Overpass QL string eg `"[bbox:35.9953,-78.9035,35.998,-78.9001][out:json][timeout:7]; (wr["building"];); out geom;""`
- * @returns 
+ * The standard method for querying data from OSM Overpass
  */
-  async query(query: string): Promise<T.OverpassJSONResponse> {
+  async queryLayers(layers: Layer[], bbox: BBox): Promise<T.OverpassJSONResponse> {
+    const overpassQLQuery = this.formQueryFromLayers(layers, bbox);
+    return await this.queryGeneric(overpassQLQuery);
+  }
+
+/**
+ * **HELPER METHOD**
+ *
+ * Sends a generic Overpass QL query
+ * @param query expects valid OSM Overpass QL string eg `"[bbox:35.9953,-78.9035,35.998,-78.9001][out:json][timeout:7]; (wr["building"];); out geom;""`
+ * @returns JSON response
+ */
+  async queryGeneric(query: string): Promise<T.OverpassJSONResponse> {
 
       const response = await fetch(this.api, {
         method: "POST",
@@ -50,7 +60,11 @@ export class Overpass {
       return json;
   }
 
+
+
 /**
+ * **HELPER METHOD**
+ *
  * **Warning** output from this function is human readable and may need to be
  * encoded prior to sending to OSM
  *
