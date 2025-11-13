@@ -131,8 +131,8 @@ class MapApp {
     debugger;
     const loc = await this.nom.resolveCoordinates(query, zoom);
     this.bbox = new BBox(loc.bbox);
-    const overpassQuery = this.osm.formQueryFromLayers(this.layers);
-    const json = await this.osm.query(overpassQuery, this.bbox);
+    const overpassQuery = this.osm.formQueryFromLayers(this.layers, this.bbox);
+    const json = await this.osm.query(overpassQuery);
     this.drawOSM(json);
   }
 
@@ -246,15 +246,15 @@ document.addEventListener("DOMContentLoaded", async () => {
   const app = new MapApp($container);
   const loc = await app.nom.resolveCoordinates("35.996653, -78.9018053");
   console.log(loc)
-  const overpassQuery = app.osm.formQueryFromLayers(app.layers);
+  const overpassQuery = app.osm.formQueryFromLayers(app.layers, app.bbox);
   console.log(overpassQuery);
-  // const json = await app.osm.query(overpassQuery, app.bbox);
+  const json = await app.osm.query(overpassQuery);
 
   // await app.jump("Durham, NC, USA");
   // const json = await app.fetchLocalOSM("./data/durham_nc.json");
   // console.log(json);
   // console.log(app.bbox);
-  // app.drawOSM(json);
+  app.drawOSM(json);
   // app.test();
 
   // const layers = Layer.makeDefaultLayers();

@@ -29,16 +29,11 @@ export class Overpass {
     "overpass.de": "https://overpass-api.de/api/interpreter"
   }
 
-  async query(query: string, bbox: BBox): Promise<T.OverpassResponse> {
-
-      const osmQuery = "data=" + encodeURIComponent(`
-          [bbox:${bbox.overpassBbox}][out:json][timeout:${this.timeout}];
-          (${query});
-          out geom;`);
+  async query(query: string): Promise<T.OverpassResponse> {
 
       const response = await fetch(this.api, {
         method: "POST",
-        body: osmQuery,
+        body: query,
         headers: {
           "Referer": REFERER,
         }
@@ -58,12 +53,20 @@ export class Overpass {
  ```
  More info: https://wiki.openstreetmap.org/wiki/Overpass_API/Overpass_QL
  */
-  formQueryFromLayers(layers: Layer[]): string {
+  formQueryFromLayers(layers: Layer[], bbox: BBox): string {
+    
     let layerQuery = "";
     for (let l of layers) {
       layerQuery += l.queryString;
     }
-    return layerQuery;
+    
+    const skeleton = "data=" + encodeURIComponent(`
+      [bbox:${bbox.overpassBbox}][out:json][timeout:${this.timeout}];
+      (${layerQuery});
+      out geom;`);
+    
+    return skeleton;
+    
   }
 
 /**
