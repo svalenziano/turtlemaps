@@ -46,19 +46,21 @@ export class Nominatum {
   constructor(
     public fetcher: typeof fetch, 
     public api=Nominatum.PATHS.osmfoundation
-    ) {}
+    ) {
+      fetcher = fetcher.bind(this);
+    }
 
   static PATHS = {
     'osmfoundation': "https://nominatim.openstreetmap.org/search?",  // Very limited throughput.  Do not use unless absolutely necessary
     "geocoding.ai": "https://nominatim.geocoding.ai/search?",  // geocoding.ai (defunct as of late 2025?)
   }
   
-  async resolveCoordinates(query: string, zoom: number): Promise<BboxAndCentroid> {
+  async resolveCoordinates(query: string, zoom: T.OSMZoomLevels=17): Promise<BboxAndCentroid> {
     let centroid;
     if (Nominatum.isLatLon(query)) {
       centroid = Nominatum.parseLatLon(query);
     } else {
-      const json = await this.freeForm(query);
+      const json = await this.freeFormQuery(query);
       centroid = Nominatum.extractCentroid(json);
     }
     const bbox = Nominatum.toBbox(centroid, zoom);
@@ -96,15 +98,15 @@ export class Nominatum {
     const halfHeight = (pixelsPerTile / 2) * metersPerPixel / metersPerDegreeLat;
     
     // Calculate bounding box coordinates
-    const minlon = Util.round(lon - halfWidth, 4);
-    const maxlon = Util.round(lon + halfWidth, 4);
-    const minlat = Util.round(lat - halfHeight, 4);
-    const maxlat = Util.round(lat + halfHeight, 4);
+    const minlon = Number((lon - halfWidth).toFixed(4));
+    const maxlon = Number((lon + halfWidth).toFixed(4));
+    const minlat = Number((lat - halfHeight).toFixed(4));
+    const maxlat = Number((lat + halfHeight).toFixed(4));
     
     return {minlat, minlon, maxlat, maxlon};
   }
 
-  async freeForm(queryString: string): Promise<GeoJSON> {
+  async freeFormQuery(queryString: string): Promise<GeoJSON> {
     const params = ["q=" + encodeURIComponent(queryString)];
     params.push("format=geojson");  // required to obtain centroid
 

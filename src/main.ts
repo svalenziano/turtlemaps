@@ -113,21 +113,22 @@ class MapApp {
     this.svg = new SVG(document.body, window.innerWidth, window.innerWidth);
     
     const osmFetcher = new SlowFetcher(1000);
-    this.osm = new Overpass(osmFetcher.fetch);
+    this.osm = new Overpass(fetch);
     
     const nominatimFetcher = new SlowFetcher(1000);
-    this.nom = new Nominatum(nominatimFetcher.fetch);
+    this.nom = new Nominatum(fetch);
 
     this.layers = Layer.makeDefaultLayers();
     this.layers.forEach((l) => this.svg.$svg.append(l.$g));
   }
 
-  static DEFAULT_ZOOM = 17; // https://wiki.openstreetmap.org/wiki/Zoom_levels
+  static DEFAULT_ZOOM = 17 as const; // https://wiki.openstreetmap.org/wiki/Zoom_levels
 
 /**
  * Side effects: reassigns this.bbox to a new bbox
  */
-  async jump(query: string, zoom: number = MapApp.DEFAULT_ZOOM) {
+  async jump(query: string, zoom: T.OSMZoomLevels = MapApp.DEFAULT_ZOOM) {
+    debugger;
     const loc = await this.nom.resolveCoordinates(query, zoom);
     this.bbox = new BBox(loc.bbox);
     const overpassQuery = this.osm.formQueryFromLayers(this.layers);
@@ -241,20 +242,23 @@ document.addEventListener("DOMContentLoaded", async () => {
   const $container = document.querySelector("section.app") as HTMLElement;
   if (!$container) throw new Error("Container not found")
 
+  // debugger;
   const app = new MapApp($container);
+  const loc = await app.nom.resolveCoordinates("35.996653, -78.9018053");
+  console.log(loc)
+  // await app.jump("Durham, NC, USA");
   const json = await app.fetchLocalOSM("./data/durham_nc.json");
-  console.log(json);
-  console.log(app.bbox);
+  // console.log(json);
+  // console.log(app.bbox);
   app.drawOSM(json);
   // app.test();
 
-  const layers = Layer.makeDefaultLayers();
-  console.log(layers);
-  console.log("Setup is done");
-  console.log("Hello world!!!!");
+  // const layers = Layer.makeDefaultLayers();
+  // console.log(layers);
+  // console.log("Setup is done")
 
   // NOM TESTING
   // const response = await Nominatum.freeForm("Durham, NC");
   // console.log(response);
   // console.log(Nominatum.getCentroid(response))
-})
+});

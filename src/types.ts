@@ -104,6 +104,47 @@ export interface LocalOverpassAPI extends OverpassResponse {
   centroid: Point;
 }
 
+// export enum OSMZoomLevels {
+//   "00 Whole World" = 0,  // do comments show up?
+//   "01" = 1,
+//   "02 Subcontinental Area" = 2,
+//   "17 Block, Park, Addresses" = 17,
+// }
+
+/**
+ * 
+ */
+type Range<N extends number, Result extends Array<unknown> = []> =
+  Result['length'] extends N
+    ? never
+    : Result['length'] | Range<N, [unknown, ...Result]>;
+
+/**
+ * https://wiki.openstreetmap.org/wiki/Zoom_levels
+| Level | Examples of  <br>areas to represent |
+| ----- | ----------------------------------- |
+| 0     | whole world                         |
+| 2     | subcontinental area                 |
+| 3     | largest country                     |
+| 5     | large African country               |
+| 6     | large European country              |
+| 7     | small country, US state             |
+| 9     | wide area, large metropolitan area  |
+| 10    | metropolitan area                   |
+| 11    | city                                |
+| 12    | town, or city district              |
+| 13    | village, or suburb                  |
+| 15    | small road                          |
+| 16    | street                              |
+| 17    | block, park, addresses              |
+| 18    | some buildings, trees               |
+| 19    | local highway and crossing details  |
+| 20    | A mid-sized building                |
+ */
+export type OSMZoomLevels = Range<20>; // 1 | 2 | ... | 20
+
+
+
 /////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////
 

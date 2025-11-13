@@ -71,7 +71,7 @@ class oldSlowFetcher {
   }
 }
 
-class Util {
+class oldUtil {
   /*
   Misc utilities 
   */
@@ -125,10 +125,10 @@ class Util {
     const halfHeight = (pixelsPerTile / 2) * metersPerPixel / metersPerDegreeLat;
     
     // Calculate bounding box coordinates
-    const minLon = Util.round(longitude - halfWidth, 4);
-    const maxLon = Util.round(longitude + halfWidth, 4);
-    const minLat = Util.round(latitude - halfHeight, 4);
-    const maxLat = Util.round(latitude + halfHeight, 4);
+    const minLon = oldUtil.round(longitude - halfWidth, 4);
+    const maxLon = oldUtil.round(longitude + halfWidth, 4);
+    const minLat = oldUtil.round(latitude - halfHeight, 4);
+    const maxLat = oldUtil.round(latitude + halfHeight, 4);
     
     return [minLat, minLon, maxLat, maxLon];
   }
@@ -553,13 +553,13 @@ class StreetMap {
       this.clear();
       this.draw({filterCB: DEBUG.activeFilter});
     } else {
-      if (Util.isLatLon(query)) {
-        this.centroid = Util.parseLatLon(query);
+      if (oldUtil.isLatLon(query)) {
+        this.centroid = oldUtil.parseLatLon(query);
       } else {
         const results = await oldNominatum.freeForm(query);
         this.centroid = oldNominatum.getCentroid(results);
       }
-      this.bbox = Util.old_toBbox(this.centroid, zoom);
+      this.bbox = oldUtil.old_toBbox(this.centroid, zoom);
       // fetch data
       this.data = await this.fetchlayers();
       console.info("Successful fetch of map data:")
@@ -571,10 +571,10 @@ class StreetMap {
   }
 
   saveData() {
-    const path = Util.slugify(this.currentLoc) + ".json";
+    const path = oldUtil.slugify(this.currentLoc) + ".json";
     this.data["bbox"] = this.bbox;
     this.data["centroid"] = this.centroid;
-    Util.saveJSON(this.data, path);
+    oldUtil.saveJSON(this.data, path);
     console.info("Saved");
     console.info(`"${this.currentLoc}": "${path}",`);
   }
@@ -864,7 +864,7 @@ class TestCoordinates {
     Durham: [35.985577, -78.913336, 36.004673, -78.888788],
     Chicago: [41.876032,-87.625859,41.884707,-87.614164],
     Amsterdam: [52.357112,4.865248,52.365027,4.878166],
-    Amsterdam2: Util.old_toBbox([52.64648, 4.80682], 15),
+    Amsterdam2: oldUtil.old_toBbox([52.64648, 4.80682], 15),
 
   }
 }
