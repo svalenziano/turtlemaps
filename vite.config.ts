@@ -7,14 +7,9 @@ export default {
   },
       build: {
         target: 'esnext',
-        minify: false,
+        minify: true,
         emptyOutDir: true,
-
-        rollupOptions: {
-            output: {
-                preserveModules: true,
-            },
-        },
+        outDir: 'dist',
     },
 
 } satisfies UserConfig
