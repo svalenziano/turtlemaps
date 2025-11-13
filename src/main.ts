@@ -112,10 +112,10 @@ class MapApp {
     this.centroid = null;
     this.svg = new SVG(document.body, window.innerWidth, window.innerWidth);
     
-    const osmFetcher = new SlowFetcher(1000);
+    // const osmFetcher = new SlowFetcher(1000);
     this.osm = new Overpass(fetch);
     
-    const nominatimFetcher = new SlowFetcher(1000);
+    // const nominatimFetcher = new SlowFetcher(1000);
     this.nom = new Nominatum(fetch);
 
     this.layers = Layer.makeDefaultLayers();
@@ -246,11 +246,15 @@ document.addEventListener("DOMContentLoaded", async () => {
   const app = new MapApp($container);
   const loc = await app.nom.resolveCoordinates("35.996653, -78.9018053");
   console.log(loc)
+  const overpassQuery = app.osm.formQueryFromLayers(app.layers);
+  console.log(overpassQuery);
+  // const json = await app.osm.query(overpassQuery, app.bbox);
+
   // await app.jump("Durham, NC, USA");
-  const json = await app.fetchLocalOSM("./data/durham_nc.json");
+  // const json = await app.fetchLocalOSM("./data/durham_nc.json");
   // console.log(json);
   // console.log(app.bbox);
-  app.drawOSM(json);
+  // app.drawOSM(json);
   // app.test();
 
   // const layers = Layer.makeDefaultLayers();

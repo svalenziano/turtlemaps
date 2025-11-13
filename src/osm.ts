@@ -36,7 +36,7 @@ export class Overpass {
           (${query});
           out geom;`);
 
-      const response = await this.fetcher(this.api, {
+      const response = await fetch(this.api, {
         method: "POST",
         body: osmQuery,
         headers: {
@@ -59,11 +59,11 @@ export class Overpass {
  More info: https://wiki.openstreetmap.org/wiki/Overpass_API/Overpass_QL
  */
   formQueryFromLayers(layers: Layer[]): string {
-    let query = "";
+    let layerQuery = "";
     for (let l of layers) {
-      query += l.queryString;
+      layerQuery += l.queryString;
     }
-    return query;
+    return layerQuery;
   }
 
 /**
