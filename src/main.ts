@@ -7,6 +7,7 @@ import { Layer } from "./layer.js";
 import { Color } from "./color.js";
 import { SVG } from "./SVG.js";
 import { DZ } from "./config.js";
+import { SearchBox } from "./search-box.js";
 
 export {};  // ensure this file is treated as a module
 
@@ -121,6 +122,22 @@ class MapApp {
 
     this.layers = Layer.makeDefaultLayers();
     this.layers.forEach((l) => this.svg.$svg.append(l.$g));
+
+
+    // this.searchBox = new SearchBox(document.querySelector("search-box"));
+    // for (let [k, v] of Object.entries(MapApp.elements)) {
+    //   const $element = document.getElementById(k);
+
+    // }
+  }
+
+/**
+ * Used to initialize components and attach them to UI elements
+ *
+ * Format: `{id: class constructor}`
+ */
+  static elements = {
+    "search-box": SearchBox,
   }
 
 /**
@@ -263,19 +280,15 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // debugger;
   const app = new MapApp($container);
-  app.jump("35.996653, -78.9018053");
-  // const loc = await app.nom.resolveCoordinates("35.996653, -78.9018053");
-  // console.log(loc)
-  // const overpassQuery = app.osm.formQueryFromLayers(app.layers, app.bbox);
-  // console.log(overpassQuery);
-  // const json = await app.osm.query(overpassQuery);
+  
+  // fetch remote
+  // app.jump("35.996653, -78.9018053");
 
-  // await app.jump("Durham, NC, USA");
-  // const json = await app.fetchLocalOSM("./data/durham_nc.json");
-  // console.log(json);
-  // console.log(app.bbox);
-  // app.drawOSM(json);
-  // app.test();
+  // fetch local
+  const json = await app.fetchLocalOSM("./data/durham_nc.json");
+  console.log(json);
+  console.log(app.bbox);
+  app.drawOSM(json);
 
   // const layers = Layer.makeDefaultLayers();
   // console.log(layers);
